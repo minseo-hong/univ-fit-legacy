@@ -7,7 +7,7 @@ const Home = () => {
   return (
     <main>
       <section className="px-3 pb-6 pt-2">
-        <div className="overflow-hidden rounded-2xl">
+        <div className="h-[5rem] w-full overflow-hidden rounded-2xl">
           <img
             src="/images/placeholders/placeholder-ad.png"
             alt="상단 배너 광고 이미지"

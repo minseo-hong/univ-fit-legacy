@@ -1,4 +1,4 @@
-import HeartIcon from '../ui/icons/HeartIcon';
+import HeartIcon from '../ui/icon/HeartIcon';
 
 interface ScholarItemProps {
   as?: keyof JSX.IntrinsicElements;
