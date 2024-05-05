@@ -17,6 +17,9 @@ const config: Config = {
         '2xl': '1536px',
         '3xl': '1920px',
       },
+      fontFamily: {
+        pretendard: ['Pretendard', 'sans-serif'],
+      },
       colors: {
         primary: {
           DEFAULT: '#FAB00E',

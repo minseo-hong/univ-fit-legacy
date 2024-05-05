@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import './globals.css';
+import '/public/styles/font.css';
 
 export const metadata: Metadata = {
   title: 'UnivFit',
@@ -13,7 +14,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
-      <body>{children}</body>
+      <body className="font-pretendard">{children}</body>
     </html>
   );
 }
