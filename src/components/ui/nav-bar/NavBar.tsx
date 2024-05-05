@@ -5,7 +5,7 @@ import { useState } from 'react';
 import MenuIcon from '../icon/MenuIcon';
 import SearchIcon from '../icon/SearchIcon';
 import Drawer from './Drawer';
-import SearchBarWindow from './SearchBarWindow';
+import SearchBarModal from './SearchBarWindow';
 
 const NavBar = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState<boolean>(false);
@@ -28,7 +28,7 @@ const NavBar = () => {
       </nav>
       <div className="h-[4rem]" />
       <Drawer isDrawerOpen={isDrawerOpen} setIsDrawerOpen={setIsDrawerOpen} />
-      <SearchBarWindow
+      <SearchBarModal
         isSearchBarOpen={isSearchBarOpen}
         setIsSearchBarOpen={setIsSearchBarOpen}
       />

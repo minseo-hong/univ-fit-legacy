@@ -11,6 +11,7 @@ const Home = () => {
           <img
             src="/images/placeholders/placeholder-ad.png"
             alt="상단 배너 광고 이미지"
+            className="h-full w-full object-cover"
           />
         </div>
       </section>

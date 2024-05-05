@@ -8,7 +8,7 @@ interface SearchBarWindowProps {
   setIsSearchBarOpen: (isSearchBarOpen: boolean) => void;
 }
 
-const SearchBarWindow = ({
+const SearchBarModal = ({
   isSearchBarOpen,
   setIsSearchBarOpen,
 }: SearchBarWindowProps) => {
@@ -52,4 +52,4 @@ const SearchBarWindow = ({
   );
 };
 
-export default SearchBarWindow;
+export default SearchBarModal;

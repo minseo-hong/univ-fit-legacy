@@ -37,6 +37,7 @@ const Drawer = ({ isDrawerOpen, setIsDrawerOpen }: DrawerProps) => {
             <img
               src="/images/placeholders/placeholder-image.png"
               alt="프로필 이미지"
+              className="h-full w-full object-cover"
             />
           </div>
           <div className="text-gray-40 text-lg-200 flex-1">
