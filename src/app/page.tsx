@@ -11,6 +11,7 @@ const Home = () => {
           <img
             src="/images/placeholders/placeholder-ad.png"
             alt="상단 배너 광고 이미지"
+            className="h-full w-full object-cover"
           />
         </div>
       </section>
@@ -37,7 +38,7 @@ const Home = () => {
             전체보기
           </Link>
         </div>
-        <ul className="mt-4 flex w-[calc(100vw-1rem)] gap-4 overflow-x-scroll">
+        <ul className="mt-4 flex w-[calc(100vw-(100vw-100%)+1rem)] gap-4 overflow-x-scroll">
           {Array.from({ length: 3 }).map((_, index) => (
             <ArticleItem key={index} as="li" />
           ))}

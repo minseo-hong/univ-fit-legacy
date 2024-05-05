@@ -51,6 +51,9 @@ const config: Config = {
           80: '#313135',
           90: '#18181B',
         },
+        grayscale: {
+          'gray-100': '#1D1D1F',
+        },
         warning: {
           DEFAULT: '#F06E10',
           '00': '#FCE5D4',
@@ -80,6 +83,9 @@ const config: Config = {
           40: '#55CD7E',
           50: '#3AC569',
           60: '#31A859',
+        },
+        kakao: {
+          yellow: '#FEE500',
         },
       },
     },

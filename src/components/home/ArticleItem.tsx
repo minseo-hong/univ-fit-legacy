@@ -10,6 +10,7 @@ const ArticleItem = ({ as: Wrapper = 'div' }: ArticleItemProps) => {
           <img
             src="/images/placeholders/placeholder-image.png"
             alt="아티클 이미지"
+            className="h-full w-full object-cover"
           />
         </div>
         <h2 className="text-lg-200 w-full">

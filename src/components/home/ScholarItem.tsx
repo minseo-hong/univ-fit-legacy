@@ -12,6 +12,7 @@ const ScholarItem = ({ as: Wrapper = 'div' }: ScholarItemProps) => {
           <img
             src="/images/placeholders/placeholder-image.png"
             alt="장학금 이미지"
+            className="h-full w-full object-cover"
           />
         </div>
         <div className="ml-3 flex flex-1 flex-col gap-1">
