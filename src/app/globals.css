@@ -8,8 +8,9 @@
     line-height: 1.875rem;
   }
 
-  .title-md {
+  .title-md-300 {
     font-size: 1.25rem;
+    font-weight: 600;
     line-height: 1.5rem;
   }
 
@@ -18,13 +19,21 @@
     line-height: 1.5rem;
   }
 
-  .text-lg {
+  .text-lg-200 {
     font-size: 1rem;
+    font-weight: 500;
     line-height: 1.25rem;
   }
 
-  .text-md {
+  .text-md-300 {
     font-size: 0.875rem;
+    font-weight: 600;
+    line-height: 1.125rem;
+  }
+
+  .text-md-200 {
+    font-size: 0.875rem;
+    font-weight: 500;
     line-height: 1.125rem;
   }
 
@@ -33,8 +42,9 @@
     line-height: 1.125rem;
   }
 
-  .caption {
+  .caption-200 {
     font-size: 0.75rem;
+    font-weight: 500;
     line-height: 1rem;
   }
 }
