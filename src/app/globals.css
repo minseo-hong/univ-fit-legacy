@@ -1,3 +1,40 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  .title-lg {
+    font-size: 1.5rem;
+    line-height: 1.875rem;
+  }
+
+  .title-md {
+    font-size: 1.25rem;
+    line-height: 1.5rem;
+  }
+
+  .title-sm {
+    font-size: 1.125rem;
+    line-height: 1.5rem;
+  }
+
+  .text-lg {
+    font-size: 1rem;
+    line-height: 1.25rem;
+  }
+
+  .text-md {
+    font-size: 0.875rem;
+    line-height: 1.125rem;
+  }
+
+  .text-sm {
+    font-size: 0.8125rem;
+    line-height: 1.125rem;
+  }
+
+  .caption {
+    font-size: 0.75rem;
+    line-height: 1rem;
+  }
+}
