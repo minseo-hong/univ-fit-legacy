@@ -38,7 +38,7 @@ const Home = () => {
             전체보기
           </Link>
         </div>
-        <ul className="mt-4 flex w-[calc(100vw-1rem)] gap-4 overflow-x-scroll">
+        <ul className="mt-4 flex w-[calc(100vw-(100vw-100%)+1rem)] gap-4 overflow-x-scroll">
           {Array.from({ length: 3 }).map((_, index) => (
             <ArticleItem key={index} as="li" />
           ))}

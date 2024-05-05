@@ -5,7 +5,7 @@ import { useState } from 'react';
 import MenuIcon from '../icon/MenuIcon';
 import SearchIcon from '../icon/SearchIcon';
 import Drawer from './Drawer';
-import SearchBarModal from './SearchBarWindow';
+import SearchBarModal from './SearchBarModal';
 
 const NavBar = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState<boolean>(false);
