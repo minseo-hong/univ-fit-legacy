@@ -14,9 +14,22 @@
     line-height: 1.5rem;
   }
 
-  .title-sm {
+  .title-sm-300 {
     font-size: 1.125rem;
+    font-weight: 600;
     line-height: 1.5rem;
+  }
+
+  .title-sm-200 {
+    font-size: 1.125rem;
+    font-weight: 500;
+    line-height: 1.5rem;
+  }
+
+  .text-lg-300 {
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.25rem;
   }
 
   .text-lg-200 {

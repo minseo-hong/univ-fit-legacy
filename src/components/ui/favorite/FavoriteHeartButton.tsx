@@ -5,7 +5,7 @@ import HeartIcon from '../icon/HeartIcon';
 
 interface FavoriteHeartButtonProps {
   isFavorite: boolean;
-  onClick: () => void;
+  onClick: (e: React.MouseEvent<HTMLDivElement>) => void;
 }
 
 const FavoriteHeartButton = ({
