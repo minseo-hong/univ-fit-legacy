@@ -5,15 +5,14 @@ import { useState } from 'react';
 import Image from 'next/image';
 
 import Badge from '@/components/ui/badge/Badge';
-import HeartIcon from '@/components/ui/icon/HeartIcon';
-import HeartFilledIcon from '@/components/ui/icon/HeartFilledIcon';
 import FavoriteHeartButton from '@/components/ui/favorite/FavoriteHeartButton';
+import Link from 'next/link';
 
 const ScholarshipListPage = () => {
   const rawScholarshipList: {
     id: number;
     title: string;
-    organization: string;
+    foundation: string;
     imageSrc: string;
     period: string;
     dDay: number;
@@ -23,7 +22,7 @@ const ScholarshipListPage = () => {
     {
       id: 1,
       title: '장학금명',
-      organization: '재단명',
+      foundation: '재단명',
       imageSrc: '/images/placeholders/placeholder-image.png',
       period: '2024.04.01 ~ 2026.04.01',
       dDay: 12,
@@ -33,7 +32,7 @@ const ScholarshipListPage = () => {
     {
       id: 2,
       title: '장학금명',
-      organization: '재단명',
+      foundation: '재단명',
       imageSrc: '/images/placeholders/placeholder-image.png',
       period: '2024.04.01 ~ 2026.04.01',
       dDay: 12,
@@ -43,7 +42,7 @@ const ScholarshipListPage = () => {
     {
       id: 3,
       title: '장학금명',
-      organization: '재단명',
+      foundation: '재단명',
       imageSrc: '/images/placeholders/placeholder-image.png',
       period: '2024.04.01 ~ 2026.04.01',
       dDay: 12,
@@ -53,7 +52,7 @@ const ScholarshipListPage = () => {
     {
       id: 4,
       title: '장학금명',
-      organization: '재단명',
+      foundation: '재단명',
       imageSrc: '/images/placeholders/placeholder-image.png',
       period: '2024.04.01 ~ 2026.04.01',
       dDay: 12,
@@ -77,7 +76,11 @@ const ScholarshipListPage = () => {
     setTabActiveIndex(index);
   };
 
-  const handleFavoriteClick = (id: number) => {
+  const handleFavoriteClick = (
+    e: React.MouseEvent<HTMLDivElement>,
+    id: number,
+  ) => {
+    e.preventDefault();
     const updatedScholarshipList = scholarshipList.map((scholarship) =>
       scholarship.id === id
         ? { ...scholarship, isFavorite: !scholarship.isFavorite }
@@ -105,42 +108,49 @@ const ScholarshipListPage = () => {
         </div>
         <ul className="mt-4 flex flex-col gap-4">
           {filteredScholarshipList.map((scholarship) => (
-            <li className="rounded-2xl bg-white p-4">
-              <div className="flex flex-col gap-3">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <Badge>D-{scholarship.dDay}</Badge>
-                    {scholarship.status === 'OPEN' && (
-                      <Badge style="variant5">신청가능</Badge>
-                    )}
-                  </div>
-                  <FavoriteHeartButton
-                    isFavorite={scholarship.isFavorite}
-                    onClick={() => handleFavoriteClick(scholarship.id)}
-                  />
-                </div>
-                <div className="flex items-center gap-3">
-                  <div className="overflow-hidden rounded-lg">
-                    <Image
-                      src={scholarship.imageSrc}
-                      alt={scholarship.title}
-                      width={64}
-                      height={64}
+            <li key={scholarship.id}>
+              <Link
+                href={`/scholarships/${scholarship.id}`}
+                className="block rounded-2xl bg-white p-4"
+              >
+                <div className="flex flex-col gap-3">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      <Badge size="sm">D-{scholarship.dDay}</Badge>
+                      {scholarship.status === 'OPEN' && (
+                        <Badge style="stroke-success" size="sm">
+                          신청가능
+                        </Badge>
+                      )}
+                    </div>
+                    <FavoriteHeartButton
+                      isFavorite={scholarship.isFavorite}
+                      onClick={(e) => handleFavoriteClick(e, scholarship.id)}
                     />
                   </div>
-                  <div>
-                    <h2 className="text-md-300 text-gray-70">
-                      {scholarship.title}
-                    </h2>
-                    <div className="text-md-200 text-gray-40">
-                      {scholarship.organization}
+                  <div className="flex items-center gap-3">
+                    <div className="overflow-hidden rounded-lg">
+                      <Image
+                        src={scholarship.imageSrc}
+                        alt={scholarship.title}
+                        width={64}
+                        height={64}
+                      />
                     </div>
-                    <div className="caption-200 text-gray-30">
-                      {scholarship.period}
+                    <div>
+                      <h2 className="text-md-300 text-gray-70">
+                        {scholarship.title}
+                      </h2>
+                      <div className="text-md-200 text-gray-40">
+                        {scholarship.foundation}
+                      </div>
+                      <div className="caption-200 text-gray-30">
+                        {scholarship.period}
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
+              </Link>
             </li>
           ))}
         </ul>

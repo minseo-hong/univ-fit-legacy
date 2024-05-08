@@ -1,18 +1,44 @@
 import clsx from 'clsx';
 
 interface DrawerProps {
+  className?: string;
+  style?:
+    | 'default'
+    | 'primary'
+    | 'stroke-default'
+    | 'stroke-primary'
+    | 'stroke-success';
+  size: 'sm' | 'md' | 'lg';
   children: React.ReactNode;
-  style?: 'default' | 'variant5';
 }
 
-const Badge = ({ children, style = 'default' }: DrawerProps) => {
+const Badge = ({
+  children,
+  style = 'default',
+  className,
+  size,
+}: DrawerProps) => {
   return (
     <div
-      className={clsx('caption-300 rounded-full px-3 py-1', {
-        'bg-gray-05 text-gray-40': style === 'default',
-        'border border-success-20 bg-gray-00 text-success-50':
-          style === 'variant5',
-      })}
+      className={clsx(
+        'rounded-full',
+        className,
+        {
+          'bg-primary text-gray-00': style === 'primary',
+          'bg-gray-05 text-gray-40': style === 'default',
+          'border border-primary bg-gray-00 text-primary':
+            style === 'stroke-primary',
+          'border border-gray-15 bg-gray-00 text-gray-30':
+            style === 'stroke-default',
+          'border border-success-20 bg-gray-00 text-success-50':
+            style === 'stroke-success',
+        },
+        {
+          'title-sm-200 px-6 py-2': size === 'lg',
+          'text-lg-200 px-4 py-2': size === 'md',
+          'text-md-200 px-3 py-1': size === 'sm',
+        },
+      )}
     >
       {children}
     </div>
