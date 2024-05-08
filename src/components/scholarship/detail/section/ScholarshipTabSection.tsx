@@ -5,6 +5,7 @@ import { useState } from 'react';
 import DetailContentTab from '../tab-content/DetailContentTab';
 import SubmissionTab from '../tab-content/SubmissionTab';
 import FoundationTab from '../tab-content/FoundationTab';
+import CommentsTab from '../tab-content/CommentsTab';
 
 const ScholarshipTabSection = () => {
   const [tabActiveIndex, setTabActiveIndex] = useState<number>(0);
@@ -38,8 +39,10 @@ const ScholarshipTabSection = () => {
         <DetailContentTab />
       ) : tabActiveIndex === 1 ? (
         <SubmissionTab />
+      ) : tabActiveIndex === 2 ? (
+        <FoundationTab />
       ) : (
-        tabActiveIndex === 2 && <FoundationTab />
+        tabActiveIndex === 3 && <CommentsTab />
       )}
     </section>
   );

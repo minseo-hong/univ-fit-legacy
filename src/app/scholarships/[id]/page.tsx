@@ -5,6 +5,7 @@ import Badge from '@/components/ui/badge/Badge';
 import Button from '@/components/ui/button/Button';
 import MessageDotsIcon from '@/components/ui/icon/MessageDotsIcon';
 import ScholarshipTabSection from '@/components/scholarship/detail/section/ScholarshipTabSection';
+import Link from 'next/link';
 
 const ScholarshipDetailPage = () => {
   const conditionList: { name: string; isTrue: boolean }[] = [
@@ -16,13 +17,19 @@ const ScholarshipDetailPage = () => {
 
   return (
     <div className="pb-8">
-      <header className="p-4 pt-3">
-        <div className="flex items-center gap-1 text-gray-40">
-          <span className="text-[1.25rem]">
-            <ChevronLeftIcon />
-          </span>
-          <span className="text-lg-200">장학금 공고</span>
+      <header>
+        <div className="fixed top-[4rem] z-10 w-full bg-white p-4 pt-3">
+          <Link
+            href="/scholarships"
+            className="flex items-center gap-1 text-gray-40"
+          >
+            <span className="text-[1.25rem]">
+              <ChevronLeftIcon />
+            </span>
+            <span className="text-lg-200">장학금 공고</span>
+          </Link>
         </div>
+        <div className="h-[3rem]" />
       </header>
       <main>
         <section className="relative">
