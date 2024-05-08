@@ -13,7 +13,7 @@ const NavBar = () => {
 
   return (
     <>
-      <nav className="bg-gray-00 fixed left-0 top-0 flex h-[4rem] w-full items-center justify-between px-4">
+      <nav className="fixed left-0 top-0 z-50 flex h-[4rem] w-full items-center justify-between bg-gray-00 px-4">
         <div>
           <img src="/logo/navbar-header-logo.svg" alt="네비게이션 헤더 로고" />
         </div>

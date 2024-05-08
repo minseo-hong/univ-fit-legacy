@@ -7,8 +7,8 @@ import HomeIcon from '../icon/HomeIcon';
 import ListSearchIcon from '../icon/ListSearchIcon';
 import NewsIcon from '../icon/NewsIcon';
 import ReportMoneyIcon from '../icon/ReportMoneyIcon';
-import DrawerMenuItem from './DrawerMenuItem';
 import LoginModal from './LoginModal';
+import Link from 'next/link';
 
 interface DrawerProps {
   isDrawerOpen: boolean;
@@ -18,11 +18,47 @@ interface DrawerProps {
 const Drawer = ({ isDrawerOpen, setIsDrawerOpen }: DrawerProps) => {
   const [isLoginModalOpen, setIsLoginModalOpen] = useState<boolean>(false);
 
+  const menuList: {
+    icon: React.ReactNode;
+    label: React.ReactNode;
+    href: string;
+  }[] = [
+    {
+      icon: <HomeIcon />,
+      label: '홈',
+      href: '/',
+    },
+    {
+      icon: <ListSearchIcon />,
+      label: '장학금 공고',
+      href: '/scholarships',
+    },
+    {
+      icon: <NewsIcon />,
+      label: '아티클',
+      href: '#',
+    },
+    {
+      icon: <ReportMoneyIcon />,
+      label: '내 장학금',
+      href: '#',
+    },
+    {
+      icon: <FilePencilIcon />,
+      label: '자기소개서',
+      href: '#',
+    },
+  ];
+
+  const handleMenuClick = () => {
+    setIsDrawerOpen(false);
+  };
+
   return (
     <>
       <div
         className={clsx(
-          'fixed right-0 top-0 flex h-screen w-full justify-end bg-black transition-colors duration-300',
+          'fixed right-0 top-0 z-50 flex h-screen w-full justify-end bg-black transition-colors duration-300',
           {
             'bg-opacity-50': isDrawerOpen,
             'pointer-events-none bg-opacity-0': !isDrawerOpen,
@@ -32,7 +68,7 @@ const Drawer = ({ isDrawerOpen, setIsDrawerOpen }: DrawerProps) => {
       >
         <div
           className={clsx(
-            'bg-gray-00 w-[20rem] transition-transform duration-300',
+            'w-[20rem] bg-gray-00 transition-transform duration-300',
             {
               'translate-x-0': isDrawerOpen,
               'translate-x-full': !isDrawerOpen,
@@ -51,27 +87,28 @@ const Drawer = ({ isDrawerOpen, setIsDrawerOpen }: DrawerProps) => {
                 className="h-full w-full object-cover"
               />
             </div>
-            <div className="text-gray-40 text-lg-200 flex-1">
+            <div className="text-lg-200 flex-1 text-gray-40">
               로그인 후 이용해주세요.
             </div>
             <div>
-              <span className="text-gray-40 text-[1.5rem]">
+              <span className="text-[1.5rem] text-gray-40">
                 <ChevronRightIcon />
               </span>
             </div>
           </div>
           <ul>
-            <DrawerMenuItem icon={<HomeIcon />}>홈</DrawerMenuItem>
-            <DrawerMenuItem icon={<ListSearchIcon />}>
-              장학금 공고
-            </DrawerMenuItem>
-            <DrawerMenuItem icon={<NewsIcon />}>아티클</DrawerMenuItem>
-            <DrawerMenuItem icon={<ReportMoneyIcon />}>
-              내 장학금
-            </DrawerMenuItem>
-            <DrawerMenuItem icon={<FilePencilIcon />}>
-              자기소개서
-            </DrawerMenuItem>
+            {menuList.map((menu, index) => (
+              <li key={index}>
+                <Link
+                  href={menu.href}
+                  className="flex items-center gap-2 px-6 py-4 text-gray-60"
+                  onClick={handleMenuClick}
+                >
+                  <span className="text-[1.25rem]">{menu.icon}</span>
+                  <span className="text-lg-200 flex-1">{menu.label}</span>
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
       </div>
