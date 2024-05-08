@@ -23,7 +23,7 @@ const LoginModal = ({
       onClick={() => setIsLoginModalOpen(false)}
     >
       <div
-        className="border-gray-15 bg-gray-00 z-50 flex w-[20rem] flex-col items-center rounded-2xl border p-4 pb-6"
+        className="z-50 flex w-[20rem] flex-col items-center rounded-2xl border border-gray-15 bg-gray-00 p-4 pb-6"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex w-full justify-end">
@@ -41,10 +41,10 @@ const LoginModal = ({
             className="h-full w-full object-cover"
           />
         </div>
-        <p className="text-gray-40 text-sm-200 mt-6">
+        <p className="text-sm-200 mt-6 text-gray-40">
           로그인하고 나에게 맞는 장학금을 추천받으세요!
         </p>
-        <button className="bg-kakao-yellow mt-4 flex w-full items-center justify-center gap-2 rounded-xl py-4">
+        <button className="mt-4 flex w-full items-center justify-center gap-2 rounded-xl bg-kakao-yellow py-4">
           <div>
             <img src="/icons/kakao.svg" alt="카카오 아이콘" />
           </div>

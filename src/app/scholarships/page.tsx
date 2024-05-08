@@ -12,7 +12,7 @@ const ScholarshipListPage = () => {
   const rawScholarshipList: {
     id: number;
     title: string;
-    organization: string;
+    foundation: string;
     imageSrc: string;
     period: string;
     dDay: number;
@@ -22,7 +22,7 @@ const ScholarshipListPage = () => {
     {
       id: 1,
       title: '장학금명',
-      organization: '재단명',
+      foundation: '재단명',
       imageSrc: '/images/placeholders/placeholder-image.png',
       period: '2024.04.01 ~ 2026.04.01',
       dDay: 12,
@@ -32,7 +32,7 @@ const ScholarshipListPage = () => {
     {
       id: 2,
       title: '장학금명',
-      organization: '재단명',
+      foundation: '재단명',
       imageSrc: '/images/placeholders/placeholder-image.png',
       period: '2024.04.01 ~ 2026.04.01',
       dDay: 12,
@@ -42,7 +42,7 @@ const ScholarshipListPage = () => {
     {
       id: 3,
       title: '장학금명',
-      organization: '재단명',
+      foundation: '재단명',
       imageSrc: '/images/placeholders/placeholder-image.png',
       period: '2024.04.01 ~ 2026.04.01',
       dDay: 12,
@@ -52,7 +52,7 @@ const ScholarshipListPage = () => {
     {
       id: 4,
       title: '장학금명',
-      organization: '재단명',
+      foundation: '재단명',
       imageSrc: '/images/placeholders/placeholder-image.png',
       period: '2024.04.01 ~ 2026.04.01',
       dDay: 12,
@@ -108,7 +108,7 @@ const ScholarshipListPage = () => {
         </div>
         <ul className="mt-4 flex flex-col gap-4">
           {filteredScholarshipList.map((scholarship) => (
-            <li>
+            <li key={scholarship.id}>
               <Link
                 href={`/scholarships/${scholarship.id}`}
                 className="block rounded-2xl bg-white p-4"
@@ -142,7 +142,7 @@ const ScholarshipListPage = () => {
                         {scholarship.title}
                       </h2>
                       <div className="text-md-200 text-gray-40">
-                        {scholarship.organization}
+                        {scholarship.foundation}
                       </div>
                       <div className="caption-200 text-gray-30">
                         {scholarship.period}

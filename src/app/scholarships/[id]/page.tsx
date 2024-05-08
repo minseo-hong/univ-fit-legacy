@@ -31,7 +31,7 @@ const ScholarshipDetailPage = () => {
               src="/images/placeholders/placeholder-image.png"
               alt="장학금 임시 이미지"
               fill
-              objectFit="cover"
+              priority
             />
           </div>
           <Badge style="primary" size="lg" className="absolute bottom-4 left-4">
@@ -70,7 +70,7 @@ const ScholarshipDetailPage = () => {
         <section className="flex flex-col gap-4 px-4 py-6">
           <Button>지원하기</Button>
           <Button style="light-primary">
-            <span className="text-lg-300 flex gap-1">
+            <span className="text-lg-300 flex gap-1 text-gray-80">
               <span className="text-[1.25rem]">
                 <MessageDotsIcon />
               </span>

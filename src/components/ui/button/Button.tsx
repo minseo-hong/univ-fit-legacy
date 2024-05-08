@@ -12,7 +12,7 @@ const Button = ({ style = 'primary', children }: ButtonProps) => {
         'title-sm-300 flex w-full items-center justify-center rounded-2xl py-5',
         {
           'bg-primary text-gray-00': style === 'primary',
-          'bg-primary-05 text-gray-80': style === 'light-primary',
+          'bg-primary-05 text-primary-80': style === 'light-primary',
         },
       )}
     >
