@@ -4,7 +4,7 @@ import ChevronLeftIcon from '@/components/ui/icon/ChevronLeftIcon';
 import Badge from '@/components/ui/badge/Badge';
 import Button from '@/components/ui/button/Button';
 import MessageDotsIcon from '@/components/ui/icon/MessageDotsIcon';
-import ScholarshipTabSection from '@/components/scholarship/scholarship-detail/ScholarshipTabSection';
+import ScholarshipTabSection from '@/components/scholarship/detail/section/ScholarshipTabSection';
 
 const ScholarshipDetailPage = () => {
   const conditionList: { name: string; isTrue: boolean }[] = [
@@ -15,7 +15,7 @@ const ScholarshipDetailPage = () => {
   ];
 
   return (
-    <div className="pb-16">
+    <div className="pb-8">
       <header className="p-4 pt-3">
         <div className="flex items-center gap-1 text-gray-40">
           <span className="text-[1.25rem]">
