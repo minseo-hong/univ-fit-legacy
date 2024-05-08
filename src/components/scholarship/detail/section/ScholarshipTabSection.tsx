@@ -2,7 +2,8 @@
 
 import clsx from 'clsx';
 import { useState } from 'react';
-import DetailContentTab from '../tab-content/DetailContentTab';
+import DetailContentTab from '../tab-content/detail-content/DetailContentTab';
+import SubmissionTab from '../tab-content/submission/content/SubmissionTab';
 
 const ScholarshipTabSection = () => {
   const [tabActiveIndex, setTabActiveIndex] = useState<number>(0);
@@ -32,7 +33,11 @@ const ScholarshipTabSection = () => {
           </li>
         ))}
       </ul>
-      {tabActiveIndex === 0 && <DetailContentTab />}
+      {tabActiveIndex === 0 ? (
+        <DetailContentTab />
+      ) : (
+        tabActiveIndex === 1 && <SubmissionTab />
+      )}
     </section>
   );
 };

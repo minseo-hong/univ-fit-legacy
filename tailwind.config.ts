@@ -77,6 +77,7 @@ const config: Config = {
         success: {
           DEFAULT: '#31A859',
           '00': '#C4EED2',
+          '01': '#DFF6E7',
           10: '#A8E6BD',
           20: '#8CDEA8',
           30: '#71D693',
