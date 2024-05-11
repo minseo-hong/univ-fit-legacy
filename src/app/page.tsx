@@ -20,7 +20,7 @@ const Home = () => {
       <section className="bg-gray-05 p-4">
         <div className="flex justify-between">
           <h1 className="title-md-300 text-gray-80">인기 장학금 공고</h1>
-          <Link href="#" className="text-lg-200 text-gray-30">
+          <Link href="/scholarships" className="text-lg-200 text-gray-30">
             전체보기
           </Link>
         </div>
