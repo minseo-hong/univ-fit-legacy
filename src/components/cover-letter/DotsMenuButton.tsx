@@ -2,6 +2,7 @@
 
 import clsx from 'clsx';
 import { useEffect, useRef, useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 import DotsVerticalIcon from '../ui/icon/DotsVerticalIcon';
 import ArrowBarToUpIcon from '../ui/icon/ArrowBarToUpIcon';
@@ -9,7 +10,12 @@ import PencilCogIcon from '../ui/icon/PencilCogIcon';
 import TrashXIcon from '../ui/icon/TrashXIcon';
 import PopUp from '../ui/PopUp';
 
-const DotsMenuButton = () => {
+interface DotsMenuButtonProps {
+  coverLetterId: number;
+}
+
+const DotsMenuButton = ({ coverLetterId }: DotsMenuButtonProps) => {
+  const router = useRouter();
   const menuRef = useRef<HTMLDivElement>(null);
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -30,6 +36,7 @@ const DotsMenuButton = () => {
       label: '수정하기',
       icon: <PencilCogIcon />,
       style: 'default',
+      onClick: () => handleEditMenuItemClick(),
     },
     {
       label: '삭제하기',
@@ -39,8 +46,12 @@ const DotsMenuButton = () => {
     },
   ];
 
-  const handleDotsMenuButtonClick = () => {
+  const handleDotsMenuButtonClick = (e: React.MouseEvent<HTMLElement>) => {
     setIsMenuOpen(!isMenuOpen);
+  };
+
+  const handleEditMenuItemClick = () => {
+    router.push(`/cover-letters/${coverLetterId}/edit`);
   };
 
   const handleDeleteMenuItemClick = () => {
@@ -73,11 +84,11 @@ const DotsMenuButton = () => {
   }, [isMenuOpen]);
 
   return (
-    <>
+    <div onClick={(e) => e.preventDefault()}>
       <div ref={menuRef} className="relative">
         <span
           className="cursor-pointer text-[1.25rem] text-gray-20"
-          onClick={() => handleDotsMenuButtonClick()}
+          onClick={(e) => handleDotsMenuButtonClick(e)}
         >
           <DotsVerticalIcon />
         </span>
@@ -114,7 +125,7 @@ const DotsMenuButton = () => {
           삭제하시겠습니까?
         </PopUp>
       )}
-    </>
+    </div>
   );
 };
 

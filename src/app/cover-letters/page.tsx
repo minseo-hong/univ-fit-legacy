@@ -3,6 +3,7 @@ import Capsule from '@/components/ui/Capsule';
 import FileDescriptionIcon from '@/components/ui/icon/FileDescriptionIcon';
 import FilePencilIcon from '@/components/ui/icon/FilePencilIcon';
 import PencilIcon from '@/components/ui/icon/PencilIcon';
+import Link from 'next/link';
 
 const CoverLettersPage = () => {
   const coverLetterList: {
@@ -54,23 +55,27 @@ const CoverLettersPage = () => {
       <main>
         <ul>
           {coverLetterList.map((coverLetter) => (
-            <li
-              key={coverLetter.id}
-              className="flex flex-col gap-2 border-t border-gray-05 px-6 py-5 last:border-b"
-            >
-              <div className="flex items-center gap-1">
-                <span className="text-[1.25rem] text-gray-30">
-                  <FileDescriptionIcon />
-                </span>
-                <h2 className="text-lg-200 flex-1 text-gray-80">
-                  {coverLetter.title}
-                </h2>
-                <DotsMenuButton />
-              </div>
-              <div className="text-md-200 text-gray-40">
-                {coverLetter.organization}
-              </div>
-              <div className="text-md-200 text-gray-30">{coverLetter.date}</div>
+            <li key={coverLetter.id}>
+              <Link
+                href={`/cover-letters/${coverLetter.id}`}
+                className="flex flex-col gap-2 border-t border-gray-05 px-6 py-5 last:border-b"
+              >
+                <div className="flex items-center gap-1">
+                  <span className="text-[1.25rem] text-gray-30">
+                    <FileDescriptionIcon />
+                  </span>
+                  <h2 className="text-lg-200 flex-1 text-gray-80">
+                    {coverLetter.title}
+                  </h2>
+                  <DotsMenuButton coverLetterId={coverLetter.id} />
+                </div>
+                <div className="text-md-200 text-gray-40">
+                  {coverLetter.organization}
+                </div>
+                <div className="text-md-200 text-gray-30">
+                  {coverLetter.date}
+                </div>
+              </Link>
             </li>
           ))}
         </ul>

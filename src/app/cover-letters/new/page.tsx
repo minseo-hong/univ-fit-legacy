@@ -3,12 +3,12 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 
-import QuestionInput from '@/components/cover-letter/QuestionInput';
+import QuestionBox from '@/components/cover-letter/QuestionInput';
 import ScholarshipDropdown from '@/components/cover-letter/ScholarshipDropdown';
 import BackButtonHeader from '@/components/ui/BackButtonHeader';
 import PopUp from '@/components/ui/PopUp';
 
-const CoverLetterNewPage = () => {
+const CoverLetterNewPage = ({ params }: { params: { id: number } }) => {
   const router = useRouter();
 
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
@@ -19,12 +19,14 @@ const CoverLetterNewPage = () => {
   };
 
   const handleSaveButtonClick = () => {
-    router.push('/cover-letters');
+    params?.id
+      ? router.push(`/cover-letters/${params.id}`)
+      : router.push('/cover-letters');
   };
 
   const handlePopUpConfirm = () => {
-    router.push('/cover-letters');
     setIsPopUpOpen(false);
+    params?.id ? router.back() : router.push('/cover-letters');
   };
 
   const handlePopUpCancel = () => {
@@ -63,7 +65,7 @@ const CoverLetterNewPage = () => {
         {selectedIndex !== null && (
           <div className="flex flex-col gap-4">
             {Array.from({ length: 5 }).map((_, index) => (
-              <QuestionInput key={index} maxAnswerLength={1000} />
+              <QuestionBox key={index} maxAnswerLength={1000} input />
             ))}
           </div>
         )}

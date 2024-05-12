@@ -43,7 +43,10 @@ const PopUp = ({
     >
       <div
         className="mx-6 w-[22rem] cursor-auto rounded-2xl border border-gray-15 bg-gray-00"
-        onClick={(e) => e.stopPropagation()}
+        onClick={(e) => {
+          e.stopPropagation();
+          e.preventDefault();
+        }}
       >
         <p className="text-pop-up px-6 py-9 text-center text-gray-60">
           {children}
