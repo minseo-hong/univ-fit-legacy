@@ -1,5 +1,5 @@
 import DotsMenuButton from '@/components/cover-letter/DotsMenuButton';
-import Capsule from '@/components/ui/capsule/Capsule';
+import Capsule from '@/components/ui/Capsule';
 import FileDescriptionIcon from '@/components/ui/icon/FileDescriptionIcon';
 import FilePencilIcon from '@/components/ui/icon/FilePencilIcon';
 import PencilIcon from '@/components/ui/icon/PencilIcon';
@@ -76,6 +76,7 @@ const CoverLettersPage = () => {
         </ul>
         <div className="fixed bottom-8 left-1/2 z-30 -translate-x-1/2">
           <Capsule
+            href="/cover-letters/new"
             size="lg"
             style="primary"
             className="flex items-center gap-1 shadow-[0px_8px_16px_0px_rgba(0,0,0,0.10)]"

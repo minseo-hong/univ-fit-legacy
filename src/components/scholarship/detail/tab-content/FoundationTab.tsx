@@ -1,4 +1,4 @@
-import Button from '@/components/ui/button/Button';
+import Button from '@/components/ui/Button';
 import Description from '../description/Description';
 import ChecklistIcon from '@/components/ui/icon/ChecklistIcon';
 

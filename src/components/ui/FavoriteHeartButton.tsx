@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 
-import HeartFilledIcon from '../icon/HeartFilledIcon';
-import HeartIcon from '../icon/HeartIcon';
+import HeartFilledIcon from './icon/HeartFilledIcon';
+import HeartIcon from './icon/HeartIcon';
 
 interface FavoriteHeartButtonProps {
   isFavorite: boolean;

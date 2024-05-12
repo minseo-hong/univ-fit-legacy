@@ -4,8 +4,8 @@ import clsx from 'clsx';
 import { useState } from 'react';
 import Image from 'next/image';
 
-import Capsule from '@/components/ui/capsule/Capsule';
-import FavoriteHeartButton from '@/components/ui/favorite/FavoriteHeartButton';
+import Capsule from '@/components/ui/Capsule';
+import FavoriteHeartButton from '@/components/ui/FavoriteHeartButton';
 import Link from 'next/link';
 
 const ScholarshipListPage = () => {

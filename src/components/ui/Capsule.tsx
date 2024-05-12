@@ -1,6 +1,9 @@
 import clsx from 'clsx';
+import Link from 'next/link';
 
 interface DrawerProps {
+  href?: string;
+  as?: React.ElementType;
   className?: string;
   style?:
     | 'default'
@@ -13,13 +16,16 @@ interface DrawerProps {
 }
 
 const Capsule = ({
+  href,
   children,
   style = 'default',
   className,
   size,
+  as: Wrapper = href ? Link : 'div',
 }: DrawerProps) => {
   return (
-    <div
+    <Wrapper
+      href={href}
       className={clsx(
         'rounded-full',
         className,
@@ -41,7 +47,7 @@ const Capsule = ({
       )}
     >
       {children}
-    </div>
+    </Wrapper>
   );
 };
 

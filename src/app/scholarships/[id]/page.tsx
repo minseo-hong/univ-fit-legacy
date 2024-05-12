@@ -1,11 +1,10 @@
 import Image from 'next/image';
 
-import ChevronLeftIcon from '@/components/ui/icon/ChevronLeftIcon';
-import Capsule from '@/components/ui/capsule/Capsule';
-import Button from '@/components/ui/button/Button';
+import Capsule from '@/components/ui/Capsule';
+import Button from '@/components/ui/Button';
 import MessageDotsIcon from '@/components/ui/icon/MessageDotsIcon';
 import ScholarshipTabSection from '@/components/scholarship/detail/section/ScholarshipTabSection';
-import Link from 'next/link';
+import BackButtonHeader from '@/components/ui/BackButtonHeader';
 
 const ScholarshipDetailPage = () => {
   const conditionList: { name: string; isTrue: boolean }[] = [
@@ -17,20 +16,11 @@ const ScholarshipDetailPage = () => {
 
   return (
     <div className="pb-8">
-      <header>
-        <div className="fixed top-[4rem] z-10 w-full bg-white p-4 pt-3">
-          <Link
-            href="/scholarships"
-            className="flex items-center gap-1 text-gray-40"
-          >
-            <span className="text-[1.25rem]">
-              <ChevronLeftIcon />
-            </span>
-            <span className="text-lg-200">장학금 공고</span>
-          </Link>
-        </div>
-        <div className="h-[3rem]" />
-      </header>
+      <BackButtonHeader
+        as="header"
+        backButton={{ label: '장학금 공고', backUrl: '/scholarships' }}
+        fixed
+      />
       <main>
         <section className="relative">
           <div className="relative aspect-square w-full">
