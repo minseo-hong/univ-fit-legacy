@@ -45,7 +45,7 @@ const CoverLettersPage = () => {
   ];
 
   return (
-    <div>
+    <div className="pb-28">
       <header className="flex items-center gap-1 p-4 py-3 text-gray-80">
         <span className="text-[1.5rem]">
           <FilePencilIcon />
