@@ -12,7 +12,7 @@ interface DrawerProps {
   children: React.ReactNode;
 }
 
-const Badge = ({
+const Capsule = ({
   children,
   style = 'default',
   className,
@@ -34,7 +34,7 @@ const Badge = ({
             style === 'stroke-success',
         },
         {
-          'title-sm-200 px-6 py-2': size === 'lg',
+          'title-sm-200 px-6 py-3': size === 'lg',
           'text-lg-200 px-4 py-2': size === 'md',
           'text-md-200 px-3 py-1': size === 'sm',
         },
@@ -45,4 +45,4 @@ const Badge = ({
   );
 };
 
-export default Badge;
+export default Capsule;

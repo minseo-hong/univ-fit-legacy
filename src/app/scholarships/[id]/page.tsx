@@ -1,7 +1,7 @@
 import Image from 'next/image';
 
 import ChevronLeftIcon from '@/components/ui/icon/ChevronLeftIcon';
-import Badge from '@/components/ui/badge/Badge';
+import Capsule from '@/components/ui/capsule/Capsule';
 import Button from '@/components/ui/button/Button';
 import MessageDotsIcon from '@/components/ui/icon/MessageDotsIcon';
 import ScholarshipTabSection from '@/components/scholarship/detail/section/ScholarshipTabSection';
@@ -41,9 +41,13 @@ const ScholarshipDetailPage = () => {
               priority
             />
           </div>
-          <Badge style="primary" size="lg" className="absolute bottom-4 left-4">
+          <Capsule
+            style="primary"
+            size="lg"
+            className="absolute bottom-4 left-4"
+          >
             D-12
-          </Badge>
+          </Capsule>
         </section>
         <section className="flex flex-col gap-4 p-4">
           <div className="title-sm-200 text-gray-40">재단명</div>
@@ -64,13 +68,13 @@ const ScholarshipDetailPage = () => {
           <h2 className="text-lg-200">지원조건</h2>
           <div className="mt-2 flex flex-wrap gap-2">
             {conditionList.map((condition, index) => (
-              <Badge
+              <Capsule
                 key={index}
                 style={condition.isTrue ? 'stroke-primary' : 'stroke-default'}
                 size="sm"
               >
                 {condition.name}
-              </Badge>
+              </Capsule>
             ))}
           </div>
         </section>

@@ -46,7 +46,7 @@ const Drawer = ({ isDrawerOpen, setIsDrawerOpen }: DrawerProps) => {
     {
       icon: <FilePencilIcon />,
       label: '자기소개서',
-      href: '#',
+      href: '/cover-letters',
     },
   ];
 

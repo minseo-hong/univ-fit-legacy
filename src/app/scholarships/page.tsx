@@ -4,7 +4,7 @@ import clsx from 'clsx';
 import { useState } from 'react';
 import Image from 'next/image';
 
-import Badge from '@/components/ui/badge/Badge';
+import Capsule from '@/components/ui/capsule/Capsule';
 import FavoriteHeartButton from '@/components/ui/favorite/FavoriteHeartButton';
 import Link from 'next/link';
 
@@ -116,11 +116,11 @@ const ScholarshipListPage = () => {
                 <div className="flex flex-col gap-3">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
-                      <Badge size="sm">D-{scholarship.dDay}</Badge>
+                      <Capsule size="sm">D-{scholarship.dDay}</Capsule>
                       {scholarship.status === 'OPEN' && (
-                        <Badge style="stroke-success" size="sm">
+                        <Capsule style="stroke-success" size="sm">
                           신청가능
-                        </Badge>
+                        </Capsule>
                       )}
                     </div>
                     <FavoriteHeartButton
