@@ -31,7 +31,7 @@ const MyPage = () => {
       icon: <Message2CogIcon />,
       label: '후기 관리',
       description: '내가 작성한 장학금의 후기 관리하기',
-      href: '#',
+      href: '/me/reviews',
     },
   ];
 

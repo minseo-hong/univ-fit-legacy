@@ -54,6 +54,10 @@ const Drawer = ({ isDrawerOpen, setIsDrawerOpen }: DrawerProps) => {
     setIsDrawerOpen(false);
   };
 
+  const handleMypageClick = () => {
+    setIsDrawerOpen(false);
+  };
+
   return (
     <>
       <div
@@ -79,8 +83,7 @@ const Drawer = ({ isDrawerOpen, setIsDrawerOpen }: DrawerProps) => {
           <Link
             href="/me"
             className="flex items-center gap-4 pb-3 pl-6 pr-4 pt-5"
-
-            // onClick={() => setIsLoginModalOpen(true)}
+            onClick={handleMypageClick}
           >
             <div className="aspect-square w-[3rem] overflow-hidden rounded-full">
               <img
