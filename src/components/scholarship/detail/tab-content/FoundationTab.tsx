@@ -8,7 +8,7 @@ const FoundationTab = () => {
   return (
     <div>
       <div className="p-4">
-        <Button style="light-primary">
+        <Button buttonStyle="light-primary">
           <span className="flex items-center gap-1">
             <span className="text-[1.25rem]">
               <ChecklistIcon />

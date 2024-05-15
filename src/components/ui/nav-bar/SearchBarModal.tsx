@@ -33,7 +33,7 @@ const SearchBarModal = ({
     >
       <div
         className="absolute mx-auto flex w-[calc(100%-2rem)] items-center gap-2 rounded-full bg-gray-00 p-4 text-gray-80 placeholder:text-gray-40"
-        style={{
+        buttonStyle={{
           boxShadow: '0px 6px 16px 0px rgba(0, 0, 0, 0.10)',
         }}
         onClick={(e) => e.stopPropagation()}

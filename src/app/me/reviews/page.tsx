@@ -77,7 +77,7 @@ const ReviewsPage = () => {
               key={review.id}
               className="flex flex-col gap-4 border-b border-gray-05 px-4 py-6 last:border-b-0"
             >
-              <Stars score={review.score} />
+              <Stars score={review.score} size="sm" />
               <div className="flex flex-col gap-3">
                 <div className="flex flex-col gap-2">
                   <div className="flex items-center justify-between">
