@@ -1,4 +1,4 @@
-import FloatingActionButton from '@/components/FloatingActionButton';
+import FloatingActionButton from '@/components/ui/FloatingActionButton';
 import DotsMenuWrapper from '@/components/mypage/document/DotsMenuWrapper';
 import BackButtonHeader from '@/components/ui/BackButtonHeader';
 import CheckupListIcon from '@/components/ui/icon/CheckupListIcon';
@@ -90,7 +90,7 @@ const DocumentsPage = () => {
                   </span>
                   <h2 className="text-lg-200 text-gray-80">{document.name}</h2>
                 </div>
-                <DotsMenuWrapper />
+                <DotsMenuWrapper documentId={document.id} />
               </div>
               <div className="text-md-200 flex items-center gap-2 text-gray-40">
                 <span>{document.date}</span>

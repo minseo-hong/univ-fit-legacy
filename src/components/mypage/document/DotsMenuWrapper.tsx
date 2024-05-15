@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 import DotsMenuButton, {
   DotsMenuButtonProps,
@@ -9,7 +10,13 @@ import PencilCogIcon from '@/components/ui/icon/PencilCogIcon';
 import TrashXIcon from '@/components/ui/icon/TrashXIcon';
 import PopUp from '@/components/ui/PopUp';
 
-const DotsMenuWrapper = () => {
+interface DotsMenuWrapperProps {
+  documentId: number;
+}
+
+const DotsMenuWrapper = ({ documentId }: DotsMenuWrapperProps) => {
+  const router = useRouter();
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDeletePopUpOpen, setIsDeletePopUpOpen] = useState(false);
 
@@ -29,7 +36,7 @@ const DotsMenuWrapper = () => {
   ];
 
   const handleEditMenuItemClick = () => {
-    setIsMenuOpen(false);
+    router.push(`/me/documents/${documentId}/edit`);
   };
 
   const handleDeleteMenuItemClick = () => {

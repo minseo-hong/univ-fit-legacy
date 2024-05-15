@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-import FloatingActionButton from '@/components/FloatingActionButton';
+import FloatingActionButton from '@/components/ui/FloatingActionButton';
 import DotsMenuWrapper from '@/components/cover-letter/DotsMenuWrapper';
 import FileDescriptionIcon from '@/components/ui/icon/FileDescriptionIcon';
 import FilePencilIcon from '@/components/ui/icon/FilePencilIcon';

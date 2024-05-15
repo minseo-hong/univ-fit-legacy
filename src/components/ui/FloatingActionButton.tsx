@@ -1,4 +1,4 @@
-import Capsule from './ui/Capsule';
+import Capsule from './Capsule';
 
 interface FloatingActionButtonProps {
   href: string;

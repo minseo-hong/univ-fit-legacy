@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-import GrayBackground from '@/components/ui/GrayBackground';
+import GrayBackground from '@/components/ui/global-style/GrayBackground';
 import LinkIcon from '@/components/ui/icon/LinkIcon';
 import PencilCogIcon from '@/components/ui/icon/PencilCogIcon';
 import UserCheckIcon from '@/components/ui/icon/UserCheckIcon';

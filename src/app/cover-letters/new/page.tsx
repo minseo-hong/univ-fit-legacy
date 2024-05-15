@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 
 import QuestionBox from '@/components/cover-letter/QuestionInput';
-import ScholarshipDropdown from '@/components/cover-letter/ScholarshipDropdown';
+import Dropdown from '@/components/cover-letter/ScholarshipDropdown';
 import BackButtonHeader from '@/components/ui/BackButtonHeader';
 import PopUp from '@/components/ui/PopUp';
 
@@ -13,6 +13,12 @@ const CoverLetterNewPage = ({ params }: { params: { id: number } }) => {
 
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const [isPopUpOpen, setIsPopUpOpen] = useState(false);
+
+  const scholarshipItemList: string[] = [
+    '미래에셋 해외 교환장학',
+    '월곡주얼리장학생',
+    '인문100년장학금',
+  ];
 
   const handleBackButtonClick = () => {
     setIsPopUpOpen(true);
@@ -46,9 +52,11 @@ const CoverLetterNewPage = ({ params }: { params: { id: number } }) => {
             fixed={false}
           />
           <div className="px-6 py-2">
-            <ScholarshipDropdown
+            <Dropdown
+              itemList={scholarshipItemList}
               selectedIndex={selectedIndex}
               setSelectedIndex={setSelectedIndex}
+              placeholder="장학금을 선택하세요"
             />
           </div>
           <div className="px-6 py-4">
