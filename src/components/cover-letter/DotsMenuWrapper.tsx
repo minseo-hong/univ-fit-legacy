@@ -3,7 +3,6 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 
-import ArrowBarToUpIcon from '../ui/icon/ArrowBarToUpIcon';
 import PencilCogIcon from '../ui/icon/PencilCogIcon';
 import TrashXIcon from '../ui/icon/TrashXIcon';
 import DotsMenuButton, { DotsMenuButtonProps } from '../ui/DotsMenuButton';
@@ -20,11 +19,6 @@ const DotsMenuWrapper = ({ coverLetterId }: DotsMenuWrapperProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const menuList: DotsMenuButtonProps['menuList'] = [
-    {
-      label: '내보내기',
-      icon: <ArrowBarToUpIcon />,
-      style: 'default',
-    },
     {
       label: '수정하기',
       icon: <PencilCogIcon />,

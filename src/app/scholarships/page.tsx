@@ -118,7 +118,7 @@ const ScholarshipListPage = () => {
                     <div className="flex items-center gap-2">
                       <Capsule size="sm">D-{scholarship.dDay}</Capsule>
                       {scholarship.status === 'OPEN' && (
-                        <Capsule style="stroke-success" size="sm">
+                        <Capsule variant="stroke-success" size="sm">
                           신청가능
                         </Capsule>
                       )}

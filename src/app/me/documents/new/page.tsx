@@ -9,6 +9,7 @@ import Dropdown from '@/components/cover-letter/ScholarshipDropdown';
 import FormControl from '@/components/ui/FormControl';
 import Input from '@/components/ui/Input';
 import TextArea from '@/components/ui/TextArea';
+import DialogHeader from '@/components/DialogHeader';
 
 const DocumentNewPage = () => {
   const [selectedIndexGroup, setSelectedIndexGroup] = useState<{
@@ -61,22 +62,7 @@ const DocumentNewPage = () => {
 
   return (
     <div>
-      <NavBarHide />
-      <div>
-        <header className="fixed top-0 z-50 grid w-full grid-cols-3 bg-white p-4">
-          <Link href="/me/documents" className="text-left text-[1.25rem]">
-            <XIcon />
-          </Link>
-          <h1 className="title-sm-200 text-center text-gray-90">서류 등록</h1>
-          <Link
-            href="/me/documents"
-            className="title-sm-300 text-right text-primary"
-          >
-            저장
-          </Link>
-        </header>
-        <div className="h-[56px]" />
-      </div>
+      <DialogHeader title="서류 등록" closeHref="/me/documents" />
       <main className="px-6 py-4">
         <div className="flex flex-col gap-10">
           <FormControl label="서류명" required>

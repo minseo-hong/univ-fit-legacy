@@ -19,7 +19,7 @@ const MyPage = () => {
       icon: <UserCheckIcon />,
       label: '개인정보 관리',
       description: '맞춤 장학금 추천을 위한 개인정보 관리하기',
-      href: '#',
+      href: '/me/privacy',
     },
     {
       icon: <CheckupListIcon />,

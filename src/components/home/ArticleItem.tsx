@@ -13,7 +13,7 @@ const ArticleItem = ({ as: Wrapper = 'div' }: ArticleItemProps) => {
             className="h-full w-full object-cover"
           />
         </div>
-        <h2 className="text-lg-200 w-full">
+        <h2 className="text-md-300 w-full">
           소득분위 산정 방법은 어떻게 이뤄질까?
         </h2>
       </div>

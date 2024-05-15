@@ -32,7 +32,7 @@ const ScholarshipDetailPage = () => {
             />
           </div>
           <Capsule
-            style="primary"
+            variant="primary"
             size="lg"
             className="absolute bottom-4 left-4"
           >
@@ -60,7 +60,7 @@ const ScholarshipDetailPage = () => {
             {conditionList.map((condition, index) => (
               <Capsule
                 key={index}
-                style={condition.isTrue ? 'stroke-primary' : 'stroke-default'}
+                variant={condition.isTrue ? 'stroke-primary' : 'stroke-default'}
                 size="sm"
               >
                 {condition.name}

@@ -16,7 +16,7 @@ const FloatingActionButton = ({
       <Capsule
         href={href}
         size="lg"
-        style="primary"
+        variant="primary"
         className="flex items-center gap-1 shadow-[0px_8px_16px_0px_rgba(0,0,0,0.10)]"
       >
         <span className="text-[1.5rem]">{icon}</span>
