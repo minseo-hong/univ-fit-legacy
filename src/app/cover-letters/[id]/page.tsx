@@ -1,6 +1,7 @@
 import DotsMenuButton from '@/components/ui/DotsMenuButton';
 import QuestionBox from '@/components/cover-letter/QuestionInput';
 import BackButtonHeader from '@/components/ui/BackButtonHeader';
+import DotsMenuWrapper from '@/components/cover-letter/DotsMenuWrapper';
 
 const CoverLetterPage = ({ params }: { params: { id: number } }) => {
   const questionList: { content: string; answer: string }[] = [
@@ -33,7 +34,7 @@ const CoverLetterPage = ({ params }: { params: { id: number } }) => {
             <div className="text-md-200 text-gray-40">
               월곡주얼리장학생 | 월곡주얼리산업진흥재단
             </div>
-            <DotsMenuButton coverLetterId={params.id} />
+            <DotsMenuWrapper coverLetterId={params.id} />
           </div>
         </div>
       </header>
