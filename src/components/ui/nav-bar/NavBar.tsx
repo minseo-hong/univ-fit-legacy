@@ -6,6 +6,7 @@ import MenuIcon from '../icon/MenuIcon';
 import SearchIcon from '../icon/SearchIcon';
 import Drawer from './Drawer';
 import SearchBarModal from './SearchBarModal';
+import Link from 'next/link';
 
 const NavBar = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState<boolean>(false);
@@ -13,10 +14,10 @@ const NavBar = () => {
 
   return (
     <>
-      <nav className="fixed left-0 top-0 z-50 flex h-[4rem] w-full items-center justify-between bg-gray-00 px-4">
-        <div>
+      <nav className="fixed left-0 top-0 z-50 flex w-full items-center justify-between bg-gray-00 px-4 py-3">
+        <Link href="/">
           <img src="/logo/navbar-header-logo.svg" alt="네비게이션 헤더 로고" />
-        </div>
+        </Link>
         <div className="flex items-center gap-4 text-[1.5rem]">
           <button>
             <SearchIcon onClick={() => setIsSearchBarOpen(true)} />

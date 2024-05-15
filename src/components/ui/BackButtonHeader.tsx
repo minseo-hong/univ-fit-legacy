@@ -15,6 +15,7 @@ interface BackButtonProps {
     onClick?: () => void;
   };
   fixed?: boolean;
+  padding?: boolean;
 }
 
 const BackButtonHeader = ({
@@ -22,16 +23,15 @@ const BackButtonHeader = ({
   backButton,
   confirmButton,
   fixed = false,
+  padding = true,
 }: BackButtonProps) => {
   return (
     <Wrapper>
       <div
-        className={clsx(
-          'flex w-full items-center justify-between bg-white p-4 pt-3',
-          {
-            'fixed top-[4rem] z-10': fixed,
-          },
-        )}
+        className={clsx('flex w-full items-center justify-between bg-white', {
+          'fixed top-[4rem] z-10': fixed,
+          'p-4 pt-3': padding,
+        })}
       >
         <Link
           href={backButton?.backUrl || '#'}

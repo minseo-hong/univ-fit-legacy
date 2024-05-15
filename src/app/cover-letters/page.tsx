@@ -1,9 +1,10 @@
-import DotsMenuButton from '@/components/cover-letter/DotsMenuButton';
-import Capsule from '@/components/ui/Capsule';
+import Link from 'next/link';
+
+import FloatingActionButton from '@/components/FloatingActionButton';
+import DotsMenuWrapper from '@/components/cover-letter/DotsMenuWrapper';
 import FileDescriptionIcon from '@/components/ui/icon/FileDescriptionIcon';
 import FilePencilIcon from '@/components/ui/icon/FilePencilIcon';
 import PencilIcon from '@/components/ui/icon/PencilIcon';
-import Link from 'next/link';
 
 const CoverLettersPage = () => {
   const coverLetterList: {
@@ -67,7 +68,7 @@ const CoverLettersPage = () => {
                   <h2 className="text-lg-200 flex-1 text-gray-80">
                     {coverLetter.title}
                   </h2>
-                  <DotsMenuButton coverLetterId={coverLetter.id} />
+                  <DotsMenuWrapper coverLetterId={coverLetter.id} />
                 </div>
                 <div className="text-md-200 text-gray-40">
                   {coverLetter.organization}
@@ -79,19 +80,11 @@ const CoverLettersPage = () => {
             </li>
           ))}
         </ul>
-        <div className="fixed bottom-8 left-1/2 z-30 -translate-x-1/2">
-          <Capsule
-            href="/cover-letters/new"
-            size="lg"
-            style="primary"
-            className="flex items-center gap-1 shadow-[0px_8px_16px_0px_rgba(0,0,0,0.10)]"
-          >
-            <span className="text-[1.5rem]">
-              <PencilIcon />
-            </span>
-            <span className="title-sm-300">새로 쓰기</span>
-          </Capsule>
-        </div>
+        <FloatingActionButton
+          href="/cover-letters/new"
+          icon={<PencilIcon />}
+          label="새로 쓰기"
+        />
       </main>
     </div>
   );

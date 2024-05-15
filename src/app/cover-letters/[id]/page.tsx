@@ -1,4 +1,4 @@
-import DotsMenuButton from '@/components/cover-letter/DotsMenuButton';
+import DotsMenuButton from '@/components/ui/DotsMenuButton';
 import QuestionBox from '@/components/cover-letter/QuestionInput';
 import BackButtonHeader from '@/components/ui/BackButtonHeader';
 

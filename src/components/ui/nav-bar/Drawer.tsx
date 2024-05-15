@@ -76,9 +76,11 @@ const Drawer = ({ isDrawerOpen, setIsDrawerOpen }: DrawerProps) => {
           )}
           onClick={(e) => e.stopPropagation()}
         >
-          <div
+          <Link
+            href="/me"
             className="flex items-center gap-4 pb-3 pl-6 pr-4 pt-5"
-            onClick={() => setIsLoginModalOpen(true)}
+
+            // onClick={() => setIsLoginModalOpen(true)}
           >
             <div className="aspect-square w-[3rem] overflow-hidden rounded-full">
               <img
@@ -95,7 +97,7 @@ const Drawer = ({ isDrawerOpen, setIsDrawerOpen }: DrawerProps) => {
                 <ChevronRightIcon />
               </span>
             </div>
-          </div>
+          </Link>
           <ul>
             {menuList.map((menu, index) => (
               <li key={index}>
