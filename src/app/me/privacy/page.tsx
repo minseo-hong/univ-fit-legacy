@@ -41,7 +41,9 @@ const PrivacyPage = () => {
       <main>
         {sectionList.map((section, index) => (
           <Fragment key={index}>
-            <div className="p-6 pt-8">{section}</div>
+            <div key={index} className="p-6 pt-8">
+              {section}
+            </div>
             {index !== sectionList.length - 1 && (
               <div className="h-[0.5rem] bg-gray-05" />
             )}
