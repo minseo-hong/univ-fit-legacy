@@ -46,7 +46,7 @@ const Drawer = ({ isDrawerOpen, setIsDrawerOpen }: DrawerProps) => {
     {
       icon: <ReportMoneyIcon />,
       label: '내 장학금',
-      href: '#',
+      href: '/my-scholarships',
       color: 'default',
     },
     {
