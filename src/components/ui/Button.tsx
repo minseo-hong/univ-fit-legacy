@@ -6,7 +6,11 @@ interface ButtonProps {
   onClick?: () => void;
 }
 
-const Button = ({ buttonStyle, children, onClick }: ButtonProps) => {
+const Button = ({
+  buttonStyle = 'primary',
+  children,
+  onClick,
+}: ButtonProps) => {
   return (
     <button
       className={clsx(

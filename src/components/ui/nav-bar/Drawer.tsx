@@ -21,7 +21,7 @@ const Drawer = ({ isDrawerOpen, setIsDrawerOpen }: DrawerProps) => {
   const router = useRouter();
 
   const [isLoginModalOpen, setIsLoginModalOpen] = useState<boolean>(false);
-  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(true);
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
 
   const menuList: {
     icon: React.ReactNode;

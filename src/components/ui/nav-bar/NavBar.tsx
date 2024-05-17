@@ -31,7 +31,7 @@ const NavBar = () => {
             </button>
           </div>
         </nav>
-        <div className="h-[4rem]" />
+        <div className="h-[68px]" />
       </div>
       <Drawer isDrawerOpen={isDrawerOpen} setIsDrawerOpen={setIsDrawerOpen} />
       <SearchBarModal

@@ -15,8 +15,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ko">
-      <body className="font-pretendard">
+    <html lang="ko" className="h-full">
+      <body className="h-full font-pretendard">
         <NavBar />
         {children}
       </body>

@@ -1,6 +1,9 @@
 import clsx from 'clsx';
 
 import XIcon from '../icon/XIcon';
+import KakaoIcon from '../icon/KakaoIcon';
+import NaverIcon from '../icon/NaverIcon';
+import { useRouter } from 'next/navigation';
 
 interface LoginModalProps {
   isLoginModalOpen: boolean;
@@ -11,10 +14,40 @@ const LoginModal = ({
   isLoginModalOpen,
   setIsLoginModalOpen,
 }: LoginModalProps) => {
+  const router = useRouter();
+
+  const handleSocialLoginButtonClick = () => {
+    setIsLoginModalOpen(false);
+    router.push('/onboarding');
+  };
+
+  const buttonList: {
+    icon: React.ReactNode;
+    label: string;
+    bgColor: string;
+    color: string;
+    onClick?: () => void;
+  }[] = [
+    {
+      icon: <KakaoIcon fill="#181600" />,
+      label: '카카오 로그인',
+      bgColor: 'bg-kakao-yellow',
+      color: 'text-grayscale-gray-100',
+      onClick: handleSocialLoginButtonClick,
+    },
+    {
+      icon: <NaverIcon fill="#181600" />,
+      label: '카카오 로그인',
+      bgColor: 'bg-naver-green',
+      color: 'text-gray-00',
+      onClick: handleSocialLoginButtonClick,
+    },
+  ];
+
   return (
     <div
       className={clsx(
-        'fixed left-0 top-0 flex h-screen w-full items-center justify-center bg-black bg-opacity-50 transition-opacity',
+        'fixed left-0 top-0 z-50 flex h-screen w-full items-center justify-center bg-black bg-opacity-50 transition-opacity',
         {
           'opacity-100': isLoginModalOpen,
           'pointer-events-none opacity-0': !isLoginModalOpen,
@@ -44,14 +77,24 @@ const LoginModal = ({
         <p className="text-sm-200 mt-6 text-gray-40">
           로그인하고 나에게 맞는 장학금을 추천받으세요!
         </p>
-        <button className="mt-4 flex w-full items-center justify-center gap-2 rounded-xl bg-kakao-yellow py-4">
-          <div>
-            <img src="/icons/kakao.svg" alt="카카오 아이콘" />
-          </div>
-          <span className="text-md-200 text-grayscale-gray-100">
-            카카오 로그인
-          </span>
-        </button>
+        <div className="mt-6 flex w-full flex-col gap-4">
+          {buttonList.map((button, index) => (
+            <button
+              key={index}
+              className={clsx(
+                'flex w-full items-center justify-center gap-2 rounded-xl py-4',
+                button.bgColor,
+                button.color,
+              )}
+              onClick={button.onClick}
+            >
+              <span>{button.icon}</span>
+              <span className={clsx('text-md-200', button.color)}>
+                {button.label}
+              </span>
+            </button>
+          ))}
+        </div>
       </div>
     </div>
   );

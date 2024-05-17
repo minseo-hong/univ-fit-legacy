@@ -88,6 +88,9 @@ const config: Config = {
         kakao: {
           yellow: '#FEE500',
         },
+        naver: {
+          green: '#03C75A',
+        },
       },
     },
   },

@@ -23,7 +23,7 @@ const SearchBarModal = ({
   return (
     <div
       className={clsx(
-        'fixed left-0 top-0 h-screen w-full bg-black bg-opacity-50 px-5 pt-[4rem] transition-opacity',
+        'fixed left-0 top-0 z-50 h-screen w-full bg-black bg-opacity-50 px-5 pt-[4rem] transition-opacity',
         {
           'opacity-100': isSearchBarOpen,
           'pointer-events-none opacity-0': !isSearchBarOpen,
