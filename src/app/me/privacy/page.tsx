@@ -30,9 +30,9 @@ const PrivacyPage = () => {
   };
 
   const sectionList: React.ReactNode[] = [
-    <FirstPrivacySection {...sectionProps} />,
-    <SecondPrivacySection {...sectionProps} />,
-    <ThirdPrivacySection {...sectionProps} />,
+    <FirstPrivacySection key={0} {...sectionProps} />,
+    <SecondPrivacySection key={1} {...sectionProps} />,
+    <ThirdPrivacySection key={2} {...sectionProps} />,
   ];
 
   return (
@@ -41,9 +41,7 @@ const PrivacyPage = () => {
       <main>
         {sectionList.map((section, index) => (
           <Fragment key={index}>
-            <div key={index} className="p-6 pt-8">
-              {section}
-            </div>
+            <div className="p-6 pt-8">{section}</div>
             {index !== sectionList.length - 1 && (
               <div className="h-[0.5rem] bg-gray-05" />
             )}
