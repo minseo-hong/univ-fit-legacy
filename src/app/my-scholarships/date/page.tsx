@@ -88,7 +88,7 @@ const MyScholarshipsDatePage = () => {
                   date === formatListDateString(scholarship.endDate) && (
                     <li
                       key={scholarship.id}
-                      className="flex items-center gap-4 rounded-2xl bg-gray-00 p-4 pb-3"
+                      className="flex items-center gap-4 rounded-2xl border border-gray-10 bg-gray-00 p-4 pb-3"
                     >
                       <div className="overflow-hidden rounded-lg">
                         <Image
