@@ -89,12 +89,12 @@ const ReviewsPage = () => {
                   </div>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Status style="primary">{review.startDate} 모집</Status>
+                  <Status variant="primary">{review.startDate} 모집</Status>
                   {review.pass === 'SUCCESS' ? (
-                    <Status style="success">합격</Status>
+                    <Status variant="success">합격</Status>
                   ) : (
                     review.pass === 'FAIL' && (
-                      <Status style="danger">불합격</Status>
+                      <Status variant="danger">불합격</Status>
                     )
                   )}
                 </div>
