@@ -8,6 +8,7 @@ import ThirdPrivacySection from '@/components/ui/privacy/ThirdPrivacySection';
 import { PrivacyInputValue, PrivacySectionProps } from '@/interfaces/privacy';
 import FirstPrivacySection from '@/components/ui/privacy/FirstPrivacySection';
 import { initPrivacyValue } from '@/constants/privacy';
+import Divider from '@/components/ui/Divider';
 
 const PrivacyPage = () => {
   const [value, setValue] = useState<PrivacyInputValue>(initPrivacyValue);
@@ -42,9 +43,7 @@ const PrivacyPage = () => {
         {sectionList.map((section, index) => (
           <Fragment key={index}>
             <div className="p-6 pt-8">{section}</div>
-            {index !== sectionList.length - 1 && (
-              <div className="h-[0.5rem] bg-gray-05" />
-            )}
+            {index !== sectionList.length - 1 && <Divider />}
           </Fragment>
         ))}
       </main>

@@ -70,7 +70,7 @@ const ScholarshipDetailPage = () => {
         </section>
         <section className="flex flex-col gap-4 px-4 py-6">
           <Button>지원하기</Button>
-          <Button buttonStyle="light-primary">
+          <Button variant="light-primary">
             <span className="text-lg-300 flex gap-1 text-gray-80">
               <span className="text-[1.25rem]">
                 <MessageDotsIcon />

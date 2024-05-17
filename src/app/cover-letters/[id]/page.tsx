@@ -25,7 +25,7 @@ const CoverLetterPage = ({ params }: { params: { id: number } }) => {
         <BackButtonHeader
           backButton={{
             label: '자기소개서',
-            backUrl: '/cover-letters',
+            backUrl: '-1',
           }}
         />
         <div className="flex flex-col gap-2 px-6 pb-4">

@@ -124,46 +124,48 @@ const MyScholarshipsListPage = ({
       </div>
       <ul className="mt-4 flex flex-col gap-4">
         {filterScholarshipList.map((scholarship) => (
-          <li
-            key={scholarship.id}
-            className="flex items-start gap-4 rounded-2xl border border-gray-10 bg-gray-00 p-4 pb-3"
-          >
-            <div className="overflow-hidden rounded-lg">
-              <Image
-                src={scholarship.imageSrc}
-                alt={scholarship.name}
-                width={64}
-                height={64}
-              />
-            </div>
-            <div className="flex flex-1 flex-col gap-1">
-              <h3 className="text-md-300 text-gray-70">{scholarship.name}</h3>
-              <div className="text-md-200 text-gray-40">
-                {scholarship.organization}
+          <li key={scholarship.id}>
+            <Link
+              href={`/my-scholarships/${scholarship.id}`}
+              className="flex items-start gap-4 rounded-2xl border border-gray-10 bg-gray-00 p-4 pb-3"
+            >
+              <div className="overflow-hidden rounded-lg">
+                <Image
+                  src={scholarship.imageSrc}
+                  alt={scholarship.name}
+                  width={64}
+                  height={64}
+                />
               </div>
-              <div className="caption-200 text-gray-30">
-                {formatDateString(scholarship.startDate)} ~{' '}
-                {formatDateString(scholarship.endDate)}
+              <div className="flex flex-1 flex-col gap-1">
+                <h3 className="text-md-300 text-gray-70">{scholarship.name}</h3>
+                <div className="text-md-200 text-gray-40">
+                  {scholarship.organization}
+                </div>
+                <div className="caption-200 text-gray-30">
+                  {formatDateString(scholarship.startDate)} ~{' '}
+                  {formatDateString(scholarship.endDate)}
+                </div>
               </div>
-            </div>
-            <div>
-              <Status
-                variant={
-                  (scholarship.status === 'PASS'
-                    ? 'success'
+              <div>
+                <Status
+                  variant={
+                    (scholarship.status === 'PASS'
+                      ? 'success'
+                      : scholarship.status === 'FAIL'
+                        ? 'danger'
+                        : scholarship.status === 'NONE' &&
+                          'stroke-default') as StatusProps['variant']
+                  }
+                >
+                  {scholarship.status === 'PASS'
+                    ? '합격'
                     : scholarship.status === 'FAIL'
-                      ? 'danger'
-                      : scholarship.status === 'NONE' &&
-                        'stroke-default') as StatusProps['variant']
-                }
-              >
-                {scholarship.status === 'PASS'
-                  ? '합격'
-                  : scholarship.status === 'FAIL'
-                    ? '불합격'
-                    : scholarship.status === 'NONE' && '미입력'}
-              </Status>
-            </div>
+                      ? '불합격'
+                      : scholarship.status === 'NONE' && '미입력'}
+                </Status>
+              </div>
+            </Link>
           </li>
         ))}
       </ul>

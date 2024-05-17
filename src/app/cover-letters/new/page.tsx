@@ -8,7 +8,7 @@ import Dropdown from '@/components/cover-letter/ScholarshipDropdown';
 import BackButtonHeader from '@/components/ui/BackButtonHeader';
 import PopUp from '@/components/ui/PopUp';
 
-const CoverLetterNewPage = ({ params }: { params: { id: number } }) => {
+const CoverLetterNewPage = () => {
   const router = useRouter();
 
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
@@ -25,14 +25,12 @@ const CoverLetterNewPage = ({ params }: { params: { id: number } }) => {
   };
 
   const handleSaveButtonClick = () => {
-    params?.id
-      ? router.push(`/cover-letters/${params.id}`)
-      : router.push('/cover-letters');
+    router.back();
   };
 
   const handlePopUpConfirm = () => {
     setIsPopUpOpen(false);
-    params?.id ? router.back() : router.push('/cover-letters');
+    router.back();
   };
 
   const handlePopUpCancel = () => {

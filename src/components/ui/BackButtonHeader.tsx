@@ -1,7 +1,6 @@
 import clsx from 'clsx';
-import Link from 'next/link';
 
-import ChevronLeftIcon from './icon/ChevronLeftIcon';
+import BackButton from './BackButton';
 
 interface BackButtonProps {
   as?: React.ElementType;
@@ -28,21 +27,15 @@ const BackButtonHeader = ({
   return (
     <Wrapper>
       <div
-        className={clsx('flex w-full items-center justify-between bg-white', {
-          'fixed top-[4rem] z-10': fixed,
-          'p-4 pt-3': padding,
-        })}
+        className={clsx(
+          'flex h-[3rem] w-full items-center justify-between bg-white',
+          {
+            'fixed z-10': fixed,
+            'p-4 pt-3': padding,
+          },
+        )}
       >
-        <Link
-          href={backButton?.backUrl || '#'}
-          className="flex items-center gap-1 text-gray-40"
-          onClick={backButton.onClick}
-        >
-          <span className="text-[1.25rem]">
-            <ChevronLeftIcon />
-          </span>
-          <span className="text-lg-200">{backButton.label}</span>
-        </Link>
+        <BackButton {...backButton} />
         {confirmButton && (
           <button
             className="title-sm-300 text-primary"

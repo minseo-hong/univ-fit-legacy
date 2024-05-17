@@ -32,7 +32,7 @@ const Header = () => {
   ];
 
   return (
-    <header className="h-[5.5rem]">
+    <header className="my-scholarships-header h-[5.5rem]">
       <div className="fixed w-full bg-gray-00">
         <div className="flex items-center gap-1 p-4 py-3">
           <span className="text-[1.5rem]">

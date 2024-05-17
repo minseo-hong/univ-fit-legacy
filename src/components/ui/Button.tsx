@@ -1,13 +1,13 @@
 import clsx from 'clsx';
 
 interface ButtonProps {
-  buttonStyle?: 'primary' | 'light-primary';
+  variant?: 'primary' | 'light-primary';
   children: React.ReactNode;
   onClick?: () => void;
 }
 
 const Button = ({
-  buttonStyle = 'primary',
+  variant: buttonStyle = 'primary',
   children,
   onClick,
 }: ButtonProps) => {

@@ -2,6 +2,7 @@ import Image from 'next/image';
 
 import Capsule from '@/components/ui/Capsule';
 import HeartFilledIcon from '@/components/ui/icon/HeartFilledIcon';
+import Link from 'next/link';
 
 const MyScholarshipsFavoritePage = () => {
   const scholarshipList: {
@@ -78,43 +79,47 @@ const MyScholarshipsFavoritePage = () => {
     <main className="p-4 pb-16">
       <ul className="flex flex-col gap-4">
         {scholarshipList.map((scholarship) => (
-          <li
-            key={scholarship.id}
-            className="flex flex-col gap-3 rounded-2xl border border-gray-10 bg-gray-00 p-4 pb-3"
-          >
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <Capsule size="sm">D-12</Capsule>
-                <Capsule size="sm" variant="stroke-success">
-                  지원대상
-                </Capsule>
-              </div>
-              <div>
-                <span className="text-[1.5rem] text-primary">
-                  <HeartFilledIcon />
-                </span>
-              </div>
-            </div>
-            <div className="flex items-start gap-4">
-              <div className="overflow-hidden rounded-lg">
-                <Image
-                  src={scholarship.imageSrc}
-                  alt={scholarship.name}
-                  width={64}
-                  height={64}
-                />
-              </div>
-              <div className="flex flex-1 flex-col gap-1">
-                <h3 className="text-md-300 text-gray-70">{scholarship.name}</h3>
-                <div className="text-md-200 text-gray-40">
-                  {scholarship.organization}
+          <li key={scholarship.id}>
+            <Link
+              href={`/my-scholarships/${scholarship.id}`}
+              className="flex flex-col gap-3 rounded-2xl border border-gray-10 bg-gray-00 p-4 pb-3"
+            >
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <Capsule size="sm">D-12</Capsule>
+                  <Capsule size="sm" variant="stroke-success">
+                    지원대상
+                  </Capsule>
                 </div>
-                <div className="caption-200 text-gray-30">
-                  {formatDateString(scholarship.startDate)} ~{' '}
-                  {formatDateString(scholarship.endDate)}
+                <div>
+                  <span className="text-[1.5rem] text-primary">
+                    <HeartFilledIcon />
+                  </span>
                 </div>
               </div>
-            </div>
+              <div className="flex items-start gap-4">
+                <div className="overflow-hidden rounded-lg">
+                  <Image
+                    src={scholarship.imageSrc}
+                    alt={scholarship.name}
+                    width={64}
+                    height={64}
+                  />
+                </div>
+                <div className="flex flex-1 flex-col gap-1">
+                  <h3 className="text-md-300 text-gray-70">
+                    {scholarship.name}
+                  </h3>
+                  <div className="text-md-200 text-gray-40">
+                    {scholarship.organization}
+                  </div>
+                  <div className="caption-200 text-gray-30">
+                    {formatDateString(scholarship.startDate)} ~{' '}
+                    {formatDateString(scholarship.endDate)}
+                  </div>
+                </div>
+              </div>
+            </Link>
           </li>
         ))}
       </ul>

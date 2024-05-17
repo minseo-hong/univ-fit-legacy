@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 
 const MyScholarshipsDatePage = () => {
   const scholarshipList: {
@@ -86,30 +87,32 @@ const MyScholarshipsDatePage = () => {
               {scholarshipList.map(
                 (scholarship) =>
                   date === formatListDateString(scholarship.endDate) && (
-                    <li
-                      key={scholarship.id}
-                      className="flex items-center gap-4 rounded-2xl border border-gray-10 bg-gray-00 p-4 pb-3"
-                    >
-                      <div className="overflow-hidden rounded-lg">
-                        <Image
-                          src={scholarship.imageSrc}
-                          alt={scholarship.name}
-                          width={64}
-                          height={64}
-                        />
-                      </div>
-                      <div className="flex flex-col gap-1">
-                        <h3 className="text-md-300 text-gray-70">
-                          {scholarship.name}
-                        </h3>
-                        <div className="text-md-200 text-gray-40">
-                          {scholarship.organization}
+                    <li key={scholarship.id}>
+                      <Link
+                        className="flex items-center gap-4 rounded-2xl border border-gray-10 bg-gray-00 p-4 pb-3"
+                        href={`/my-scholarships/${scholarship.id}`}
+                      >
+                        <div className="overflow-hidden rounded-lg">
+                          <Image
+                            src={scholarship.imageSrc}
+                            alt={scholarship.name}
+                            width={64}
+                            height={64}
+                          />
                         </div>
-                        <div className="caption-200 text-gray-30">
-                          {formatItemDateString(scholarship.startDate)} ~{' '}
-                          {formatItemDateString(scholarship.endDate)}
+                        <div className="flex flex-col gap-1">
+                          <h3 className="text-md-300 text-gray-70">
+                            {scholarship.name}
+                          </h3>
+                          <div className="text-md-200 text-gray-40">
+                            {scholarship.organization}
+                          </div>
+                          <div className="caption-200 text-gray-30">
+                            {formatItemDateString(scholarship.startDate)} ~{' '}
+                            {formatItemDateString(scholarship.endDate)}
+                          </div>
                         </div>
-                      </div>
+                      </Link>
                     </li>
                   ),
               )}
