@@ -27,23 +27,28 @@ const BackButtonHeader = ({
   return (
     <Wrapper>
       <div
-        className={clsx(
-          'flex h-[3rem] w-full items-center justify-between bg-white',
-          {
-            'fixed z-10': fixed,
-            'p-4 pt-3': padding,
-          },
-        )}
+        className={clsx('flex w-full justify-center bg-gray-00 px-4', {
+          'fixed z-10': fixed,
+        })}
       >
-        <BackButton {...backButton} />
-        {confirmButton && (
-          <button
-            className="title-sm-300 text-primary"
-            onClick={confirmButton.onClick}
-          >
-            {confirmButton.label}
-          </button>
-        )}
+        <div
+          className={clsx(
+            'flex h-[3rem] w-full max-w-screen-lg items-center justify-between',
+            {
+              'pb-4 pt-3': padding,
+            },
+          )}
+        >
+          <BackButton {...backButton} />
+          {confirmButton && (
+            <button
+              className="title-sm-300 text-primary"
+              onClick={confirmButton.onClick}
+            >
+              {confirmButton.label}
+            </button>
+          )}
+        </div>
       </div>
       {fixed && <div className="h-[3rem]" />}
     </Wrapper>

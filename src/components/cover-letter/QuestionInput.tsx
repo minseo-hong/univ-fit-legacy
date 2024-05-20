@@ -47,7 +47,6 @@ const QuestionBox = ({
       )}
       <div className="text-sm-200 text-right">
         <span className="text-gray-40">{answerValue.length}</span>
-        <span className="text-gray-20">/{maxAnswerLength}</span>
       </div>
     </div>
   );

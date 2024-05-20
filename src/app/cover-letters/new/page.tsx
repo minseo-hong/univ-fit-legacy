@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 
 import QuestionBox from '@/components/cover-letter/QuestionInput';
-import Dropdown from '@/components/cover-letter/ScholarshipDropdown';
+import Dropdown from '@/components/ui/Dropdown';
 import BackButtonHeader from '@/components/ui/BackButtonHeader';
 import PopUp from '@/components/ui/PopUp';
 

@@ -15,6 +15,19 @@ import CompleteSection from '@/components/onboarding/CompleteSection';
 import NavBarHide from '@/components/ui/global-style/NavBarHide';
 import XIcon from '@/components/ui/icon/XIcon';
 import ChevronLeftIcon from '@/components/ui/icon/ChevronLeftIcon';
+import { fetchNickname, fetchOnboarding } from '@/api/onboarding';
+import {
+  areaList,
+  cityList,
+  departmentGroupList,
+  incomeBracketList,
+  maxGpaList,
+  socialSupportBracketList,
+  supportIncomeBracketList,
+  universityCityList,
+  yearList,
+} from '@/constants/optionList';
+import { setTokenCookie } from '../actions/cookies';
 
 const Onboarding = () => {
   const router = useRouter();
@@ -36,8 +49,58 @@ const Onboarding = () => {
       setValue({ ...value, [key]: selectedIndex });
     };
 
-  const handleNextButtonClick = () => {
-    setPage(page + 1);
+  const handleNextButtonClick = async () => {
+    if (page === 0) {
+      const res = await fetchNickname(nickname);
+      console.log(res.data);
+      const accessToken = res.data.accessToken;
+      setTokenCookie(accessToken);
+    } else if (page === 3) {
+      const res = await fetchOnboarding({
+        schoolType: value.universityType,
+        schoolName: value.universityName,
+        schoolLocation:
+          value.universityCity !== null
+            ? universityCityList[value.universityCity]
+            : null,
+        deptType:
+          value.departmentGroup !== null
+            ? departmentGroupList[value.departmentGroup]
+            : null,
+        deptName: value.department,
+        isPresent: value.enrollmentStatus === 0,
+        sememster: Number(value.sememster),
+        residence: `${value.city !== null ? cityList[value.city] : ''} ${value.area !== null ? areaList[value.area] : ''}`,
+        residenceType: Number(value.familySize),
+        gender: value.gender,
+        birthYear: value.year !== null ? Number(yearList[value.year]) : null,
+        underPrivilegedInfo:
+          value.socialSupportBracket !== null
+            ? socialSupportBracketList[value.socialSupportBracket]
+            : null,
+        totalFullGrade:
+          value.maxGpa !== null ? Number(maxGpaList[value.maxGpa]) : null,
+        totalGrade: Number(value.totalGpa),
+        lastFullGrade:
+          value.maxGpa !== null ? Number(maxGpaList[value.maxGpa]) : null,
+        lastGrade: Number(value.previousGpa),
+        incomeQuality:
+          value.incomeBracket !== null
+            ? Number(incomeBracketList[value.incomeBracket])
+            : null,
+        monthlyIncome: Number(value.monthlyIncome),
+        supportSection:
+          value.supportIncomeBracket !== null
+            ? Number(supportIncomeBracketList[value.supportIncomeBracket])
+            : null,
+      });
+      console.log(res.data);
+    }
+    if (page <= 3) {
+      setPage(page + 1);
+    } else {
+      router.push('/');
+    }
   };
 
   const handleCloseButtonClick = () => {
@@ -131,7 +194,9 @@ const Onboarding = () => {
       <div className="h-24">
         <div />
         <div className="fixed bottom-8 w-full px-4">
-          <Button onClick={handleNextButtonClick}>다음</Button>
+          <Button onClick={handleNextButtonClick}>
+            {page >= 4 ? '완료' : '다음'}
+          </Button>
         </div>
       </div>
     </div>

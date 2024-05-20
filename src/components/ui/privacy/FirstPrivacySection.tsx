@@ -1,4 +1,4 @@
-import Dropdown from '@/components/cover-letter/ScholarshipDropdown';
+import Dropdown from '@/components/ui/Dropdown';
 import BinarySelect from '../BinarySelect';
 import FormControl from '../FormControl';
 import UnitInput from '../UnitInput';

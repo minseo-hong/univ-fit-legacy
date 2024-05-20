@@ -3,10 +3,10 @@
 import clsx from 'clsx';
 import { useEffect, useRef, useState } from 'react';
 
-import ChevronDownIcon from '../ui/icon/ChevronDownIcon';
-import CheckIcon from '../ui/icon/CheckIcon';
+import ChevronDownIcon from './icon/ChevronDownIcon';
+import CheckIcon from './icon/CheckIcon';
 
-interface ScholarshipDropdownProps {
+interface DropdownProps {
   selectedIndex: number | null;
   setSelectedIndex: (selectedIndex: number | null) => void;
   itemList: string[];
@@ -20,7 +20,7 @@ const Dropdown = ({
   itemList,
   placeholder,
   className,
-}: ScholarshipDropdownProps) => {
+}: DropdownProps) => {
   const menuRef = useRef<HTMLDivElement>(null);
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);

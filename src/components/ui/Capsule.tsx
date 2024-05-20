@@ -46,7 +46,7 @@ const Capsule = ({
         {
           'title-sm-200 px-6 py-3': size === 'lg',
           'text-lg-200 px-4 py-2': size === 'md',
-          'text-md-200 px-3 py-1': size === 'sm',
+          'caption-300 px-3 py-1': size === 'sm',
         },
       )}
     >

@@ -5,7 +5,7 @@ import { useState } from 'react';
 
 import NavBarHide from '@/components/ui/global-style/NavBarHide';
 import XIcon from '@/components/ui/icon/XIcon';
-import Dropdown from '@/components/cover-letter/ScholarshipDropdown';
+import Dropdown from '@/components/ui/Dropdown';
 import FormControl from '@/components/ui/FormControl';
 import Input from '@/components/ui/Input';
 import TextArea from '@/components/ui/TextArea';

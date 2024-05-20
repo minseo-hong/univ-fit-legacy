@@ -1,4 +1,5 @@
 import clsx from 'clsx';
+import Link from 'next/link';
 
 import XIcon from '../icon/XIcon';
 import KakaoIcon from '../icon/KakaoIcon';
@@ -27,20 +28,21 @@ const LoginModal = ({
     bgColor: string;
     color: string;
     onClick?: () => void;
+    href?: string;
   }[] = [
     {
       icon: <KakaoIcon fill="#181600" />,
       label: '카카오 로그인',
       bgColor: 'bg-kakao-yellow',
       color: 'text-grayscale-gray-100',
-      onClick: handleSocialLoginButtonClick,
+      href: `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${process.env.NEXT_PUBLIC_KAKAO_REST_API_KEY}&redirect_uri=${process.env.NEXT_PUBLIC_KAKAO_REDIRECT_URL}`,
     },
     {
       icon: <NaverIcon fill="#181600" />,
-      label: '카카오 로그인',
+      label: '네이버 로그인',
       bgColor: 'bg-naver-green',
       color: 'text-gray-00',
-      onClick: handleSocialLoginButtonClick,
+      href: `https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=${process.env.NEXT_PUBLIC_NAVER_CLIENT_ID}&client_secret=${process.env.NEXT_PUBLIC_NAVER_CLIENT_SECRET}&redirect_uri=${process.env.NEXT_PUBLIC_NAVER_REDIRECT_URL}`,
     },
   ];
 
@@ -79,8 +81,9 @@ const LoginModal = ({
         </p>
         <div className="mt-6 flex w-full flex-col gap-4">
           {buttonList.map((button, index) => (
-            <button
+            <Link
               key={index}
+              href={button.href || '#'}
               className={clsx(
                 'flex w-full items-center justify-center gap-2 rounded-xl py-4',
                 button.bgColor,
@@ -92,7 +95,7 @@ const LoginModal = ({
               <span className={clsx('text-md-200', button.color)}>
                 {button.label}
               </span>
-            </button>
+            </Link>
           ))}
         </div>
       </div>

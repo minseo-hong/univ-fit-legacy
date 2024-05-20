@@ -2,6 +2,7 @@ import clsx from 'clsx';
 import { useEffect, useRef } from 'react';
 
 import SearchIcon from '../icon/SearchIcon';
+import SearchBar from './SearchBar';
 
 interface SearchBarWindowProps {
   isSearchBarOpen: boolean;
@@ -31,20 +32,10 @@ const SearchBarModal = ({
       )}
       onClick={() => setIsSearchBarOpen(false)}
     >
-      <div
-        className="absolute mx-auto flex w-[calc(100%-2rem)] items-center gap-2 rounded-full bg-gray-00 p-4 text-gray-80 shadow-[0px_6px_16px_0px_rgba(0,0,0,0.10)] placeholder:text-gray-40"
-        onClick={(e) => e.stopPropagation()}
-      >
-        <span className="text-[1rem] text-gray-40">
-          <SearchIcon />
-        </span>
-        <input
-          ref={searchBarInputRef}
-          type="text"
-          placeholder="검색어를 입력하세요..."
-          className="text-md-200 flex-1 bg-transparent outline-none"
-        />
-      </div>
+      <SearchBar
+        inputRef={searchBarInputRef}
+        className="absolute mx-auto w-[calc(100%-2rem)] p-4 shadow-[0px_6px_16px_0px_rgba(0,0,0,0.10)]"
+      />
     </div>
   );
 };

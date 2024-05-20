@@ -1,15 +1,15 @@
-'use client';
-
-import clsx from 'clsx';
-import { useState } from 'react';
 import Image from 'next/image';
 
 import Capsule from '@/components/ui/Capsule';
-import FavoriteHeartButton from '@/components/ui/FavoriteHeartButton';
 import Link from 'next/link';
+import NoteIcon from '@/components/ui/icon/NoteIcon';
+import GrayBackground from '@/components/ui/global-style/GrayBackground';
+import Filter from '@/components/scholarship/list/Filter';
+import FavoriteButtonWrapper from '@/components/scholarship/list/FavoriteButtonWrapper';
+import SortDropdown from '@/components/scholarship/list/SortDropdown';
 
 const ScholarshipListPage = () => {
-  const rawScholarshipList: {
+  const scholarshipList: {
     id: number;
     title: string;
     foundation: string;
@@ -61,53 +61,32 @@ const ScholarshipListPage = () => {
     },
   ];
 
-  const [tabActiveIndex, setTabActiveIndex] = useState<number>(0);
-  const [scholarshipList, setScholarshipList] =
-    useState<typeof rawScholarshipList>(rawScholarshipList);
-
-  const tabMenuList: { label: string }[] = [{ label: '전체' }, { label: '찜' }];
-
-  const filteredScholarshipList =
-    tabActiveIndex === 1
-      ? scholarshipList.filter((scholarship) => scholarship.isFavorite)
-      : scholarshipList;
-
-  const handleTabMenuClick = (index: number) => {
-    setTabActiveIndex(index);
-  };
-
-  const handleFavoriteClick = (
-    e: React.MouseEvent<HTMLDivElement>,
-    id: number,
-  ) => {
-    e.preventDefault();
-    const updatedScholarshipList = scholarshipList.map((scholarship) =>
-      scholarship.id === id
-        ? { ...scholarship, isFavorite: !scholarship.isFavorite }
-        : scholarship,
-    );
-    setScholarshipList(updatedScholarshipList);
-  };
-
   return (
-    <div className="bg-gray-05 px-4 pt-6">
-      <main className="min-h-[calc(100vh-4rem)]">
-        <div className="flex items-center gap-3">
-          {tabMenuList.map((tabMenu, index) => (
-            <span
-              key={index}
-              className={clsx('title-md-300', {
-                'text-gray-80': tabActiveIndex === index,
-                'text-gray-30': tabActiveIndex !== index,
-              })}
-              onClick={() => handleTabMenuClick(index)}
-            >
-              {tabMenu.label}
-            </span>
-          ))}
+    <div>
+      <GrayBackground />
+      <header>
+        <div className="fixed h-[6.625rem] w-full bg-gray-00 px-4">
+          <div className="mx-auto max-w-screen-lg">
+            <div className="flex items-center justify-between border-b border-gray-05 pb-4 pt-3">
+              <div className="flex items-center justify-start gap-2">
+                <span className="text-[1.5rem]">
+                  <NoteIcon />
+                </span>
+                <h1 className="title-md-300 text-gray-80">전체 장학금</h1>
+                <span className="title-md-100 text-gray-30">1,201</span>
+              </div>
+              <SortDropdown />
+            </div>
+            <div className="pb-4 pt-2">
+              <Filter />
+            </div>
+          </div>
         </div>
-        <ul className="mt-4 flex flex-col gap-4">
-          {filteredScholarshipList.map((scholarship) => (
+        <div className="h-[7rem]" />
+      </header>
+      <main className="p-4">
+        <ul className="mx-auto grid max-w-screen-lg grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {scholarshipList.map((scholarship) => (
             <li key={scholarship.id}>
               <Link
                 href={`/scholarships/${scholarship.id}`}
@@ -123,9 +102,8 @@ const ScholarshipListPage = () => {
                         </Capsule>
                       )}
                     </div>
-                    <FavoriteHeartButton
+                    <FavoriteButtonWrapper
                       isFavorite={scholarship.isFavorite}
-                      onClick={(e) => handleFavoriteClick(e, scholarship.id)}
                     />
                   </div>
                   <div className="flex items-center gap-3">
