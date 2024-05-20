@@ -2,19 +2,22 @@ import NoteIcon from '@/components/ui/icon/NoteIcon';
 import Image from 'next/image';
 import Link from 'next/link';
 
+interface ArticleList {
+  id: number;
+  title: string;
+  description: string;
+  imageSrc: string;
+}
+
 const ArticleListPage = () => {
-  const articleList: {
-    id: number;
-    title: string;
-    description: string;
-    imageSrc: string;
-  }[] = [
-    {
-      id: 1,
-      title: '장학재단 소득분위 산정은 어떻게 이뤄질까?',
-      description: '미리보기 미리보기 미리보기 미리보기 미리보기 미리보기',
-      imageSrc: '/images/placeholders/placeholder-image.png',
-    },
+  const topArticle: ArticleList = {
+    id: 1,
+    title: '건강보험료 자격득실확인서 발급 방법은?',
+    description: '건강보험료 자격득실 확인서 발급 방법 알아보기!',
+    imageSrc: '/images/placeholders/placeholder-image.png',
+  };
+
+  const articleList: ArticleList[] = [
     {
       id: 2,
       title: '장학재단 소득분위 산정은 어떻게 이뤄질까?',
@@ -33,6 +36,12 @@ const ArticleListPage = () => {
       description: '미리보기 미리보기 미리보기 미리보기 미리보기 미리보기',
       imageSrc: '/images/placeholders/placeholder-image.png',
     },
+    {
+      id: 5,
+      title: '장학재단 소득분위 산정은 어떻게 이뤄질까?',
+      description: '미리보기 미리보기 미리보기 미리보기 미리보기 미리보기',
+      imageSrc: '/images/placeholders/placeholder-image.png',
+    },
   ];
 
   return (
@@ -40,19 +49,18 @@ const ArticleListPage = () => {
       <header>
         <section>
           <Link
-            href="#"
+            href={`/articles/${topArticle.id}`}
             className="relative block aspect-[14/10] w-full"
             style={{
-              background:
-                'linear-gradient(180deg, rgba(0, 0, 0, 0.00) 28.28%, rgba(0, 0, 0, 0.40) 100%), url(/images/placeholders/placeholder-image.png) lightgray 50% / cover no-repeat',
+              background: `linear-gradient(180deg, rgba(0, 0, 0, 0.00) 28.28%, rgba(0, 0, 0, 0.40) 100%), url(${topArticle.imageSrc}) lightgray 50% / cover no-repeat`,
             }}
           >
             <div className="absolute bottom-6 flex flex-col gap-2 px-6">
               <h2 className="title-md-300 line-clamp-1 text-gray-00">
-                건강보험료 자격득실확인서 발급 방법은?
+                {topArticle.title}
               </h2>
               <p className="text-md-200 line-clamp-1 text-gray-00">
-                건강보험료 자격득실 확인서 발급 방법 알아보기!
+                {topArticle.description}
               </p>
             </div>
           </Link>
@@ -70,7 +78,10 @@ const ArticleListPage = () => {
         <ul>
           {articleList.map((article) => (
             <li key={article.id}>
-              <Link href="#" className="flex items-center gap-4 px-6 py-4">
+              <Link
+                href={`/articles/${article.id}`}
+                className="flex items-center gap-4 px-6 py-4"
+              >
                 <div className="relative aspect-square w-[5rem] overflow-hidden rounded-lg">
                   <Image src={article.imageSrc} alt={article.title} fill />
                 </div>

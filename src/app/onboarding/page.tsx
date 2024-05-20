@@ -50,6 +50,7 @@ const Onboarding = () => {
     };
 
   const handleNextButtonClick = async () => {
+    window.scrollTo(0, 0);
     if (page === 0) {
       const res = await fetchNickname(nickname);
       console.log(res.data);
@@ -109,6 +110,7 @@ const Onboarding = () => {
 
   const handlePreviousButtonClick = () => {
     setPage(page - 1);
+    window.scrollTo(0, 0);
   };
 
   const sectionProps = {
