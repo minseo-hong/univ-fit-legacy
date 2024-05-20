@@ -48,7 +48,7 @@ const NavBar = () => {
     {
       icon: <NewsIcon />,
       label: '아티클',
-      href: '#',
+      href: '/articles',
       color: 'default',
     },
     {
