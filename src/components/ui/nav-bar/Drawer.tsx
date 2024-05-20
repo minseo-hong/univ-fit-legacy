@@ -2,74 +2,34 @@ import clsx from 'clsx';
 import { useState } from 'react';
 
 import ChevronRightIcon from '../icon/ChevronRightIcon';
-import FilePencilIcon from '../icon/FilePencilIcon';
-import ListSearchIcon from '../icon/ListSearchIcon';
-import NewsIcon from '../icon/NewsIcon';
-import ReportMoneyIcon from '../icon/ReportMoneyIcon';
 import LoginModal from './LoginModal';
 import Link from 'next/link';
-import Logout2Icon from '../icon/Logout2Icon';
 import { useRouter } from 'next/navigation';
-import NoteIcon from '../icon/NoteIcon';
 
-interface DrawerProps {
+export interface DrawerProps {
   isDrawerOpen: boolean;
   setIsDrawerOpen: (isDrawerOpen: boolean) => void;
-}
-
-const Drawer = ({ isDrawerOpen, setIsDrawerOpen }: DrawerProps) => {
-  const router = useRouter();
-
-  const [isLoginModalOpen, setIsLoginModalOpen] = useState<boolean>(false);
-  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
-
-  const menuList: {
+  menuList: {
     icon: React.ReactNode;
     label: React.ReactNode;
     href: string;
     color: 'default' | 'danger';
     topDivider?: boolean;
     hidden?: boolean;
-  }[] = [
-    {
-      icon: <NoteIcon />,
-      label: '전체 장학금',
-      href: '/scholarships',
-      color: 'default',
-    },
-    {
-      icon: <ListSearchIcon />,
-      label: '맞춤 장학금',
-      href: '#',
-      color: 'default',
-    },
-    {
-      icon: <ReportMoneyIcon />,
-      label: '내 장학금',
-      href: '/my-scholarships',
-      color: 'default',
-    },
-    {
-      icon: <FilePencilIcon />,
-      label: '자기소개서',
-      href: '/cover-letters',
-      color: 'default',
-    },
-    {
-      icon: <NewsIcon />,
-      label: '아티클',
-      href: '#',
-      color: 'default',
-    },
-    {
-      icon: <Logout2Icon />,
-      label: '로그아웃',
-      href: '#',
-      color: 'danger',
-      topDivider: true,
-      hidden: !isLoggedIn,
-    },
-  ];
+    screenOnly?: 'DESKTOP' | 'MOBILE';
+  }[];
+  isLoggedIn: boolean;
+}
+
+const Drawer = ({
+  isDrawerOpen,
+  setIsDrawerOpen,
+  menuList,
+  isLoggedIn,
+}: DrawerProps) => {
+  const router = useRouter();
+
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState<boolean>(false);
 
   const handleMenuClick = () => {
     setIsDrawerOpen(false);
@@ -135,6 +95,7 @@ const Drawer = ({ isDrawerOpen, setIsDrawerOpen }: DrawerProps) => {
           <ul>
             {menuList.map(
               (menu, index) =>
+                menu.screenOnly !== 'DESKTOP' &&
                 !menu.hidden && (
                   <li key={index}>
                     {menu.topDivider && (

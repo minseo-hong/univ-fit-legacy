@@ -5,34 +5,60 @@ import Link from 'next/link';
 
 import MenuIcon from '../icon/MenuIcon';
 import SearchIcon from '../icon/SearchIcon';
-import Drawer from './Drawer';
+import Drawer, { DrawerProps } from './Drawer';
 import SearchBarModal from './SearchBarModal';
 import SearchBar from './SearchBar';
+import NoteIcon from '../icon/NoteIcon';
+import ListSearchIcon from '../icon/ListSearchIcon';
+import ReportMoneyIcon from '../icon/ReportMoneyIcon';
+import FilePencilIcon from '../icon/FilePencilIcon';
+import NewsIcon from '../icon/NewsIcon';
+import Logout2Icon from '../icon/Logout2Icon';
 
 const NavBar = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState<boolean>(false);
   const [isSearchBarOpen, setIsSearchBarOpen] = useState<boolean>(false);
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(true);
 
-  const menuList: { title: string; href: string }[] = [
+  const menuList: DrawerProps['menuList'] = [
     {
-      title: '전체 장학금',
+      icon: <NoteIcon />,
+      label: '전체 장학금',
       href: '/scholarships',
+      color: 'default',
     },
     {
-      title: '맞춤 장학금',
-      href: '#',
+      icon: <ListSearchIcon />,
+      label: '맞춤 장학금',
+      href: '/recommend',
+      color: 'default',
     },
     {
-      title: '내 장학금',
+      icon: <ReportMoneyIcon />,
+      label: '내 장학금',
       href: '/my-scholarships',
+      color: 'default',
     },
     {
-      title: '자기소개서',
+      icon: <FilePencilIcon />,
+      label: '자기소개서',
       href: '/cover-letters',
+      color: 'default',
     },
     {
-      title: '아티클',
+      icon: <NewsIcon />,
+      label: '아티클',
       href: '#',
+      color: 'default',
+    },
+    {
+      icon: <Logout2Icon />,
+      label: '로그아웃',
+      href: '#',
+      color: 'danger',
+      topDivider: true,
+      hidden: !isLoggedIn,
+      screenOnly: 'MOBILE',
     },
   ];
 
@@ -62,18 +88,27 @@ const NavBar = () => {
             </div>
             <nav className="hidden lg:block">
               <ul className="flex items-center gap-9">
-                {menuList.map((menu, index) => (
-                  <li key={index} className="text-lg-200 text-gray-60">
-                    <Link href={menu.href}>{menu.title}</Link>
-                  </li>
-                ))}
+                {menuList.map(
+                  (menu, index) =>
+                    menu.screenOnly !== 'MOBILE' &&
+                    !menu.hidden && (
+                      <li key={index} className="text-lg-200 text-gray-60">
+                        <Link href={menu.href}>{menu.label}</Link>
+                      </li>
+                    ),
+                )}
               </ul>
             </nav>
           </div>
         </nav>
         <div className="h-[68px] lg:h-[104px]" />
       </div>
-      <Drawer isDrawerOpen={isDrawerOpen} setIsDrawerOpen={setIsDrawerOpen} />
+      <Drawer
+        isDrawerOpen={isDrawerOpen}
+        setIsDrawerOpen={setIsDrawerOpen}
+        menuList={menuList}
+        isLoggedIn={isLoggedIn}
+      />
       <SearchBarModal
         isSearchBarOpen={isSearchBarOpen}
         setIsSearchBarOpen={setIsSearchBarOpen}

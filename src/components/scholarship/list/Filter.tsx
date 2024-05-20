@@ -3,12 +3,14 @@
 import clsx from 'clsx';
 import { useState } from 'react';
 
-const Filter = () => {
+interface FilterProps {
+  filterList: string[];
+}
+
+const Filter = ({ filterList }: FilterProps) => {
   const [filterActiveIndexList, setFilterActiveIndexList] = useState<boolean[]>(
     [false, false, false],
   );
-
-  const filterList = ['모집중', '모집예정', '모집마감'];
 
   const handleFilterClick = (index: number) => {
     const updatedFilterActiveIndexList = [...filterActiveIndexList];

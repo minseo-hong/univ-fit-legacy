@@ -1,14 +1,14 @@
 import ScholarshipListContent, {
   ScholarshipListContentProps,
 } from '@/components/ui/ScholarshipListContent';
-import NoteIcon from '@/components/ui/icon/NoteIcon';
+import ListSearchIcon from '@/components/ui/icon/ListSearchIcon';
 
-const ScholarshipListPage = () => {
-  const title = '전체 장학금';
+const RecommendPage = () => {
+  const title = '맞춤 장학금';
 
-  const icon = <NoteIcon />;
+  const icon = <ListSearchIcon />;
 
-  const filterList = ['모집중', '모집예정', '모집마감'];
+  const filterList = ['전체', '바로 지원 가능'];
 
   const scholarshipList: ScholarshipListContentProps['scholarshipList'] = [
     {
@@ -63,4 +63,4 @@ const ScholarshipListPage = () => {
   );
 };
 
-export default ScholarshipListPage;
+export default RecommendPage;
