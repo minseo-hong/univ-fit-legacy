@@ -27,7 +27,7 @@ const ScholarshipDetailPage = async ({
     <div className="pb-8">
       <BackButtonHeader
         as="header"
-        backButton={{ label: '장학금 공고', backUrl: '/scholarships' }}
+        backButton={{ label: '장학금 공고', backUrl: '-1' }}
         fixed
       />
       <main className="px-4">

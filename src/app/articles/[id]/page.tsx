@@ -10,7 +10,7 @@ const ArticlePage = () => {
       <BackButtonHeader
         backButton={{
           label: '아티클',
-          backUrl: '/articles',
+          backUrl: '-1',
         }}
         fixed
       />
