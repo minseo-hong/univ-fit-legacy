@@ -1,11 +1,13 @@
 export const getPopularScholarshipList = async () => {
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_SERVER_API_URL}/home/announcements`,
+
     {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
       },
+      cache: 'no-store',
     },
   );
 

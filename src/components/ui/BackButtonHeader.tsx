@@ -15,6 +15,7 @@ interface BackButtonProps {
   };
   fixed?: boolean;
   padding?: boolean;
+  relative?: 'lg' | 'md';
 }
 
 const BackButtonHeader = ({
@@ -23,6 +24,7 @@ const BackButtonHeader = ({
   confirmButton,
   fixed = false,
   padding = true,
+  relative = 'lg',
 }: BackButtonProps) => {
   return (
     <Wrapper>
@@ -33,7 +35,11 @@ const BackButtonHeader = ({
       >
         <div
           className={clsx(
-            'flex h-[3rem] w-full max-w-screen-lg items-center justify-between',
+            'flex h-[3rem] w-full items-center justify-between',
+            {
+              'max-w-screen-lg': relative === 'lg',
+              'max-w-screen-md': relative === 'md',
+            },
             {
               'pb-4 pt-3': padding,
             },

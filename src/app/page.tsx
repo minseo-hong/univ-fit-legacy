@@ -71,7 +71,7 @@ const Home = async () => {
                     </div>
                   </div>
                   <div className="text-md-200 mt-2 text-primary">
-                    {scholarship.howManyLikes}
+                    {scholarship.howManyLikes}명이 찜했어요!
                   </div>
                 </Link>
               </li>

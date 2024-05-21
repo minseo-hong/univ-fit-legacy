@@ -12,45 +12,48 @@ const ArticlePage = () => {
           label: '아티클',
           backUrl: '-1',
         }}
+        relative="md"
         fixed
       />
       <div className="px-4 pt-2">
-        <header className="flex flex-col gap-6">
-          <div className="relative aspect-video w-full overflow-hidden rounded-2xl">
-            <Image
-              src="/images/placeholders/placeholder-image.png"
-              alt="아티클 임시 이미지"
-              fill
-              objectFit="cover"
-            />
-          </div>
-          <div className="flex flex-col gap-4">
-            <h1 className="title-md-200 text-gray-90">
-              건강보험료 자격득실확인서 발급 방법은?
-            </h1>
-            <div className="flex items-center gap-2">
-              <div className="flex items-center gap-1">
-                <div className="relative aspect-square w-[1.25rem] overflow-hidden rounded-full">
-                  <Image
-                    src="/images/placeholders/placeholder-image.png"
-                    alt="프로필 임시 이미지"
-                    fill
-                    objectFit="cover"
-                  />
+        <div className="mx-auto max-w-screen-md">
+          <header className="flex flex-col gap-6">
+            <div className="relative aspect-video w-full overflow-hidden rounded-2xl">
+              <Image
+                src="/images/placeholders/placeholder-image.png"
+                alt="아티클 임시 이미지"
+                fill
+                objectFit="cover"
+              />
+            </div>
+            <div className="flex flex-col gap-4">
+              <h1 className="title-md-200 text-gray-90">
+                건강보험료 자격득실확인서 발급 방법은?
+              </h1>
+              <div className="flex items-center gap-2">
+                <div className="flex items-center gap-1">
+                  <div className="relative aspect-square w-[1.25rem] overflow-hidden rounded-full">
+                    <Image
+                      src="/images/placeholders/placeholder-image.png"
+                      alt="프로필 임시 이미지"
+                      fill
+                      objectFit="cover"
+                    />
+                  </div>
+                  <span className="text-md-200 text-gray-60">닉네임</span>
                 </div>
-                <span className="text-md-200 text-gray-60">닉네임</span>
-              </div>
-              <div>
-                <span className="caption-200 text-gray-30">2024.05.12</span>
+                <div>
+                  <span className="caption-200 text-gray-30">2024.05.12</span>
+                </div>
               </div>
             </div>
-          </div>
-        </header>
-        <main className="mt-8">
-          <div className="text-sm-extra whitespace-pre-wrap text-gray-80">
-            {content}
-          </div>
-        </main>
+          </header>
+          <main className="mt-8">
+            <div className="text-sm-extra whitespace-pre-wrap text-gray-80">
+              {content}
+            </div>
+          </main>
+        </div>
       </div>
     </div>
   );
