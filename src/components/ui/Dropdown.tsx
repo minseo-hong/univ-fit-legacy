@@ -53,7 +53,7 @@ const Dropdown = ({
   return (
     <div ref={menuRef} className={clsx('relative', className)}>
       <div
-        className="flex items-center justify-between rounded-lg border border-gray-15 bg-gray-00 px-4 py-3"
+        className="flex cursor-pointer items-center justify-between rounded-lg border border-gray-15 bg-gray-00 px-4 py-3"
         onClick={handleDropdownClick}
       >
         <span
@@ -76,7 +76,7 @@ const Dropdown = ({
           {itemList.map((item, index) => (
             <li
               key={index}
-              className="flex items-center gap-2 p-4"
+              className="flex cursor-pointer items-center gap-2 p-4"
               onClick={() => handleSelectScholarship(index)}
             >
               {selectedIndex === index && (

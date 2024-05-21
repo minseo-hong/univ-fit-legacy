@@ -36,9 +36,9 @@ const QuestionBox = ({
       <hr />
       {input ? (
         <textarea
-          rows={3}
+          rows={5}
           placeholder="내용을 입력하세요"
-          className="text-sm-extra text-gray-60 outline-none placeholder:text-gray-40"
+          className="text-sm-extra resize-none text-gray-60 outline-none placeholder:text-gray-40"
           value={answerValue}
           onChange={handleAnswerChange}
         />

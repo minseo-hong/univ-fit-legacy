@@ -2,6 +2,7 @@ import DotsMenuButton from '@/components/ui/DotsMenuButton';
 import QuestionBox from '@/components/cover-letter/QuestionInput';
 import BackButtonHeader from '@/components/ui/BackButtonHeader';
 import DotsMenuWrapper from '@/components/cover-letter/DotsMenuWrapper';
+import GrayBackground from '@/components/ui/global-style/GrayBackground';
 
 const CoverLetterPage = ({ params }: { params: { id: number } }) => {
   const questionList: { content: string; answer: string }[] = [
@@ -21,6 +22,7 @@ const CoverLetterPage = ({ params }: { params: { id: number } }) => {
 
   return (
     <div>
+      <GrayBackground />
       <header>
         <BackButtonHeader
           backButton={{
@@ -28,18 +30,20 @@ const CoverLetterPage = ({ params }: { params: { id: number } }) => {
             backUrl: '-1',
           }}
         />
-        <div className="flex flex-col gap-2 px-6 pb-4">
-          <h1 className="title-sm-200 text-gray-70">월곡주얼리 초안</h1>
-          <div className="flex items-center justify-between">
-            <div className="text-md-200 text-gray-40">
-              월곡주얼리장학생 | 월곡주얼리산업진흥재단
+        <div className="bg-gray-00 px-6">
+          <div className="mx-auto flex max-w-screen-lg flex-col gap-2 pb-4 lg:px-3">
+            <h1 className="title-sm-200 text-gray-70">월곡주얼리 초안</h1>
+            <div className="flex items-center justify-between">
+              <div className="text-md-200 text-gray-40">
+                월곡주얼리장학생 | 월곡주얼리산업진흥재단
+              </div>
+              <DotsMenuWrapper coverLetterId={params.id} />
             </div>
-            <DotsMenuWrapper coverLetterId={params.id} />
           </div>
         </div>
       </header>
-      <main className="min-h-[calc(100vh-4rem-116px)] w-full bg-gray-05">
-        <div className="flex flex-col gap-6 px-6 py-4">
+      <main className="w-full px-6">
+        <div className="mx-auto grid max-w-screen-lg grid-cols-1 gap-6 py-4 md:grid-cols-2">
           {questionList.map((question, index) => (
             <QuestionBox
               key={index}

@@ -7,6 +7,7 @@ import QuestionBox from '@/components/cover-letter/QuestionInput';
 import Dropdown from '@/components/ui/Dropdown';
 import BackButtonHeader from '@/components/ui/BackButtonHeader';
 import PopUp from '@/components/ui/PopUp';
+import GrayBackground from '@/components/ui/global-style/GrayBackground';
 
 const CoverLetterNewPage = () => {
   const router = useRouter();
@@ -39,8 +40,9 @@ const CoverLetterNewPage = () => {
 
   return (
     <div>
+      <GrayBackground />
       <div>
-        <header className="fixed top-[4rem] w-full bg-gray-00">
+        <header className="fixed w-full bg-gray-00">
           <BackButtonHeader
             backButton={{ label: '자기소개서', onClick: handleBackButtonClick }}
             confirmButton={{
@@ -49,32 +51,38 @@ const CoverLetterNewPage = () => {
             }}
             fixed={false}
           />
-          <div className="px-6 py-2">
-            <Dropdown
-              itemList={scholarshipItemList}
-              selectedIndex={selectedIndex}
-              setSelectedIndex={setSelectedIndex}
-              placeholder="장학금을 선택하세요"
-            />
-          </div>
-          <div className="px-6 py-4">
-            <input
-              type="text"
-              className="title-sm-200 w-full text-gray-80 outline-none placeholder:text-gray-40"
-              placeholder="제목을 입력하세요"
-            />
+          <div className="px-4">
+            <div className="mx-auto max-w-screen-lg">
+              <div className="px-2 py-2">
+                <Dropdown
+                  itemList={scholarshipItemList}
+                  selectedIndex={selectedIndex}
+                  setSelectedIndex={setSelectedIndex}
+                  placeholder="장학금을 선택하세요"
+                />
+              </div>
+              <div className="px-2 py-4">
+                <input
+                  type="text"
+                  className="title-sm-200 w-full text-gray-80 outline-none placeholder:text-gray-40"
+                  placeholder="제목을 입력하세요"
+                />
+              </div>
+            </div>
           </div>
         </header>
         <div className="h-[166.5px]" />
       </div>
-      <main className="min-h-[calc(100vh-4rem-166.5px)] w-full bg-gray-05 p-4">
-        {selectedIndex !== null && (
-          <div className="flex flex-col gap-4">
-            {Array.from({ length: 5 }).map((_, index) => (
-              <QuestionBox key={index} maxAnswerLength={1000} input />
-            ))}
-          </div>
-        )}
+      <main className="w-full p-4">
+        <div className="mx-auto max-w-screen-lg">
+          {selectedIndex !== null && (
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+              {Array.from({ length: 5 }).map((_, index) => (
+                <QuestionBox key={index} maxAnswerLength={1000} input />
+              ))}
+            </div>
+          )}
+        </div>
       </main>
       {isPopUpOpen && (
         <PopUp
