@@ -6,7 +6,7 @@ import BackButtonHeader from '@/components/ui/BackButtonHeader';
 import Button from '@/components/ui/Button';
 import Divider from '@/components/ui/Divider';
 import WhiteBackground from '@/components/ui/global-style/WhiteBackground';
-import BookmarkIcon from '@/components/ui/icon/BookmarkIcon';
+import BookmarkFilledIcon from '@/components/ui/icon/BookmarkFilledIcon';
 import ChevronRightIcon from '@/components/ui/icon/ChevronRightIcon';
 import FileDescriptionIcon from '@/components/ui/icon/FileDescriptionIcon';
 import MessageDotsIcon from '@/components/ui/icon/MessageDotsIcon';
@@ -68,7 +68,7 @@ const MyScholarshipPage = () => {
         </div>
         <div>
           <span className="text-[1.5rem] text-primary">
-            <BookmarkIcon />
+            <BookmarkFilledIcon />
           </span>
         </div>
       </div>

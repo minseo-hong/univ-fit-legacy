@@ -7,7 +7,17 @@ import SubmissionTab from '../tab-content/SubmissionTab';
 import FoundationTab from '../tab-content/FoundationTab';
 import CommentsTab from '../tab-content/CommentsTab';
 
-const ScholarshipTabSection = () => {
+interface ScholarshipTabSectionProps {
+  id: number;
+  detailContents: string;
+  foundation: string;
+}
+
+const ScholarshipTabSection = ({
+  id,
+  detailContents,
+  foundation,
+}: ScholarshipTabSectionProps) => {
   const [tabActiveIndex, setTabActiveIndex] = useState<number>(0);
 
   const tabMenuList = ['상세내용', '제출서류', '재단정보', '댓글'];
@@ -37,11 +47,11 @@ const ScholarshipTabSection = () => {
           ))}
         </ul>
         {tabActiveIndex === 0 ? (
-          <DetailContentTab />
+          <DetailContentTab detailContents={detailContents} />
         ) : tabActiveIndex === 1 ? (
-          <SubmissionTab />
+          <SubmissionTab id={id} />
         ) : tabActiveIndex === 2 ? (
-          <FoundationTab />
+          <FoundationTab id={id} foundation={foundation} />
         ) : (
           tabActiveIndex === 3 && <CommentsTab />
         )}

@@ -39,11 +39,11 @@ const MyPage = () => {
     <div>
       <GrayBackground />
       <div>
-        <header className="fixed top-[4rem] z-10 w-full bg-gray-00 p-4">
+        <header className="fixed z-10 w-full bg-gray-00 p-4">
           <div className="flex items-center gap-2">
             <div className="overflow-hidden rounded-full">
               <Image
-                src="/images/placeholders/placeholder-image.png"
+                src="/images/placeholders/placeholder-profile.png"
                 alt="임시 프로필 이미지"
                 width={88}
                 height={88}

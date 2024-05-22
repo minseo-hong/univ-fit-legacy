@@ -67,10 +67,15 @@ const ArticleListPage = () => {
             </Link>
           </section>
           <section>
-            <div className="flex items-center gap-1 px-6 pb-2 pt-6">
-              <span className="text-[1.5rem]">
-                <NoteIcon />
-              </span>
+            <div className="flex items-center gap-2 px-6 pb-2 pt-6">
+              <div>
+                <Image
+                  src="/icons/menu/articles-icon.svg"
+                  alt="아티클"
+                  width={20}
+                  height={20}
+                />
+              </div>
               <h1 className="title-md-300 text-gray-90">아티클</h1>
             </div>
           </section>

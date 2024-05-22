@@ -22,38 +22,38 @@ const NavBar = () => {
 
   const menuList: DrawerProps['menuList'] = [
     {
-      icon: <NoteIcon />,
       label: '전체 장학금',
+      iconSrc: '/icons/menu/all-scholarships-icon.svg',
       href: '/scholarships',
       color: 'default',
     },
     {
-      icon: <ListSearchIcon />,
       label: '맞춤 장학금',
+      iconSrc: '/icons/menu/articles-icon.svg',
       href: '/recommend',
       color: 'default',
     },
     {
-      icon: <ReportMoneyIcon />,
       label: '내 장학금',
+      iconSrc: '/icons/menu/my-scholarships-icon.svg',
       href: '/my-scholarships',
       color: 'default',
     },
     {
-      icon: <FilePencilIcon />,
       label: '자기소개서',
+      iconSrc: '/icons/menu/cover-letters-icon.svg',
       href: '/cover-letters',
       color: 'default',
     },
     {
-      icon: <NewsIcon />,
       label: '아티클',
+      iconSrc: '/icons/menu/articles-icon.svg',
       href: '/articles',
       color: 'default',
     },
     {
-      icon: <Logout2Icon />,
       label: '로그아웃',
+      iconSrc: '/icons/menu/logout-icon.svg',
       href: '#',
       color: 'danger',
       topDivider: true,

@@ -4,6 +4,7 @@ import BackButtonHeader from '@/components/ui/BackButtonHeader';
 import CheckupListIcon from '@/components/ui/icon/CheckupListIcon';
 import FileDescriptionIcon from '@/components/ui/icon/FileDescriptionIcon';
 import FilePlusIcon from '@/components/ui/icon/FilePlusIcon';
+import DocumentItem from '@/components/mypage/document/DocumentItem';
 
 const DocumentsPage = () => {
   const documentList: {
@@ -59,7 +60,7 @@ const DocumentsPage = () => {
   return (
     <div className="pb-28">
       <div>
-        <header className="fixed top-[4rem] z-10 flex w-full flex-col gap-4 bg-gray-00 p-4 py-3">
+        <header className="fixed z-10 flex w-full flex-col bg-gray-00 p-4 py-3">
           <BackButtonHeader
             backButton={{
               label: '마이페이지',
@@ -74,29 +75,12 @@ const DocumentsPage = () => {
             <h1 className="title-md-300 text-gray-80">서류 관리</h1>
           </div>
         </header>
-        <div className="h-[84px]" />
+        <div className="h-[96px]" />
       </div>
       <main>
         <ul>
           {documentList.map((document) => (
-            <li
-              key={document.id}
-              className="border-b border-gray-05 px-6 py-5 last:border-b-0"
-            >
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-1">
-                  <span className="text-[1.25rem] text-gray-30">
-                    <FileDescriptionIcon />
-                  </span>
-                  <h2 className="text-lg-200 text-gray-80">{document.name}</h2>
-                </div>
-                <DotsMenuWrapper documentId={document.id} />
-              </div>
-              <div className="text-md-200 flex items-center gap-2 text-gray-40">
-                <span>{document.date}</span>
-                <span>{document.organization}</span>
-              </div>
-            </li>
+            <DocumentItem document={document} />
           ))}
         </ul>
       </main>

@@ -6,86 +6,91 @@ import MessageDotsIcon from '@/components/ui/icon/MessageDotsIcon';
 import ScholarshipTabSection from '@/components/scholarship/detail/section/ScholarshipTabSection';
 import BackButtonHeader from '@/components/ui/BackButtonHeader';
 import { fetchScholarship } from '@/api/scholarship';
+import ScholarshipBottomAction from '@/components/scholarship/detail/section/ScholarshipBottomAction';
 
 const ScholarshipDetailPage = async ({
   params,
 }: {
   params: { id: number };
 }) => {
-  // const scholarship = await fetchScholarship(params.id);
+  const res = await fetchScholarship(params.id);
 
-  // console.log(scholarship);
-
-  const conditionList: { name: string; isTrue: boolean }[] = [
-    { name: '3분위 이내', isTrue: true },
-    { name: '서울 거주', isTrue: true },
-    { name: '생활비 장학금', isTrue: false },
-    { name: '3.5학점 이상', isTrue: true },
-  ];
+  const scholarship: {
+    scholarshipId: number;
+    scholarShipImage: string;
+    scholarshipName: string;
+    scholarshipFoundation: string;
+    remainingDay: number;
+    applyPossible: string;
+    supportAmount: string;
+    applicationPeriod: string;
+    hashTag: string;
+    applyCondition: string[];
+    detailContents: string;
+    likes: number;
+  } = res.data;
 
   return (
-    <div className="pb-8">
+    <div className="pb-24">
       <BackButtonHeader
         as="header"
         backButton={{ label: '장학금 공고', backUrl: '-1' }}
         fixed
       />
-      <main className="px-4">
-        <div className="mx-auto flex max-w-screen-lg flex-col md:flex-row md:gap-2">
+      <main className="md:px-4">
+        <div className="mx-auto flex max-w-screen-lg flex-col md:flex-row md:gap-6 lg:gap-8">
           <section className="flex-1">
             <div className="relative aspect-square w-full md:aspect-auto md:h-full">
               <Image
-                src="/images/placeholders/placeholder-image.png"
-                alt="장학금 임시 이미지"
+                src={scholarship.scholarShipImage}
+                alt={scholarship.scholarshipName}
                 fill
                 objectFit="cover"
               />
-              <Capsule
-                variant="primary"
-                size="lg"
-                className="absolute bottom-4 left-4"
-              >
-                D-12
-              </Capsule>
+              {scholarship.remainingDay >= 0 && (
+                <Capsule
+                  variant="primary"
+                  size="lg"
+                  className="absolute bottom-4 left-4"
+                >
+                  D-{scholarship.remainingDay}
+                </Capsule>
+              )}
             </div>
           </section>
           <div className="flex flex-1 flex-col justify-between">
             <div>
-              <section className="flex flex-col gap-4 p-4">
-                <div className="title-sm-200 text-gray-40">재단명</div>
+              <section className="flex flex-col gap-4 px-4 py-4 md:px-0">
+                <div className="title-sm-200 text-gray-40">
+                  {scholarship.scholarshipFoundation}
+                </div>
                 <div className="flex flex-col gap-2">
                   <h1 className="title-sm-200 text-gray-80">
-                    월곡주얼리장학생
+                    {scholarship.scholarshipName}
                   </h1>
-                  <div className="title-md-300 text-gray-90">200만원</div>
+                  <div className="title-md-300 text-gray-90">
+                    {scholarship.supportAmount}만원
+                  </div>
                   <div className="text-md-200 text-gray-40">
-                    YYYY.MM.DD ~ YYYY.MM.DD
+                    {scholarship.applicationPeriod}
                   </div>
                 </div>
                 <div className="text-lg-200 flex gap-2 text-primary">
-                  {['중복수혜가능', '중복수혜가능'].map((label, index) => (
-                    <span key={index}>#{label}</span>
-                  ))}
+                  {scholarship.hashTag}
                 </div>
               </section>
-              <section className="border-t border-gray-10 p-4">
+              <section className="border-t border-gray-10 px-4 py-4 md:px-0">
                 <h2 className="text-lg-200">지원조건</h2>
                 <div className="mt-2 flex flex-wrap gap-2">
-                  {conditionList.map((condition, index) => (
-                    <Capsule
-                      key={index}
-                      variant={
-                        condition.isTrue ? 'stroke-primary' : 'stroke-default'
-                      }
-                      size="sm"
-                    >
-                      {condition.name}
+                  {scholarship.applyCondition.map((condition, index) => (
+                    <Capsule key={index} size="sm" variant="stroke-default">
+                      {condition}
                     </Capsule>
                   ))}
                 </div>
               </section>
             </div>
-            <section className="flex flex-col gap-4 px-4 py-6 md:pb-0">
+            <section className="flex flex-col gap-4 px-4 py-6 md:px-0 md:pb-0">
               <Button>지원하기</Button>
               <Button variant="light-primary">
                 <span className="text-lg-300 flex gap-1 text-gray-80">
@@ -99,7 +104,12 @@ const ScholarshipDetailPage = async ({
             </section>
           </div>
         </div>
-        <ScholarshipTabSection />
+        <ScholarshipTabSection
+          id={params.id}
+          detailContents={scholarship.detailContents}
+          foundation={scholarship.scholarshipFoundation}
+        />
+        <ScholarshipBottomAction />
       </main>
     </div>
   );

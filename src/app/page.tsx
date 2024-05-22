@@ -2,11 +2,13 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 import ArticleItem from '@/components/home/ArticleItem';
-import { getPopularScholarshipList } from '@/api/home';
+import { getPopularScholarshipList } from '@/api/scholarship';
 import HeartIcon from '@/components/ui/icon/HeartIcon';
 
 const Home = async () => {
   const res = await getPopularScholarshipList();
+
+  console.log(res);
 
   const popularScholarshipList: {
     announcementId: number;
@@ -46,11 +48,13 @@ const Home = async () => {
               >
                 <Link href={`/scholarships/${scholarship.announcementId}`}>
                   <div className="flex items-start">
-                    <div className="aspect-square w-[4rem] overflow-hidden rounded-lg">
-                      <img
+                    <div className="relative aspect-square w-[4rem] overflow-hidden rounded-lg">
+                      <Image
                         src={scholarship.scholarShipImage}
                         alt={scholarship.scholarShipName}
-                        className="h-full w-full object-cover"
+                        fill
+                        objectFit="cover"
+                        // className="h-full w-full object-cover"
                       />
                     </div>
                     <div className="ml-3 flex flex-1 flex-col gap-1">

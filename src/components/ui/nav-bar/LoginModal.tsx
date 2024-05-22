@@ -35,7 +35,7 @@ const LoginModal = ({
       label: '카카오 로그인',
       bgColor: 'bg-kakao-yellow',
       color: 'text-grayscale-gray-100',
-      href: `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${process.env.NEXT_PUBLIC_KAKAO_REST_API_KEY}&redirect_uri=${process.env.NEXT_PUBLIC_KAKAO_REDIRECT_URL}`,
+      href: `https://kauth.kakao.com/oauth/authorize?client_id=${process.env.NEXT_PUBLIC_KAKAO_REST_API_KEY}&redirect_uri=${process.env.NEXT_PUBLIC_KAKAO_REDIRECT_URL}&response_type=code`,
     },
     {
       icon: <NaverIcon fill="#181600" />,

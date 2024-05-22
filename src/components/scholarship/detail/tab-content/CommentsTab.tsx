@@ -1,7 +1,10 @@
-import PhotoFilledIcon from '@/components/ui/icon/PhotoFilledIcon';
+import clsx from 'clsx';
 import Image from 'next/image';
+import { useState } from 'react';
 
 const CommentsTab = () => {
+  const [isCommentInputFocus, setIsCommentInputFocus] = useState(false);
+
   const commentList: {
     name: string;
     createdAt: string;
@@ -44,26 +47,51 @@ const CommentsTab = () => {
     },
   ];
 
+  const handleCommentInputFocus = () => {
+    setIsCommentInputFocus(true);
+  };
+
+  const handleCommentInputBlur = () => {
+    setIsCommentInputFocus(false);
+  };
+
   return (
     <div>
-      <div className="flex gap-2 px-4 py-3">
-        <div className="flex h-[2.5rem] w-[2.5rem] items-center justify-center rounded-full bg-primary text-[0.75rem] text-gray-00">
-          <PhotoFilledIcon />
-        </div>
-        <div className="flex flex-1 items-center rounded-full border border-gray-10 px-4">
+      <div className="flex flex-col gap-2 p-4">
+        <div>
           <input
             type="text"
             placeholder="댓글 달기..."
-            className="text-sm-200 text-gray-70 outline-none placeholder:text-gray-30"
+            className={clsx(
+              'text-sm-200 w-full border-b-2 pb-2 outline-none placeholder:text-gray-30',
+              {
+                'border-gray-10': !isCommentInputFocus,
+                'border-primary': isCommentInputFocus,
+              },
+            )}
+            onFocus={handleCommentInputFocus}
           />
         </div>
+        {isCommentInputFocus && (
+          <div className="flex items-center justify-end gap-4">
+            <button
+              className="text-sm-200 text-gray-40"
+              onClick={handleCommentInputBlur}
+            >
+              취소
+            </button>
+            <button className="text-sm-300 rounded-full bg-primary px-4 py-2 text-gray-00">
+              등록
+            </button>
+          </div>
+        )}
       </div>
       <ul>
         {commentList.map((comment, index) => (
           <li key={index} className="flex items-start gap-2 p-4">
             <div className="relative h-[2rem] w-[2rem] overflow-hidden rounded-full">
               <Image
-                src="/images/placeholders/placeholder-image.png"
+                src="/images/placeholders/placeholder-profile.png"
                 alt="프사 임시 이미지"
                 fill
               />

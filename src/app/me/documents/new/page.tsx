@@ -10,8 +10,12 @@ import FormControl from '@/components/ui/FormControl';
 import Input from '@/components/ui/Input';
 import TextArea from '@/components/ui/TextArea';
 import DialogHeader from '@/components/DialogHeader';
+import PopUp from '@/components/ui/PopUp';
+import { useRouter } from 'next/navigation';
 
 const DocumentNewPage = () => {
+  const router = useRouter();
+
   const [selectedIndexGroup, setSelectedIndexGroup] = useState<{
     document: number | null;
     year: number | null;
@@ -59,10 +63,9 @@ const DocumentNewPage = () => {
   const setDaySelectedIndex = (selectedIndex: number | null) => {
     setSelectedIndexGroup({ ...selectedIndexGroup, day: selectedIndex });
   };
-
   return (
     <div>
-      <DialogHeader title="서류 등록" closeHref="/me/documents" />
+      <DialogHeader title="서류 등록" />
       <main className="px-6 py-4">
         <div className="flex flex-col gap-10">
           <FormControl label="서류명" required>

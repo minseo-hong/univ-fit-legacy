@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 import ReportMoneyIcon from '../ui/icon/ReportMoneyIcon';
+import Image from 'next/image';
 
 const Header = () => {
   const pathname = usePathname();
@@ -34,10 +35,15 @@ const Header = () => {
   return (
     <header className="my-scholarships-header h-[5.5rem]">
       <div className="fixed w-full bg-gray-00">
-        <div className="flex items-center gap-1 p-4 py-3">
-          <span className="text-[1.5rem]">
-            <ReportMoneyIcon />
-          </span>
+        <div className="flex items-center gap-3 p-4 py-3">
+          <div>
+            <Image
+              src="/icons/menu/my-scholarships-icon.svg"
+              alt="내 장학금"
+              width={20}
+              height={20}
+            />
+          </div>
           <h1 className="title-md-300 text-gray-80">내 장학금</h1>
         </div>
         <nav>

@@ -38,7 +38,7 @@ const PrivacyPage = () => {
 
   return (
     <div className="pb-24">
-      <DialogHeader title="개인정보 관리" closeHref="/me" />
+      <DialogHeader title="개인정보 관리" />
       <main>
         {sectionList.map((section, index) => (
           <Fragment key={index}>

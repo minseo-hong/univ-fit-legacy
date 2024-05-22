@@ -5,6 +5,7 @@ import DotsMenuWrapper from '@/components/cover-letter/DotsMenuWrapper';
 import FileDescriptionIcon from '@/components/ui/icon/FileDescriptionIcon';
 import FilePencilIcon from '@/components/ui/icon/FilePencilIcon';
 import PencilIcon from '@/components/ui/icon/PencilIcon';
+import Image from 'next/image';
 
 const CoverLettersPage = () => {
   const coverLetterList: {
@@ -48,10 +49,15 @@ const CoverLettersPage = () => {
   return (
     <div className="px-6 pb-28">
       <div className="mx-auto max-w-screen-lg">
-        <header className="flex items-center gap-1 py-3 text-gray-80">
-          <span className="text-[1.5rem]">
-            <FilePencilIcon />
-          </span>
+        <header className="flex items-center gap-3 py-3 text-gray-80">
+          <div>
+            <Image
+              src="/icons/menu/cover-letters-icon.svg"
+              alt="자기소개서"
+              width={18}
+              height={18}
+            />
+          </div>
           <h1 className="title-md-300">자기소개서</h1>
         </header>
         <main>

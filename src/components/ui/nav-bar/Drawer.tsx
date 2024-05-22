@@ -5,13 +5,14 @@ import ChevronRightIcon from '../icon/ChevronRightIcon';
 import LoginModal from './LoginModal';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 
 export interface DrawerProps {
   isDrawerOpen: boolean;
   setIsDrawerOpen: (isDrawerOpen: boolean) => void;
   menuList: {
-    icon: React.ReactNode;
-    label: React.ReactNode;
+    label: string;
+    iconSrc: string;
     href: string;
     color: 'default' | 'danger';
     topDivider?: boolean;
@@ -68,14 +69,15 @@ const Drawer = ({
           onClick={(e) => e.stopPropagation()}
         >
           <div
-            className="flex items-center gap-4 pb-3 pl-6 pr-4 pt-5"
+            className="flex cursor-pointer items-center gap-4 pb-3 pl-6 pr-4 pt-5"
             onClick={handleProfileClick}
           >
-            <div className="aspect-square w-[3rem] overflow-hidden rounded-full">
-              <img
-                src="/images/placeholders/placeholder-image.png"
+            <div className="relative aspect-square w-[3rem] overflow-hidden rounded-full">
+              <Image
+                src="/images/placeholders/placeholder-profile.png"
                 alt="프로필 이미지"
-                className="h-full w-full object-cover"
+                fill
+                objectFit="cover"
               />
             </div>
             <div
@@ -103,13 +105,20 @@ const Drawer = ({
                     )}
                     <Link
                       href={menu.href}
-                      className={clsx('flex items-center gap-2 px-6 py-4', {
+                      className={clsx('flex items-center gap-4 px-6 py-4', {
                         'text-gray-60': menu.color === 'default',
                         'text-danger-40': menu.color === 'danger',
                       })}
                       onClick={handleMenuClick}
                     >
-                      <span className="text-[1.25rem]">{menu.icon}</span>
+                      <div>
+                        <Image
+                          src={menu.iconSrc}
+                          alt={menu.label}
+                          width={20}
+                          height={20}
+                        />
+                      </div>
                       <span className="text-lg-200 flex-1">{menu.label}</span>
                     </Link>
                   </li>
