@@ -80,7 +80,7 @@ const DocumentsPage = () => {
       <main>
         <ul>
           {documentList.map((document) => (
-            <DocumentItem document={document} />
+            <DocumentItem key={document.id} document={document} />
           ))}
         </ul>
       </main>
