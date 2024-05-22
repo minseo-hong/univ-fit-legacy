@@ -42,9 +42,7 @@ export const fetchScholarship = async (id: number) => {
   return res.json();
 };
 
-export const fetchRecommendScholarship = async (
-  status: '전체' | '바로지원가능',
-) => {
+export const fetchRecommendScholarship = async (status: string) => {
   const accessToken = await getTokenCookie();
 
   const res = await fetch(
