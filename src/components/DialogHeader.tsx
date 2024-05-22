@@ -31,20 +31,22 @@ const DialogHeader = ({
     <>
       <NavBarHide />
       <div>
-        <header className="fixed top-0 z-50 grid w-full grid-cols-3 bg-white p-4">
-          <button
-            className="text-left text-[1.25rem]"
-            onClick={handleCloseButtonClick}
-          >
-            <XIcon />
-          </button>
-          <h1 className="title-sm-200 text-center text-gray-90">{title}</h1>
-          <button
-            className="title-sm-300 text-right text-primary"
-            onClick={confirmButton?.onClick}
-          >
-            저장
-          </button>
+        <header className="fixed top-0 z-50 w-full bg-white px-4 py-4">
+          <div className="mx-auto grid max-w-screen-md grid-cols-3">
+            <button
+              className="text-left text-[1.25rem]"
+              onClick={handleCloseButtonClick}
+            >
+              <XIcon />
+            </button>
+            <h1 className="title-sm-200 text-center text-gray-90">{title}</h1>
+            <button
+              className="title-sm-300 text-right text-primary"
+              onClick={confirmButton?.onClick}
+            >
+              저장
+            </button>
+          </div>
         </header>
         <div className="h-[56px]" />
       </div>

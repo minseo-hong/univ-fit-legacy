@@ -53,7 +53,7 @@ const ReviewsPage = () => {
   return (
     <div className="pb-28">
       <div>
-        <header className="fixed top-[4rem] z-10 flex w-full flex-col gap-4 bg-gray-00 p-4 py-3">
+        <header className="fixed z-10 flex w-full flex-col bg-gray-00 px-4 pb-3">
           <BackButtonHeader
             backButton={{
               label: '마이페이지',
@@ -61,7 +61,7 @@ const ReviewsPage = () => {
             }}
             padding={false}
           />
-          <div className="flex items-center gap-1">
+          <div className="mx-auto flex w-full max-w-screen-lg items-center gap-1">
             <span className="text-[1.5rem]">
               <Message2CogIcon />
             </span>
@@ -70,12 +70,12 @@ const ReviewsPage = () => {
         </header>
         <div className="h-[84px]" />
       </div>
-      <main>
-        <ul>
+      <main className="px-4">
+        <ul className="mx-auto max-w-screen-lg">
           {reviewList.map((review) => (
             <li
               key={review.id}
-              className="flex flex-col gap-4 border-b border-gray-05 px-4 py-6 last:border-b-0"
+              className="flex flex-col gap-4 border-b border-gray-05 py-6 last:border-b-0"
             >
               <Stars score={review.score} size="sm" />
               <div className="flex flex-col gap-3">

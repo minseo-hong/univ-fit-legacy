@@ -46,7 +46,10 @@ const DocumentItem = ({ document }: DocumentItemProps) => {
 
   return (
     <li key={document.id} className="border-b border-gray-05 last:border-b-0">
-      <div className="cursor-pointer px-6 py-5" onClick={handleOpenDetailModal}>
+      <div
+        className="cursor-pointer px-6 py-5 lg:px-2"
+        onClick={handleOpenDetailModal}
+      >
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-1">
             <span className="text-[1.25rem] text-gray-30">

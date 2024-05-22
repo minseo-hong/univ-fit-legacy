@@ -39,13 +39,15 @@ const PrivacyPage = () => {
   return (
     <div className="pb-24">
       <DialogHeader title="개인정보 관리" />
-      <main>
-        {sectionList.map((section, index) => (
-          <Fragment key={index}>
-            <div className="p-6 pt-8">{section}</div>
-            {index !== sectionList.length - 1 && <Divider />}
-          </Fragment>
-        ))}
+      <main className="px-6">
+        <div className="mx-auto max-w-screen-md">
+          {sectionList.map((section, index) => (
+            <Fragment key={index}>
+              <div className="pb-6 pt-8">{section}</div>
+              {index !== sectionList.length - 1 && <Divider />}
+            </Fragment>
+          ))}
+        </div>
       </main>
     </div>
   );

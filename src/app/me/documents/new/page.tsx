@@ -1,21 +1,14 @@
 'use client';
 
-import Link from 'next/link';
 import { useState } from 'react';
 
-import NavBarHide from '@/components/ui/global-style/NavBarHide';
-import XIcon from '@/components/ui/icon/XIcon';
 import Dropdown from '@/components/ui/Dropdown';
 import FormControl from '@/components/ui/FormControl';
 import Input from '@/components/ui/Input';
 import TextArea from '@/components/ui/TextArea';
 import DialogHeader from '@/components/DialogHeader';
-import PopUp from '@/components/ui/PopUp';
-import { useRouter } from 'next/navigation';
 
 const DocumentNewPage = () => {
-  const router = useRouter();
-
   const [selectedIndexGroup, setSelectedIndexGroup] = useState<{
     document: number | null;
     year: number | null;
@@ -67,7 +60,7 @@ const DocumentNewPage = () => {
     <div>
       <DialogHeader title="서류 등록" />
       <main className="px-6 py-4">
-        <div className="flex flex-col gap-10">
+        <div className="mx-auto flex max-w-screen-md flex-col gap-10">
           <FormControl label="서류명" required>
             <div className="flex flex-col gap-2">
               <Dropdown

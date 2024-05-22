@@ -40,7 +40,7 @@ const MyPage = () => {
       <GrayBackground />
       <div>
         <header className="fixed z-10 w-full bg-gray-00 p-4">
-          <div className="flex items-center gap-2">
+          <div className="mx-auto flex max-w-screen-lg items-center gap-2">
             <div className="overflow-hidden rounded-full">
               <Image
                 src="/images/placeholders/placeholder-profile.png"
@@ -72,8 +72,8 @@ const MyPage = () => {
         </header>
         <div className="h-[120px]" />
       </div>
-      <main>
-        <ul className="flex flex-col gap-4 px-4 py-6">
+      <main className="px-4">
+        <ul className="mx-auto flex max-w-screen-lg flex-col gap-4 py-6">
           {menuList.map((menu, index) => (
             <li key={index}>
               <Link

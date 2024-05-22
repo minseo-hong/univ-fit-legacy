@@ -29,7 +29,7 @@ const BackButtonHeader = ({
   return (
     <Wrapper>
       <div
-        className={clsx('flex w-full justify-center bg-gray-00 px-4', {
+        className={clsx('flex w-full justify-center bg-gray-00', {
           'fixed z-10': fixed,
         })}
       >
