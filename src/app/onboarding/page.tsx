@@ -80,7 +80,10 @@ const Onboarding = () => {
         birthYear: value.year !== null ? Number(yearList[value.year]) : null,
         underPrivilegedInfo:
           value.socialSupportBracket !== null
-            ? socialSupportBracketList[value.socialSupportBracket]
+            ? socialSupportBracketList[value.socialSupportBracket] ===
+              '해당없음'
+              ? null
+              : socialSupportBracketList[value.socialSupportBracket]
             : null,
         totalFullGrade:
           value.maxGpa !== null ? Number(maxGpaList[value.maxGpa]) : null,
