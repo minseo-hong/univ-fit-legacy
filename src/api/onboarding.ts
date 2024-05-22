@@ -1,9 +1,7 @@
 import { getTokenCookie } from '@/app/actions/cookies';
 import { PrivacyInputValue } from '@/interfaces/privacy';
 
-export const fetchNickname = async (nickname: string) => {
-  const accessToken = await getTokenCookie();
-
+export const fetchNickname = async (nickname: string, accessToken: string) => {
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_SERVER_API_URL}/onboards/nick-name`,
     {

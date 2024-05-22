@@ -52,7 +52,10 @@ const Onboarding = () => {
   const handleNextButtonClick = async () => {
     window.scrollTo(0, 0);
     if (page === 0) {
-      const res = await fetchNickname(nickname);
+      const res = await fetchNickname(
+        nickname,
+        localStorage.getItem('access_token') || '',
+      );
       console.log(res.data);
       const accessToken = res.data.accessToken;
       setTokenCookie(accessToken);
@@ -96,6 +99,7 @@ const Onboarding = () => {
             : null,
       });
       console.log(res.data);
+      localStorage.removeItem('access_token');
     }
     if (page <= 3) {
       setPage(page + 1);

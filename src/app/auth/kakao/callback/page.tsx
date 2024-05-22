@@ -28,7 +28,7 @@ const AuthKakaoCallback = () => {
         );
         const data = await res2.json();
         const res = await fetchSocialLogin(data.access_token, 'kakao');
-        setTokenCookie(res.data.accessToken);
+        localStorage.setItem('access_token', res.data.accessToken);
         if (!res.data.isOnboarding) {
           window.location.href = '/onboarding';
         } else {
