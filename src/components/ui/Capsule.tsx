@@ -10,7 +10,8 @@ interface CapsuleProps extends React.HTMLAttributes<HTMLElement> {
     | 'primary'
     | 'stroke-default'
     | 'stroke-primary'
-    | 'stroke-success';
+    | 'stroke-success'
+    | 'stroke-danger';
   size: 'sm' | 'md' | 'lg';
   children: React.ReactNode;
 }
@@ -42,6 +43,8 @@ const Capsule = ({
             variant === 'stroke-default',
           'border border-success-20 bg-gray-00 text-success-50':
             variant === 'stroke-success',
+          'border border-danger-50 bg-gray-00 text-danger-50':
+            variant === 'stroke-danger',
         },
         {
           'title-sm-200 px-6 py-3': size === 'lg',

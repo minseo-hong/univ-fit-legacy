@@ -1,94 +1,50 @@
 import Image from 'next/image';
+import Link from 'next/link';
 
 import Capsule from '@/components/ui/Capsule';
 import HeartFilledIcon from '@/components/ui/icon/HeartFilledIcon';
-import Link from 'next/link';
+import { fetchFavoriteScholarships } from '@/api/my-scholarships';
 
-const MyScholarshipsFavoritePage = () => {
+const MyScholarshipsFavoritePage = async () => {
+  const res = await fetchFavoriteScholarships();
+
   const scholarshipList: {
-    id: number;
-    name: string;
-    organization: string;
+    scholarshipId: number;
+    scholarShipImage: string;
+    scholarshipName: string;
+    scholarshipFoundation: string;
+    scholarshipStatus: string;
+    applicationPeriod: string;
+    remainingDays: number;
+    applyPossible: string;
     startDate: string;
     endDate: string;
-    imageSrc: string;
     status: 'PASS' | 'FAIL' | 'NONE';
-  }[] = [
-    {
-      id: 1,
-      name: '장학금명',
-      organization: '재단명',
-      startDate: '2024-04-01',
-      endDate: '2024-04-23',
-      imageSrc: '/images/placeholders/placeholder-image.png',
-      status: 'PASS',
-    },
-    {
-      id: 2,
-      name: '장학금명',
-      organization: '재단명',
-      startDate: '2024-04-01',
-      endDate: '2024-04-22',
-      imageSrc: '/images/placeholders/placeholder-image.png',
-      status: 'FAIL',
-    },
-    {
-      id: 3,
-      name: '장학금명',
-      organization: '재단명',
-      startDate: '2024-04-01',
-      endDate: '2024-04-22',
-      imageSrc: '/images/placeholders/placeholder-image.png',
-      status: 'NONE',
-    },
-    {
-      id: 4,
-      name: '장학금명',
-      organization: '재단명',
-      startDate: '2024-04-01',
-      endDate: '2024-04-21',
-      imageSrc: '/images/placeholders/placeholder-image.png',
-      status: 'PASS',
-    },
-    {
-      id: 5,
-      name: '장학금명',
-      organization: '재단명',
-      startDate: '2024-04-01',
-      endDate: '2024-04-20',
-      imageSrc: '/images/placeholders/placeholder-image.png',
-      status: 'FAIL',
-    },
-    {
-      id: 6,
-      name: '장학금명',
-      organization: '재단명',
-      startDate: '2024-04-01',
-      endDate: '2024-04-20',
-      imageSrc: '/images/placeholders/placeholder-image.png',
-      status: 'FAIL',
-    },
-  ];
-
-  const formatDateString = (dateString: string) => {
-    const date = new Date(dateString);
-    return `${date.getFullYear()}.${(date.getMonth() + 1).toString().padStart(2, '0')}.${date.getDate().toString().padStart(2, '0')}`;
-  };
+  }[] = res.data.announcementResponseList;
 
   return (
     <main className="p-4 pb-16">
       <ul className="mx-auto grid max-w-screen-lg grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
         {scholarshipList.map((scholarship) => (
-          <li key={scholarship.id}>
+          <li key={scholarship.scholarshipId}>
             <Link
-              href={`/my-scholarships/${scholarship.id}`}
+              href={`/my-scholarships/${scholarship.scholarshipId}`}
               className="flex flex-col gap-3 rounded-2xl border border-gray-10 bg-gray-00 p-4 pb-3"
             >
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <Capsule size="sm">D-12</Capsule>
-                  <Capsule size="sm" variant="stroke-success">
-                    지원대상
+                  <Capsule
+                    size="sm"
+                    variant={
+                      scholarship.applyPossible === '판단불가'
+                        ? 'stroke-default'
+                        : scholarship.applyPossible === '지원불가'
+                          ? 'stroke-danger'
+                          : 'stroke-success'
+                    }
+                  >
+                    {scholarship.applyPossible}
                   </Capsule>
                 </div>
                 <div>
@@ -100,22 +56,21 @@ const MyScholarshipsFavoritePage = () => {
               <div className="flex items-start gap-4">
                 <div className="overflow-hidden rounded-lg">
                   <Image
-                    src={scholarship.imageSrc}
-                    alt={scholarship.name}
+                    src={scholarship.scholarShipImage}
+                    alt={scholarship.scholarshipName}
                     width={64}
                     height={64}
                   />
                 </div>
                 <div className="flex flex-1 flex-col gap-1">
                   <h3 className="text-md-300 text-gray-70">
-                    {scholarship.name}
+                    {scholarship.scholarshipName}
                   </h3>
                   <div className="text-md-200 text-gray-40">
-                    {scholarship.organization}
+                    {scholarship.scholarshipFoundation}
                   </div>
                   <div className="caption-200 text-gray-30">
-                    {formatDateString(scholarship.startDate)} ~{' '}
-                    {formatDateString(scholarship.endDate)}
+                    {scholarship.applicationPeriod}
                   </div>
                 </div>
               </div>

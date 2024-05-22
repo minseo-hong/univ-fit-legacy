@@ -159,3 +159,47 @@ export const fetchScholarshipFoundationSummary = async (content: string) => {
 
   return res.json();
 };
+
+export const fetchCommentList = async (scholarshipId: number) => {
+  const accessToken = await getTokenCookie();
+
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_SERVER_API_URL}/announcements/${scholarshipId}/comments`,
+    {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${accessToken}`,
+      },
+      cache: 'no-store',
+    },
+  );
+
+  if (!res.ok) {
+    throw new Error('Failed to fetch data');
+  }
+
+  return res.json();
+};
+
+export const addComment = async (scholarshipId: number, content: string) => {
+  const accessToken = await getTokenCookie();
+
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_SERVER_API_URL}/announcements/${scholarshipId}/comments`,
+    {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${accessToken}`,
+      },
+      body: JSON.stringify({ commentContents: content }),
+    },
+  );
+
+  if (!res.ok) {
+    throw new Error('Failed to fetch data');
+  }
+
+  return res.json();
+};

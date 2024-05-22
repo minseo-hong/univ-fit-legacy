@@ -101,7 +101,7 @@ const ScholarshipDetailPage = async ({
           </div>
         </div>
         <ScholarshipTabSection
-          id={params.id}
+          scholarshipId={params.id}
           detailContents={scholarship.detailContents}
           foundation={scholarship.scholarshipFoundation}
         />

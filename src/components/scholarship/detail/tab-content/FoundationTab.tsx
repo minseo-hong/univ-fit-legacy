@@ -9,11 +9,11 @@ import {
 } from '@/api/scholarship';
 
 interface FoundationTabProps {
-  id: number;
+  scholarshipId: number;
   foundation: string;
 }
 
-const FoundationTab = ({ id, foundation }: FoundationTabProps) => {
+const FoundationTab = ({ scholarshipId, foundation }: FoundationTabProps) => {
   const [isSummaryModalOpen, setIsSummaryModalOpen] = useState<boolean>(false);
   const [foundationDescription, setFoundationDescription] =
     useState<string>('');
@@ -21,11 +21,11 @@ const FoundationTab = ({ id, foundation }: FoundationTabProps) => {
 
   useEffect(() => {
     const fetchFoundation = async () => {
-      const res = await fetchScholarshipFoundation(id);
+      const res = await fetchScholarshipFoundation(scholarshipId);
       setFoundationDescription(res.data.foundationInformation);
     };
     fetchFoundation();
-  }, [id]);
+  }, [scholarshipId]);
 
   const handleGetFoundationSummary = async () => {
     const res = await fetchScholarshipFoundationSummary(foundationDescription);

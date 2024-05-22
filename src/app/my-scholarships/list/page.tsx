@@ -1,9 +1,10 @@
+import { fetchMyApplyList } from '@/api/my-scholarships';
 import Status, { StatusProps } from '@/components/ui/Status';
 import clsx from 'clsx';
 import Image from 'next/image';
 import Link from 'next/link';
 
-const MyScholarshipsListPage = ({
+const MyScholarshipsListPage = async ({
   searchParams,
 }: {
   searchParams: { status: string };
@@ -26,76 +27,56 @@ const MyScholarshipsListPage = ({
     },
   ];
 
+  const res = await fetchMyApplyList(
+    searchParams.status === undefined
+      ? 'all'
+      : (searchParams.status as 'pass' | 'fail'),
+  );
+
   const scholarshipList: {
-    id: number;
-    name: string;
-    organization: string;
-    startDate: string;
-    endDate: string;
-    imageSrc: string;
-    status: 'PASS' | 'FAIL' | 'NONE';
+    applyId: number;
+    scholarShipName: string;
+    scholarShipFoundation: string;
+    endDocumentDate: string;
+    announcementImageUrl: string;
+    applyStatus: '합격' | '불합격' | '미입력';
+    applicationPeriod: string;
   }[] = [
     {
-      id: 1,
-      name: '장학금명',
-      organization: '재단명',
-      startDate: '2024-04-01',
-      endDate: '2024-04-23',
-      imageSrc: '/images/placeholders/placeholder-image.png',
-      status: 'PASS',
+      applyId: 1,
+      scholarShipName: '2021년도 1학기 장학금',
+      scholarShipFoundation: '한국장학재단',
+      endDocumentDate: '2021-12-31T15:00:00',
+      announcementImageUrl: '/images/placeholders/placeholder-image.png',
+      applyStatus: '합격',
+      applicationPeriod: '2021-12-31T15:00:00',
     },
     {
-      id: 2,
-      name: '장학금명',
-      organization: '재단명',
-      startDate: '2024-04-01',
-      endDate: '2024-04-22',
-      imageSrc: '/images/placeholders/placeholder-image.png',
-      status: 'FAIL',
+      applyId: 2,
+      scholarShipName: '2021년도 2학기 장학금',
+      scholarShipFoundation: '한국장학재단',
+      endDocumentDate: '2021-12-31T15:00:00',
+      announcementImageUrl: '/images/placeholders/placeholder-image.png',
+      applyStatus: '불합격',
+      applicationPeriod: '2021-12-31T15:00:00',
     },
     {
-      id: 3,
-      name: '장학금명',
-      organization: '재단명',
-      startDate: '2024-04-01',
-      endDate: '2024-04-22',
-      imageSrc: '/images/placeholders/placeholder-image.png',
-      status: 'NONE',
-    },
-    {
-      id: 4,
-      name: '장학금명',
-      organization: '재단명',
-      startDate: '2024-04-01',
-      endDate: '2024-04-21',
-      imageSrc: '/images/placeholders/placeholder-image.png',
-      status: 'PASS',
-    },
-    {
-      id: 5,
-      name: '장학금명',
-      organization: '재단명',
-      startDate: '2024-04-01',
-      endDate: '2024-04-20',
-      imageSrc: '/images/placeholders/placeholder-image.png',
-      status: 'FAIL',
-    },
-    {
-      id: 6,
-      name: '장학금명',
-      organization: '재단명',
-      startDate: '2024-04-01',
-      endDate: '2024-04-20',
-      imageSrc: '/images/placeholders/placeholder-image.png',
-      status: 'FAIL',
+      applyId: 3,
+      scholarShipName: '2021년도 3학기 장학금',
+      scholarShipFoundation: '한국장학재단',
+      endDocumentDate: '2021-12-31T15:00:00',
+      announcementImageUrl: '/images/placeholders/placeholder-image.png',
+      applyStatus: '미입력',
+      applicationPeriod: '2021-12-31T15:00:00',
     },
   ];
+  // res.data.applyList
 
   const filterScholarshipList = scholarshipList.filter((scholarship) => {
     if (searchParams.status === 'pass') {
-      return scholarship.status === 'PASS';
+      return scholarship.applyStatus === '합격';
     } else if (searchParams.status === 'fail') {
-      return scholarship.status === 'FAIL';
+      return scholarship.applyStatus === '불합격';
     } else {
       return true;
     }
@@ -125,47 +106,46 @@ const MyScholarshipsListPage = ({
         </div>
         <ul className="mt-4 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
           {filterScholarshipList.map((scholarship) => (
-            <li key={scholarship.id}>
+            <li key={scholarship.applyId}>
               <Link
-                href={`/my-scholarships/${scholarship.id}`}
+                href={`/my-scholarships/${scholarship.applyId}`}
                 className="flex items-start gap-4 rounded-2xl border border-gray-10 bg-gray-00 p-4 pb-3"
               >
                 <div className="overflow-hidden rounded-lg">
                   <Image
-                    src={scholarship.imageSrc}
-                    alt={scholarship.name}
+                    src={scholarship.announcementImageUrl}
+                    alt={scholarship.scholarShipName}
                     width={64}
                     height={64}
                   />
                 </div>
                 <div className="flex flex-1 flex-col gap-1">
                   <h3 className="text-md-300 text-gray-70">
-                    {scholarship.name}
+                    {scholarship.scholarShipName}
                   </h3>
                   <div className="text-md-200 text-gray-40">
-                    {scholarship.organization}
+                    {scholarship.scholarShipFoundation}
                   </div>
                   <div className="caption-200 text-gray-30">
-                    {formatDateString(scholarship.startDate)} ~{' '}
-                    {formatDateString(scholarship.endDate)}
+                    {formatDateString(scholarship.endDocumentDate)}
                   </div>
                 </div>
                 <div>
                   <Status
                     variant={
-                      (scholarship.status === 'PASS'
+                      (scholarship.applyStatus === '합격'
                         ? 'success'
-                        : scholarship.status === 'FAIL'
+                        : scholarship.applyStatus === '불합격'
                           ? 'danger'
-                          : scholarship.status === 'NONE' &&
+                          : scholarship.applyStatus === '미입력' &&
                             'stroke-default') as StatusProps['variant']
                     }
                   >
-                    {scholarship.status === 'PASS'
+                    {scholarship.applyStatus === '합격'
                       ? '합격'
-                      : scholarship.status === 'FAIL'
+                      : scholarship.applyStatus === '불합격'
                         ? '불합격'
-                        : scholarship.status === 'NONE' && '미입력'}
+                        : scholarship.applyStatus === '미입력' && '미입력'}
                   </Status>
                 </div>
               </Link>

@@ -8,17 +8,17 @@ import { fetchScholarshipDocumentList } from '@/api/scholarship';
 import Link from 'next/link';
 
 interface SubmissionTabProps {
-  id: number;
+  scholarshipId: number;
 }
 
-const SubmissionTab = ({ id }: SubmissionTabProps) => {
+const SubmissionTab = ({ scholarshipId }: SubmissionTabProps) => {
   const [documentList, setDocumentList] = useState<
     DocumentListProps['documentList']
   >([]);
 
   useEffect(() => {
     const fetchDocumentList = async () => {
-      const res = await fetchScholarshipDocumentList(id);
+      const res = await fetchScholarshipDocumentList(scholarshipId);
       setDocumentList(res.data);
     };
     fetchDocumentList();

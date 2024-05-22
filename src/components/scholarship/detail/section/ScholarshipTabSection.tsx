@@ -8,13 +8,13 @@ import FoundationTab from '../tab-content/FoundationTab';
 import CommentsTab from '../tab-content/CommentsTab';
 
 interface ScholarshipTabSectionProps {
-  id: number;
+  scholarshipId: number;
   detailContents: string;
   foundation: string;
 }
 
 const ScholarshipTabSection = ({
-  id,
+  scholarshipId,
   detailContents,
   foundation,
 }: ScholarshipTabSectionProps) => {
@@ -49,11 +49,14 @@ const ScholarshipTabSection = ({
         {tabActiveIndex === 0 ? (
           <DetailContentTab detailContents={detailContents} />
         ) : tabActiveIndex === 1 ? (
-          <SubmissionTab id={id} />
+          <SubmissionTab scholarshipId={scholarshipId} />
         ) : tabActiveIndex === 2 ? (
-          <FoundationTab id={id} foundation={foundation} />
+          <FoundationTab
+            scholarshipId={scholarshipId}
+            foundation={foundation}
+          />
         ) : (
-          tabActiveIndex === 3 && <CommentsTab />
+          tabActiveIndex === 3 && <CommentsTab scholarshipId={scholarshipId} />
         )}
       </div>
     </section>

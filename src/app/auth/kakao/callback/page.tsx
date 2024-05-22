@@ -1,16 +1,15 @@
 'use client';
 
+import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
+
 import { fetchSocialLogin } from '@/api/auth';
 import { setTokenCookie } from '@/app/actions/cookies';
-import { useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react';
 
-const AuthKakaoCallback = ({
-  searchParams,
-}: {
-  searchParams: { code: string };
-}) => {
+const AuthKakaoCallback = () => {
   const router = useRouter();
+
+  const code = new URL(window.location.href).searchParams.get('code');
 
   const [onlyOnce, setOnlyOnce] = useState(true);
 
@@ -18,9 +17,9 @@ const AuthKakaoCallback = ({
     if (!onlyOnce) return;
     const fetchLogin = async () => {
       try {
-        console.log(searchParams.code);
+        console.log(code);
         const res2 = await fetch(
-          `https://kauth.kakao.com/oauth/token?grant_type=authorization_code&client_id=${process.env.NEXT_PUBLIC_KAKAO_REST_API_KEY}&redirect_uri=${process.env.NEXT_PUBLIC_KAKAO_REDIRECT_URL}&code=${searchParams.code}&client_secret=${process.env.NEXT_PUBLIC_KAKAO_CLIENT_SECRET}`,
+          `https://kauth.kakao.com/oauth/token?grant_type=authorization_code&client_id=${process.env.NEXT_PUBLIC_KAKAO_REST_API_KEY}&redirect_uri=${process.env.NEXT_PUBLIC_KAKAO_REDIRECT_URL}&code=${code}&client_secret=${process.env.NEXT_PUBLIC_KAKAO_CLIENT_SECRET}`,
           {
             method: 'GET',
             headers: {
