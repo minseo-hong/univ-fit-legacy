@@ -100,7 +100,7 @@ const Onboarding = () => {
     if (page <= 3) {
       setPage(page + 1);
     } else {
-      router.push('/');
+      window.location.href = '/';
     }
   };
 

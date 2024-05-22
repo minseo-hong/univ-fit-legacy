@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 
 import MenuIcon from '../icon/MenuIcon';
@@ -8,17 +8,16 @@ import SearchIcon from '../icon/SearchIcon';
 import Drawer, { DrawerProps } from './Drawer';
 import SearchBarModal from './SearchBarModal';
 import SearchBar from './SearchBar';
-import NoteIcon from '../icon/NoteIcon';
-import ListSearchIcon from '../icon/ListSearchIcon';
-import ReportMoneyIcon from '../icon/ReportMoneyIcon';
-import FilePencilIcon from '../icon/FilePencilIcon';
-import NewsIcon from '../icon/NewsIcon';
-import Logout2Icon from '../icon/Logout2Icon';
+import ProfileDesktop from './ProfileDesktop';
+import { deleteTokenCookie, getTokenCookie } from '@/app/actions/cookies';
+import { fetchMyInfo } from '@/api/mypage';
 
 const NavBar = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState<boolean>(false);
   const [isSearchBarOpen, setIsSearchBarOpen] = useState<boolean>(false);
-  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(true);
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean | null>(null);
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState<boolean>(false);
+  const [nickname, setNickname] = useState<string>('');
 
   const menuList: DrawerProps['menuList'] = [
     {
@@ -59,8 +58,33 @@ const NavBar = () => {
       topDivider: true,
       hidden: !isLoggedIn,
       screenOnly: 'MOBILE',
+      onClick: () => {
+        deleteTokenCookie();
+        setIsDrawerOpen(false);
+        window.location.href = '/';
+      },
     },
   ];
+
+  const handleAuthButtonClick = () => {
+    setIsLoginModalOpen(true);
+  };
+
+  useEffect(() => {
+    const fetchCookieAndLogIn = async () => {
+      const token = await getTokenCookie();
+      setIsLoggedIn(token !== null);
+    };
+    fetchCookieAndLogIn();
+  }, []);
+
+  useEffect(() => {
+    const fetchMyInfoLogic = async () => {
+      const res = await fetchMyInfo();
+      setNickname(res.data.nickname);
+    };
+    fetchMyInfoLogic();
+  }, []);
 
   return (
     <>
@@ -68,22 +92,46 @@ const NavBar = () => {
         <nav className="fixed left-0 top-0 z-50 flex w-full justify-center bg-gray-00 px-4 py-3">
           <div className="flex w-full max-w-screen-lg flex-col gap-4">
             <div className="flex items-center justify-between">
-              <Link href="/">
-                <img
-                  src="/logo/navbar-header-logo.svg"
-                  alt="네비게이션 헤더 로고"
-                />
-              </Link>
-              <div className="flex items-center gap-4 text-[1.5rem] lg:hidden">
-                <button>
-                  <SearchIcon onClick={() => setIsSearchBarOpen(true)} />
-                </button>
-                <button onClick={() => setIsDrawerOpen(true)}>
-                  <MenuIcon />
-                </button>
+              <div className="flex items-center gap-8">
+                <Link href="/">
+                  <img
+                    src="/logo/navbar-header-logo.svg"
+                    alt="네비게이션 헤더 로고"
+                  />
+                </Link>
+                <div className="hidden lg:block">
+                  <SearchBar className="w-[25rem]" />
+                </div>
               </div>
-              <div className="hidden lg:block">
-                <SearchBar className="w-[15rem]" />
+              <div>
+                {isLoggedIn === null ? null : isLoggedIn ? (
+                  <div className="hidden lg:block">
+                    <ProfileDesktop nickname={nickname} />
+                  </div>
+                ) : (
+                  <div className="text-lg-200 hidden items-center gap-2 text-gray-40 lg:flex">
+                    <span
+                      onClick={handleAuthButtonClick}
+                      className="cursor-pointer"
+                    >
+                      로그인
+                    </span>
+                    <span
+                      onClick={handleAuthButtonClick}
+                      className="cursor-pointer"
+                    >
+                      회원가입
+                    </span>
+                  </div>
+                )}
+                <div className="flex items-center gap-4 text-[1.5rem] lg:hidden">
+                  <button>
+                    <SearchIcon onClick={() => setIsSearchBarOpen(true)} />
+                  </button>
+                  <button onClick={() => setIsDrawerOpen(true)}>
+                    <MenuIcon />
+                  </button>
+                </div>
               </div>
             </div>
             <nav className="hidden lg:block">
@@ -108,6 +156,9 @@ const NavBar = () => {
         setIsDrawerOpen={setIsDrawerOpen}
         menuList={menuList}
         isLoggedIn={isLoggedIn}
+        isLoginModalOpen={isLoginModalOpen}
+        setIsLoginModalOpen={setIsLoginModalOpen}
+        nickname={nickname}
       />
       <SearchBarModal
         isSearchBarOpen={isSearchBarOpen}

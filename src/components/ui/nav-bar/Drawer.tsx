@@ -18,8 +18,12 @@ export interface DrawerProps {
     topDivider?: boolean;
     hidden?: boolean;
     screenOnly?: 'DESKTOP' | 'MOBILE';
+    onClick?: () => void;
   }[];
-  isLoggedIn: boolean;
+  isLoggedIn: boolean | null;
+  isLoginModalOpen: boolean;
+  setIsLoginModalOpen: (isLoginModalOpen: boolean) => void;
+  nickname: string;
 }
 
 const Drawer = ({
@@ -27,10 +31,11 @@ const Drawer = ({
   setIsDrawerOpen,
   menuList,
   isLoggedIn,
+  isLoginModalOpen,
+  setIsLoginModalOpen,
+  nickname,
 }: DrawerProps) => {
   const router = useRouter();
-
-  const [isLoginModalOpen, setIsLoginModalOpen] = useState<boolean>(false);
 
   const handleMenuClick = () => {
     setIsDrawerOpen(false);
@@ -86,7 +91,7 @@ const Drawer = ({
                 'text-gray-40': !isLoggedIn,
               })}
             >
-              {isLoggedIn ? '악어왕도마뱀' : '로그인 후 이용해주세요.'}
+              {isLoggedIn ? nickname : '로그인 후 이용해주세요.'}
             </div>
             <div>
               <span className="text-[1.5rem] text-gray-40">
@@ -99,7 +104,7 @@ const Drawer = ({
               (menu, index) =>
                 menu.screenOnly !== 'DESKTOP' &&
                 !menu.hidden && (
-                  <li key={index}>
+                  <li key={index} onClick={menu.onClick}>
                     {menu.topDivider && (
                       <div className="my-2 border-t border-gray-10" />
                     )}

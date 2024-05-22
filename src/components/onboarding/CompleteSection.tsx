@@ -1,5 +1,4 @@
 import clsx from 'clsx';
-import { useRouter } from 'next/navigation';
 
 import CheckIcon from '../ui/icon/CheckIcon';
 import Capsule from '../ui/Capsule';
@@ -10,10 +9,8 @@ interface NicknameSectionProps {
 }
 
 const CompleteSection = ({ isVisible }: NicknameSectionProps) => {
-  const router = useRouter();
-
   const handleButtonClick = () => {
-    router.push('/scholarships');
+    window.location.href = '/recommend';
   };
 
   return (

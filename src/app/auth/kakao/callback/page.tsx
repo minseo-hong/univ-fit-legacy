@@ -3,7 +3,7 @@
 import { fetchSocialLogin } from '@/api/auth';
 import { setTokenCookie } from '@/app/actions/cookies';
 import { useRouter } from 'next/navigation';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 const AuthKakaoCallback = ({
   searchParams,
@@ -12,7 +12,10 @@ const AuthKakaoCallback = ({
 }) => {
   const router = useRouter();
 
+  const [onlyOnce, setOnlyOnce] = useState(true);
+
   useEffect(() => {
+    if (!onlyOnce) return;
     const fetchLogin = async () => {
       try {
         console.log(searchParams.code);
@@ -33,6 +36,7 @@ const AuthKakaoCallback = ({
         } else {
           router.push('/');
         }
+        setOnlyOnce(false);
       } catch (error) {
         console.error(error);
       }
