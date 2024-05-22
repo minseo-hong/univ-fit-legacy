@@ -30,7 +30,7 @@ const AuthKakaoCallback = () => {
         const res = await fetchSocialLogin(data.access_token, 'kakao');
         setTokenCookie(res.data.accessToken);
         if (!res.data.isOnboarding) {
-          router.push('/onboarding');
+          window.location.href = '/onboarding';
         } else {
           window.location.href = '/';
         }
