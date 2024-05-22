@@ -4,6 +4,7 @@ import GrayBackground from './global-style/GrayBackground';
 import Capsule from './Capsule';
 import FavoriteButtonWrapper from './FavoriteButtonWrapper';
 import Image from 'next/image';
+import clsx from 'clsx';
 
 export interface ScholarshipListContentProps {
   title: string;
@@ -16,7 +17,7 @@ export interface ScholarshipListContentProps {
     scholarShipImage: string;
     applicationPeriod: string;
     remainingDays: number;
-    applyPossible: '판단불가';
+    applyPossible: '판단불가' | '지원불가' | '지원대상';
     isFavorite: boolean;
   }[];
 }
@@ -63,16 +64,25 @@ const ScholarshipListContent = ({
                 <div className="flex flex-col gap-3">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
-                      {scholarship.remainingDays >= 0 && (
-                        <Capsule size="sm">
-                          D-{scholarship.remainingDays}
-                        </Capsule>
-                      )}
-                      {scholarship.applyPossible === '판단불가' && (
-                        <Capsule variant="stroke-success" size="sm">
-                          판단불가
-                        </Capsule>
-                      )}
+                      <Capsule size="sm">
+                        {scholarship.remainingDays >= 0
+                          ? `D-${scholarship.remainingDays}`
+                          : '모집마감'}
+                      </Capsule>
+                      <Capsule
+                        variant={
+                          scholarship.applyPossible === '지원불가'
+                            ? 'stroke-danger'
+                            : scholarship.applyPossible === '지원대상'
+                              ? 'stroke-success'
+                              : scholarship.applyPossible === '판단불가'
+                                ? 'stroke-default'
+                                : 'stroke-default'
+                        }
+                        size="sm"
+                      >
+                        {scholarship.applyPossible}
+                      </Capsule>
                     </div>
                     <FavoriteButtonWrapper
                       isFavorite={scholarship.isFavorite}

@@ -20,7 +20,7 @@ const CompleteSection = ({ isVisible }: NicknameSectionProps) => {
         block: isVisible,
       })}
     >
-      <div className="flex -translate-y-10 flex-col items-center">
+      <div className="flex flex-col items-center">
         <div>
           <span className="text-[3rem] text-primary">
             <CheckIcon />
@@ -30,7 +30,7 @@ const CompleteSection = ({ isVisible }: NicknameSectionProps) => {
         <Capsule
           size="lg"
           variant="primary"
-          className="mt-10 flex items-center justify-center gap-1"
+          className="mt-10 flex cursor-pointer items-center justify-center gap-1"
           onClick={handleButtonClick}
         >
           <span className="text-[1.5rem]">

@@ -66,9 +66,7 @@ export const fetchRecommendScholarship = async (
   return res.json();
 };
 
-export const fetchAllScholarship = async (
-  status: ('ING' | 'UPCOMING' | 'FINISHED')[],
-) => {
+export const fetchAllScholarship = async (status: string[]) => {
   const accessToken = await getTokenCookie();
 
   const res = await fetch(

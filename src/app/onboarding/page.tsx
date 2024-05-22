@@ -190,7 +190,7 @@ const Onboarding = () => {
         <div
           className={clsx('h-full px-6 pb-36 pt-6', {
             'pt-2': page === 0,
-            'pb-0 pt-0': page === 4,
+            'flex items-center justify-center pb-0 pt-0': page === 4,
           })}
         >
           <div className="mx-auto max-w-screen-md">
