@@ -13,7 +13,7 @@ import MessageDotsIcon from '@/components/ui/icon/MessageDotsIcon';
 import PencilIcon from '@/components/ui/icon/PencilIcon';
 import Link from 'next/link';
 
-const MyScholarshipPage = () => {
+const MyScholarshipPage = ({ params }: { params: { id: number } }) => {
   const coverLetterList: {
     id: number;
     name: string;
@@ -92,7 +92,12 @@ const MyScholarshipPage = () => {
             </div>
             <div>
               <div className="flex w-full items-center justify-center gap-1 border border-gray-05 py-4 text-gray-40">
-                <span className="text-md-200">공고로 이동하기</span>
+                <Link
+                  href={`/scholarships/${params.id}`}
+                  className="text-md-200"
+                >
+                  공고로 이동하기
+                </Link>
                 <span>
                   <ChevronRightIcon />
                 </span>

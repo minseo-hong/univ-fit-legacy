@@ -203,3 +203,49 @@ export const addComment = async (scholarshipId: number, content: string) => {
 
   return res.json();
 };
+
+export const fetchLike = async (scholarshipId: number, isLike: boolean) => {
+  const accessToken = await getTokenCookie();
+
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_SERVER_API_URL}/announcements/${scholarshipId}/likes`,
+    {
+      method: isLike ? 'POST' : 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${accessToken}`,
+      },
+      cache: 'no-store',
+    },
+  );
+
+  if (!res.ok) {
+    throw new Error('Failed to fetch data');
+  }
+
+  return res.json();
+};
+
+export const fetchSave = async (scholarshipId: number, isSave: boolean) => {
+  const accessToken = await getTokenCookie();
+
+  const res = await fetch(
+    isSave
+      ? `${process.env.NEXT_PUBLIC_SERVER_API_URL}/announcements/${scholarshipId}`
+      : `${process.env.NEXT_PUBLIC_SERVER_API_URL}/members/application/${scholarshipId}`,
+    {
+      method: isSave ? 'POST' : 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${accessToken}`,
+      },
+      cache: 'no-store',
+    },
+  );
+
+  if (!res.ok) {
+    throw new Error('Failed to fetch data');
+  }
+
+  return res.json();
+};

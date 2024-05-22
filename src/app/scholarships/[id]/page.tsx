@@ -28,6 +28,7 @@ const ScholarshipDetailPage = async ({
     applyCondition: string[];
     detailContents: string;
     likes: number;
+    memberIsLiked: boolean;
   } = res.data;
 
   return (
@@ -105,7 +106,11 @@ const ScholarshipDetailPage = async ({
           detailContents={scholarship.detailContents}
           foundation={scholarship.scholarshipFoundation}
         />
-        <ScholarshipBottomAction />
+        <ScholarshipBottomAction
+          memberIsLiked={scholarship.memberIsLiked}
+          likes={scholarship.likes}
+          scholarshipId={scholarship.scholarshipId}
+        />
       </main>
     </div>
   );
