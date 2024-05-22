@@ -11,6 +11,7 @@ import SearchBar from './SearchBar';
 import ProfileDesktop from './ProfileDesktop';
 import { deleteTokenCookie, getTokenCookie } from '@/app/actions/cookies';
 import { fetchMyInfo } from '@/api/mypage';
+import PopUp from '../PopUp';
 
 const NavBar = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState<boolean>(false);
@@ -18,6 +19,8 @@ const NavBar = () => {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean | null>(null);
   const [isLoginModalOpen, setIsLoginModalOpen] = useState<boolean>(false);
   const [nickname, setNickname] = useState<string>('');
+  const [isSearchBarPopUpOpen, setIsSearchBarPopUpOpen] =
+    useState<boolean>(false);
 
   const menuList: DrawerProps['menuList'] = [
     {
@@ -86,6 +89,11 @@ const NavBar = () => {
     fetchMyInfoLogic();
   }, []);
 
+  const handleSearchBarSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSearchBarPopUpOpen(true);
+  };
+
   return (
     <>
       <div className="nav-bar">
@@ -99,9 +107,12 @@ const NavBar = () => {
                     alt="네비게이션 헤더 로고"
                   />
                 </Link>
-                <div className="hidden lg:block">
+                <form
+                  className="hidden lg:block"
+                  onSubmit={handleSearchBarSubmit}
+                >
                   <SearchBar className="w-[25rem]" />
-                </div>
+                </form>
               </div>
               <div>
                 {isLoggedIn === null ? null : isLoggedIn ? (
@@ -164,6 +175,20 @@ const NavBar = () => {
         isSearchBarOpen={isSearchBarOpen}
         setIsSearchBarOpen={setIsSearchBarOpen}
       />
+      {isSearchBarPopUpOpen && (
+        <PopUp
+          confirmButton={{
+            label: '확인',
+          }}
+          cancelButton={{
+            label: '취소',
+          }}
+          onConfirm={() => setIsSearchBarPopUpOpen(false)}
+          onCancel={() => setIsSearchBarPopUpOpen(false)}
+        >
+          지원하지 않는 기능입니다.
+        </PopUp>
+      )}
     </>
   );
 };
