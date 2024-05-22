@@ -122,20 +122,24 @@ const Onboarding = () => {
   return (
     <div className="flex h-full flex-col">
       <div>
-        <div className="fixed grid h-[3.5rem] w-full grid-cols-3 items-center bg-white p-4">
-          <div>
-            <button
-              onClick={
-                page === 0 ? handleCloseButtonClick : handlePreviousButtonClick
-              }
-            >
-              <span className="text-[1.5rem]">
-                {page === 0 ? <XIcon /> : <ChevronLeftIcon />}
-              </span>
-            </button>
-          </div>
-          <div className="title-sm-200 text-center text-gray-90">
-            기본 정보 입력
+        <div className="fixed h-[3.5rem] w-full bg-white p-4">
+          <div className="mx-auto grid max-w-screen-md grid-cols-3">
+            <div>
+              <button
+                onClick={
+                  page === 0
+                    ? handleCloseButtonClick
+                    : handlePreviousButtonClick
+                }
+              >
+                <span className="text-[1.5rem]">
+                  {page === 0 ? <XIcon /> : <ChevronLeftIcon />}
+                </span>
+              </button>
+            </div>
+            <div className="title-sm-200 text-center text-gray-90">
+              기본 정보 입력
+            </div>
           </div>
         </div>
         <div className="h-[3.5rem]" />
@@ -144,7 +148,7 @@ const Onboarding = () => {
       {page !== 0 && (
         <div>
           <div className="fixed z-10 w-full bg-white">
-            <div>
+            <div className="mx-auto max-w-screen-md">
               <div
                 className="flex h-[6.5rem] w-full flex-col gap-2 bg-primary-00 px-6 py-4"
                 style={{
@@ -177,28 +181,32 @@ const Onboarding = () => {
       )}
       <main className="flex-1">
         <div
-          className={clsx('h-full p-6 pb-36', {
+          className={clsx('h-full px-6 pb-36 pt-6', {
             'pt-2': page === 0,
             'pb-0 pt-0': page === 4,
           })}
         >
-          <NicknameSection
-            nickname={nickname}
-            setNickname={setNickname}
-            isVisible={page === 0}
-          />
-          <FirstPrivacySection {...sectionProps} isVisible={page === 1} />
-          <SecondPrivacySection {...sectionProps} isVisible={page === 2} />
-          <ThirdPrivacySection {...sectionProps} isVisible={page === 3} />
-          <CompleteSection isVisible={page === 4} />
+          <div className="mx-auto max-w-screen-md">
+            <NicknameSection
+              nickname={nickname}
+              setNickname={setNickname}
+              isVisible={page === 0}
+            />
+            <FirstPrivacySection {...sectionProps} isVisible={page === 1} />
+            <SecondPrivacySection {...sectionProps} isVisible={page === 2} />
+            <ThirdPrivacySection {...sectionProps} isVisible={page === 3} />
+            <CompleteSection isVisible={page === 4} />
+          </div>
         </div>
       </main>
       <div className="h-24">
         <div />
         <div className="fixed bottom-8 w-full px-4">
-          <Button onClick={handleNextButtonClick}>
-            {page >= 4 ? '완료' : '다음'}
-          </Button>
+          <div className="mx-auto max-w-screen-md">
+            <Button onClick={handleNextButtonClick}>
+              {page >= 4 ? '완료' : '다음'}
+            </Button>
+          </div>
         </div>
       </div>
     </div>
