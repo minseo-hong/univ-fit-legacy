@@ -5,7 +5,7 @@ import BackButton from './BackButton';
 interface BackButtonProps {
   as?: React.ElementType;
   backButton: {
-    label: string;
+    label?: string;
     backUrl?: string;
     onClick?: () => void;
   };

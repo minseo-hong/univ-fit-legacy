@@ -4,9 +4,10 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
 import ChevronLeftIcon from './icon/ChevronLeftIcon';
+import clsx from 'clsx';
 
 interface BackButtonProps {
-  label: string;
+  label?: string;
   backUrl?: string;
   onClick?: () => void;
 }
@@ -29,7 +30,12 @@ const BackButton = ({ label, backUrl, onClick }: BackButtonProps) => {
       className="flex items-center gap-1 text-gray-40"
       onClick={handleBackButtonClick}
     >
-      <span className="text-[1.25rem]">
+      <span
+        className={clsx({
+          'text-[1.25rem]': label !== undefined,
+          'text-[1.5rem]': label === undefined,
+        })}
+      >
         <ChevronLeftIcon />
       </span>
       <span className="text-lg-200">{label}</span>

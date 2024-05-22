@@ -32,11 +32,7 @@ const ScholarshipDetailPage = async ({
 
   return (
     <div className="pb-24">
-      <BackButtonHeader
-        as="header"
-        backButton={{ label: '장학금 공고', backUrl: '-1' }}
-        fixed
-      />
+      <BackButtonHeader as="header" backButton={{ backUrl: '-1' }} fixed />
       <main className="md:px-4">
         <div className="mx-auto flex max-w-screen-lg flex-col md:flex-row md:gap-6 lg:gap-8">
           <section className="flex-1">
