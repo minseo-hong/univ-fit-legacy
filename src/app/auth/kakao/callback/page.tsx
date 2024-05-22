@@ -9,12 +9,11 @@ import { setTokenCookie } from '@/app/actions/cookies';
 const AuthKakaoCallback = () => {
   const router = useRouter();
 
-  const code = new URL(window.location.href).searchParams.get('code');
-
   const [onlyOnce, setOnlyOnce] = useState(true);
 
   useEffect(() => {
     if (!onlyOnce) return;
+    const code = new URL(window.location.href).searchParams.get('code');
     const fetchLogin = async () => {
       try {
         console.log(code);
