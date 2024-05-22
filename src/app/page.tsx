@@ -23,13 +23,26 @@ const Home = async () => {
   return (
     <main>
       <section className="px-3 pb-6 pt-2">
-        <div className="relative mx-auto h-[5rem] w-full max-w-screen-lg overflow-hidden rounded-2xl bg-[#18181A]">
-          <Image
-            src="/images/placeholders/placeholder-ad.png"
-            alt="상단 배너 광고 이미지"
-            fill
-            objectFit="contain"
-          />
+        <div
+          className="relative mx-auto flex w-full max-w-screen-lg justify-between overflow-hidden rounded-2xl bg-[#18181A] px-6 py-4 text-gray-00"
+          style={{
+            background: 'linear-gradient(93deg, #FAB928 0%, #F06E10 100%)',
+          }}
+        >
+          <div className="flex flex-col gap-1">
+            <span className="title-sm-300">최대 200만원 혜택?</span>
+            <span className="text-lg-200">
+              성적 기준 없는 장학금 지원하러가기
+            </span>
+          </div>
+          <div className="opacity-30 mix-blend-screen">
+            <Image
+              src="/images/banner-logo.svg"
+              alt="배너 로고"
+              width={64}
+              height={56}
+            />
+          </div>
         </div>
       </section>
       <section className="bg-gray-05 p-4">
