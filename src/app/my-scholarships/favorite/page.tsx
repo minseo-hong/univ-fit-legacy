@@ -77,7 +77,7 @@ const MyScholarshipsFavoritePage = () => {
 
   return (
     <main className="p-4 pb-16">
-      <ul className="flex flex-col gap-4">
+      <ul className="mx-auto grid max-w-screen-lg grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
         {scholarshipList.map((scholarship) => (
           <li key={scholarship.id}>
             <Link

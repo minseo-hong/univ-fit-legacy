@@ -34,7 +34,7 @@ const AuthKakaoCallback = ({
         if (!res.data.isOnboarding) {
           router.push('/onboarding');
         } else {
-          router.push('/');
+          window.location.href = '/';
         }
         setOnlyOnce(false);
       } catch (error) {

@@ -77,7 +77,7 @@ const MyScholarshipsDatePage = () => {
 
   return (
     <main className="p-4 pb-16">
-      <div className="flex flex-col gap-6">
+      <div className="mx-auto flex max-w-screen-lg flex-col gap-6">
         {dateList.map((date) => (
           <div key={date}>
             <h2 className="text-lg-200 ml-2 text-gray-80">

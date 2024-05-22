@@ -108,67 +108,71 @@ const MyScholarshipsListPage = ({
 
   return (
     <main className="p-4 pb-16">
-      <div className="flex items-center gap-2">
-        {badgeList.map((badge, index) => (
-          <Link
-            key={index}
-            href={badge.href}
-            className={clsx('text-md-200 rounded-full border px-3 py-1.5', {
-              'border-gray-80 bg-gray-80 text-gray-10': badge.active,
-              'border-gray-15 bg-gray-00 text-gray-60': !badge.active,
-            })}
-          >
-            {badge.label}
-          </Link>
-        ))}
-      </div>
-      <ul className="mt-4 flex flex-col gap-4">
-        {filterScholarshipList.map((scholarship) => (
-          <li key={scholarship.id}>
+      <div className="mx-auto max-w-screen-lg">
+        <div className="flex items-center gap-2">
+          {badgeList.map((badge, index) => (
             <Link
-              href={`/my-scholarships/${scholarship.id}`}
-              className="flex items-start gap-4 rounded-2xl border border-gray-10 bg-gray-00 p-4 pb-3"
+              key={index}
+              href={badge.href}
+              className={clsx('text-md-200 rounded-full border px-3 py-1.5', {
+                'border-gray-80 bg-gray-80 text-gray-10': badge.active,
+                'border-gray-15 bg-gray-00 text-gray-60': !badge.active,
+              })}
             >
-              <div className="overflow-hidden rounded-lg">
-                <Image
-                  src={scholarship.imageSrc}
-                  alt={scholarship.name}
-                  width={64}
-                  height={64}
-                />
-              </div>
-              <div className="flex flex-1 flex-col gap-1">
-                <h3 className="text-md-300 text-gray-70">{scholarship.name}</h3>
-                <div className="text-md-200 text-gray-40">
-                  {scholarship.organization}
-                </div>
-                <div className="caption-200 text-gray-30">
-                  {formatDateString(scholarship.startDate)} ~{' '}
-                  {formatDateString(scholarship.endDate)}
-                </div>
-              </div>
-              <div>
-                <Status
-                  variant={
-                    (scholarship.status === 'PASS'
-                      ? 'success'
-                      : scholarship.status === 'FAIL'
-                        ? 'danger'
-                        : scholarship.status === 'NONE' &&
-                          'stroke-default') as StatusProps['variant']
-                  }
-                >
-                  {scholarship.status === 'PASS'
-                    ? '합격'
-                    : scholarship.status === 'FAIL'
-                      ? '불합격'
-                      : scholarship.status === 'NONE' && '미입력'}
-                </Status>
-              </div>
+              {badge.label}
             </Link>
-          </li>
-        ))}
-      </ul>
+          ))}
+        </div>
+        <ul className="mt-4 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {filterScholarshipList.map((scholarship) => (
+            <li key={scholarship.id}>
+              <Link
+                href={`/my-scholarships/${scholarship.id}`}
+                className="flex items-start gap-4 rounded-2xl border border-gray-10 bg-gray-00 p-4 pb-3"
+              >
+                <div className="overflow-hidden rounded-lg">
+                  <Image
+                    src={scholarship.imageSrc}
+                    alt={scholarship.name}
+                    width={64}
+                    height={64}
+                  />
+                </div>
+                <div className="flex flex-1 flex-col gap-1">
+                  <h3 className="text-md-300 text-gray-70">
+                    {scholarship.name}
+                  </h3>
+                  <div className="text-md-200 text-gray-40">
+                    {scholarship.organization}
+                  </div>
+                  <div className="caption-200 text-gray-30">
+                    {formatDateString(scholarship.startDate)} ~{' '}
+                    {formatDateString(scholarship.endDate)}
+                  </div>
+                </div>
+                <div>
+                  <Status
+                    variant={
+                      (scholarship.status === 'PASS'
+                        ? 'success'
+                        : scholarship.status === 'FAIL'
+                          ? 'danger'
+                          : scholarship.status === 'NONE' &&
+                            'stroke-default') as StatusProps['variant']
+                    }
+                  >
+                    {scholarship.status === 'PASS'
+                      ? '합격'
+                      : scholarship.status === 'FAIL'
+                        ? '불합격'
+                        : scholarship.status === 'NONE' && '미입력'}
+                  </Status>
+                </div>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
     </main>
   );
 };
