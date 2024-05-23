@@ -115,9 +115,6 @@ const ScholarshipListPage = () => {
                         {scholarship.applyPossible}
                       </Capsule>
                     </div>
-                    <FavoriteButtonWrapper
-                      isFavorite={scholarship.isFavorite}
-                    />
                   </div>
                   <div className="flex items-center gap-3">
                     <div className="overflow-hidden rounded-lg">

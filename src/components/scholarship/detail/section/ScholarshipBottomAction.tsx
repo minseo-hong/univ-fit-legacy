@@ -58,7 +58,7 @@ const ScholarshipBottomAction = ({
       const res = await fetchScholarship(scholarshipId);
       setLikeCount(res.data.likes);
       setIsLiked(res.data.memberIsLiked);
-      setIsSaved(res.data.memberIsSaved);
+      setIsSaved(res.data.memberIsStored);
     };
     fetchData();
   }, []);

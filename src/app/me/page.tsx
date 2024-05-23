@@ -7,8 +7,14 @@ import UserCheckIcon from '@/components/ui/icon/UserCheckIcon';
 import CheckupListIcon from '@/components/ui/icon/CheckupListIcon';
 import Message2CogIcon from '@/components/ui/icon/Message2CogIcon';
 import Link from 'next/link';
+import { fetchMyInfo } from '@/api/mypage';
 
-const MyPage = () => {
+const MyPage = async () => {
+  const res = await fetchMyInfo();
+  const myInfo = res.data;
+
+  console.log(myInfo);
+
   const menuList: {
     icon: React.ReactNode;
     label: React.ReactNode;
@@ -51,12 +57,17 @@ const MyPage = () => {
             </div>
             <div className="flex flex-col gap-3 px-4 py-3">
               <div className="flex items-center gap-2">
-                <h1 className="text-lg-300 text-gray-90">악어왕도마뱀</h1>
+                <h1 className="text-lg-300 text-gray-90">{myInfo.nickname}</h1>
                 <div className="flex items-center text-gray-30">
                   <span>
                     <LinkIcon />
                   </span>
-                  <span className="caption-300">카카오 로그인</span>
+                  <span className="caption-300">
+                    {myInfo.socialLoginName === 'kakao'
+                      ? '카카오'
+                      : myInfo.socialLoginName === 'naver' && '네이버'}{' '}
+                    로그인
+                  </span>
                 </div>
               </div>
               <div className="flex">

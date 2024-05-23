@@ -31,6 +31,8 @@ const ScholarshipDetailPage = async ({
     memberIsLiked: boolean;
   } = res.data;
 
+  console.log(scholarship);
+
   return (
     <div className="pb-24">
       <BackButtonHeader as="header" backButton={{ backUrl: '-1' }} fixed />

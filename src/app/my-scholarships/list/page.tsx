@@ -41,36 +41,7 @@ const MyScholarshipsListPage = async ({
     announcementImageUrl: string;
     applyStatus: '합격' | '불합격' | '미입력';
     applicationPeriod: string;
-  }[] = [
-    {
-      applyId: 1,
-      scholarShipName: '2021년도 1학기 장학금',
-      scholarShipFoundation: '한국장학재단',
-      endDocumentDate: '2021-12-31T15:00:00',
-      announcementImageUrl: '/images/placeholders/placeholder-image.png',
-      applyStatus: '합격',
-      applicationPeriod: '2021-12-31T15:00:00',
-    },
-    {
-      applyId: 2,
-      scholarShipName: '2021년도 2학기 장학금',
-      scholarShipFoundation: '한국장학재단',
-      endDocumentDate: '2021-12-31T15:00:00',
-      announcementImageUrl: '/images/placeholders/placeholder-image.png',
-      applyStatus: '불합격',
-      applicationPeriod: '2021-12-31T15:00:00',
-    },
-    {
-      applyId: 3,
-      scholarShipName: '2021년도 3학기 장학금',
-      scholarShipFoundation: '한국장학재단',
-      endDocumentDate: '2021-12-31T15:00:00',
-      announcementImageUrl: '/images/placeholders/placeholder-image.png',
-      applyStatus: '미입력',
-      applicationPeriod: '2021-12-31T15:00:00',
-    },
-  ];
-  // res.data.applyList
+  }[] = res.data.applyList;
 
   const filterScholarshipList = scholarshipList.filter((scholarship) => {
     if (searchParams.status === 'pass') {
