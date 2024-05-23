@@ -7,6 +7,9 @@ import NavBar from '@/components/ui/nav-bar/NavBar';
 export const metadata: Metadata = {
   title: 'UnivFit',
   description: 'This is UnivFit',
+  icons: {
+    icon: '/favicon/favicon.png',
+  },
 };
 
 export default function RootLayout({
