@@ -72,6 +72,7 @@ const StatusCheck = ({ applyId, initialStatus }: StatusCheckProps) => {
             <ul>
               {valueList.map((value) => (
                 <li
+                  key={value}
                   className="text-lg-200 flex cursor-pointer items-center gap-2 px-6 py-4 "
                   onClick={(e) => handleMenuItemClick(e, value)}
                 >
