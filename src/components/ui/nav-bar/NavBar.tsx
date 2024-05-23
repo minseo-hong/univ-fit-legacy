@@ -38,7 +38,7 @@ const NavBar = () => {
     {
       label: '내 장학금',
       iconSrc: '/icons/menu/my-scholarships-icon.svg',
-      href: '/my-scholarships',
+      href: '/my-scholarships/date',
       color: 'default',
     },
     {

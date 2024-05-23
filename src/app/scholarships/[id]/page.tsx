@@ -89,7 +89,19 @@ const ScholarshipDetailPage = async ({
                 <h2 className="text-lg-200">지원조건</h2>
                 <div className="mt-2 flex flex-wrap gap-2">
                   {scholarship.applyCondition.map((condition, index) => (
-                    <Capsule key={index} size="sm" variant="stroke-default">
+                    <Capsule
+                      key={index}
+                      size="sm"
+                      variant={
+                        index % 3 === 0
+                          ? 'stroke-default'
+                          : index % 3 === 1
+                            ? 'stroke-success'
+                            : index % 3 === 2
+                              ? 'stroke-danger'
+                              : 'stroke-default'
+                      }
+                    >
                       {condition}
                     </Capsule>
                   ))}
@@ -104,15 +116,17 @@ const ScholarshipDetailPage = async ({
               >
                 지원하기
               </Link>
-              <Button variant="light-primary">
-                <span className="text-lg-300 flex gap-1 text-gray-80">
-                  <span className="text-[1.25rem]">
-                    <MessageDotsIcon />
+              <Link href="/foundations">
+                <Button variant="light-primary">
+                  <span className="text-lg-300 flex gap-1 text-gray-80">
+                    <span className="text-[1.25rem]">
+                      <MessageDotsIcon />
+                    </span>
+                    <span>재단 후기 모아보기</span>
+                    <span className="text-primary">15</span>
                   </span>
-                  <span>재단 후기 모아보기</span>
-                  <span className="text-primary">15</span>
-                </span>
-              </Button>
+                </Button>
+              </Link>
             </section>
           </div>
         </div>
