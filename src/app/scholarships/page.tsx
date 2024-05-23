@@ -8,7 +8,6 @@ import clsx from 'clsx';
 import Image from 'next/image';
 import Link from 'next/link';
 import Capsule from '@/components/ui/Capsule';
-import FavoriteButtonWrapper from '@/components/ui/FavoriteButtonWrapper';
 
 const ScholarshipListPage = () => {
   const [scholarshipList, setScholarshipList] = useState<
@@ -42,7 +41,7 @@ const ScholarshipListPage = () => {
   }, [filterActiveIndexList]);
 
   return (
-    <div>
+    <div className="pb-16">
       <GrayBackground />
       <header>
         <div className="fixed h-[6.625rem] w-full bg-gray-00 px-4">

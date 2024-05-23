@@ -19,6 +19,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko" className="h-full">
+      <head>
+        <link rel="icon" href="/favicon/favicon.png" />
+      </head>
       <body className="h-full font-pretendard">
         <NavBar />
         {children}
