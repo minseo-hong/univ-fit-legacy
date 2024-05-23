@@ -28,7 +28,7 @@ export const fetchOnboarding = async (request: {
   deptType: string | null;
   deptName: string | null;
   isPresent: boolean | null;
-  sememster: number | null;
+  semester: number | null;
   residence: string | null;
   residenceType: number | null;
   gender: number | null;

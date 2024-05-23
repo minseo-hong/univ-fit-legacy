@@ -73,7 +73,7 @@ const Onboarding = () => {
             : null,
         deptName: value.department,
         isPresent: value.enrollmentStatus === 0,
-        sememster: Number(value.sememster),
+        semester: Number(value.sememster),
         residence: `${value.city !== null ? cityList[value.city] : ''} ${value.area !== null ? areaList[value.area] : ''}`,
         residenceType: Number(value.familySize),
         gender: value.gender,
