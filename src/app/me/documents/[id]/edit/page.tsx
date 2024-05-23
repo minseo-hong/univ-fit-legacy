@@ -1,7 +1,7 @@
-import DocumentNewPage from '../../new/page';
+import DocumentInputContent from '@/components/mypage/document/DocumentInputContent';
 
-const DocumentEditPage = () => {
-  return <DocumentNewPage />;
+const DocumentEditPage = ({ params }: { params: { id: number } }) => {
+  return <DocumentInputContent mode="EDIT" documentId={params.id} />;
 };
 
 export default DocumentEditPage;

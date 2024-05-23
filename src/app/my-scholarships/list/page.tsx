@@ -1,4 +1,4 @@
-import { fetchMyApplyList } from '@/api/my-scholarships';
+import { fetchMyApplyList } from '@/api/my-scholarship';
 import Status, { StatusProps } from '@/components/ui/Status';
 import clsx from 'clsx';
 import Image from 'next/image';

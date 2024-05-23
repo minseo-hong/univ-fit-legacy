@@ -5,57 +5,17 @@ import CheckupListIcon from '@/components/ui/icon/CheckupListIcon';
 import FileDescriptionIcon from '@/components/ui/icon/FileDescriptionIcon';
 import FilePlusIcon from '@/components/ui/icon/FilePlusIcon';
 import DocumentItem from '@/components/mypage/document/DocumentItem';
+import { fetchDocuments } from '@/api/document';
 
-const DocumentsPage = () => {
+const DocumentsPage = async () => {
+  const res = await fetchDocuments();
   const documentList: {
-    id: number;
-    name: string;
-    date: string;
-    organization: string | null;
-  }[] = [
-    {
-      id: 1,
-      name: '가족관계증명서',
-      date: '2024.03.22',
-      organization: '정부24',
-    },
-    {
-      id: 2,
-      name: '재학증명서',
-      date: '2024.03.22',
-      organization: null,
-    },
-    {
-      id: 3,
-      name: '성적증명서',
-      date: '2024.03.22',
-      organization: null,
-    },
-    {
-      id: 4,
-      name: '주민등록등본',
-      date: '2024.03.22',
-      organization: '정부24',
-    },
-    {
-      id: 5,
-      name: '주민등록초본',
-      date: '2024.03.22',
-      organization: '정부24',
-    },
-    {
-      id: 6,
-      name: '학자금지원구간 통지서',
-      date: '2024.03.22',
-      organization: '정부24',
-    },
-    {
-      id: 7,
-      name: '기초생활수급자 증명서',
-      date: '2024.03.22',
-      organization: '정부24',
-    },
-  ];
+    documentId: number;
+    documentName: string;
+    issuedDate: string;
+    issuer: string | null;
+    memo: string | null;
+  }[] = res.data.documentResponseList;
 
   return (
     <div className="pb-28">
@@ -82,7 +42,7 @@ const DocumentsPage = () => {
       <main>
         <ul className="mx-auto max-w-screen-lg">
           {documentList.map((document) => (
-            <DocumentItem key={document.id} document={document} />
+            <DocumentItem key={document.documentId} document={document} />
           ))}
         </ul>
       </main>

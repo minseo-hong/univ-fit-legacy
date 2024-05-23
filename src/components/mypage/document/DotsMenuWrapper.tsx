@@ -9,6 +9,7 @@ import DotsMenuButton, {
 import PencilCogIcon from '@/components/ui/icon/PencilCogIcon';
 import TrashXIcon from '@/components/ui/icon/TrashXIcon';
 import PopUp from '@/components/ui/PopUp';
+import { deleteDocument } from '@/api/document';
 
 interface DotsMenuWrapperProps {
   documentId: number;
@@ -48,8 +49,10 @@ const DotsMenuWrapper = ({ documentId }: DotsMenuWrapperProps) => {
     setIsDeletePopUpOpen(false);
   };
 
-  const handleDeletePopUpConfirm = () => {
+  const handleDeletePopUpConfirm = async () => {
+    await deleteDocument(documentId);
     setIsDeletePopUpOpen(false);
+    router.refresh();
   };
 
   return (

@@ -12,7 +12,7 @@ import FileDescriptionIcon from '@/components/ui/icon/FileDescriptionIcon';
 import MessageDotsIcon from '@/components/ui/icon/MessageDotsIcon';
 import PencilIcon from '@/components/ui/icon/PencilIcon';
 import Link from 'next/link';
-import { fetchMyScholarship } from '@/api/my-scholarships';
+import { fetchMyScholarship } from '@/api/my-scholarship';
 
 const MyScholarshipPage = async ({ params }: { params: { id: number } }) => {
   const res = await fetchMyScholarship(params.id);

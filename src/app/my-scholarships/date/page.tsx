@@ -1,4 +1,4 @@
-import { fetchScholarshipsDate } from '@/api/my-scholarships';
+import { fetchScholarshipsDate } from '@/api/my-scholarship';
 import Image from 'next/image';
 import Link from 'next/link';
 

@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 import Capsule from '@/components/ui/Capsule';
 import HeartFilledIcon from '@/components/ui/icon/HeartFilledIcon';
-import { fetchFavoriteScholarships } from '@/api/my-scholarships';
+import { fetchFavoriteScholarships } from '@/api/my-scholarship';
 
 const MyScholarshipsFavoritePage = async () => {
   const res = await fetchFavoriteScholarships();

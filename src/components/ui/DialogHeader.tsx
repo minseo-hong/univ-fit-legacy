@@ -40,12 +40,14 @@ const DialogHeader = ({
               <XIcon />
             </button>
             <h1 className="title-sm-200 text-center text-gray-90">{title}</h1>
-            <button
-              className="title-sm-300 text-right text-primary"
-              onClick={confirmButton?.onClick}
-            >
-              저장
-            </button>
+            <div className="text-right">
+              <button
+                className="title-sm-300 text-primary"
+                onClick={confirmButton?.onClick}
+              >
+                저장
+              </button>
+            </div>
           </div>
         </header>
         <div className="h-[56px]" />
