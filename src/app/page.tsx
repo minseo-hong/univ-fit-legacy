@@ -109,11 +109,6 @@ const Home = async () => {
                         {scholarship.applicationPeriod}
                       </p>
                     </div>
-                    <div className="ml-2">
-                      <span className="text-[1.5rem] text-gray-20">
-                        <HeartIcon />
-                      </span>
-                    </div>
                   </div>
                   <div className="text-md-200 mt-2 text-primary">
                     {scholarship.howManyLikes}명이 찜했어요!

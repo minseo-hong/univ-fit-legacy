@@ -11,7 +11,7 @@ export const fetchMyInfo = async () => {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${accessToken}`,
       },
-      cache: 'no-store',
+      cache: 'no-cache',
     },
   );
 

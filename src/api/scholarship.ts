@@ -31,7 +31,7 @@ export const fetchScholarship = async (id: number) => {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${accessToken}`,
       },
-      cache: 'no-store',
+      cache: 'no-cache',
     },
   );
 
@@ -53,7 +53,7 @@ export const fetchRecommendScholarship = async (status: string) => {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${accessToken}`,
       },
-      cache: 'no-store',
+      cache: 'no-cache',
     },
   );
 
@@ -75,7 +75,7 @@ export const fetchAllScholarship = async (status: string[]) => {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${accessToken}`,
       },
-      cache: 'no-store',
+      cache: 'no-cache',
     },
   );
 
@@ -97,7 +97,7 @@ export const fetchScholarshipDocumentList = async (id: number) => {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${accessToken}`,
       },
-      cache: 'no-store',
+      cache: 'no-cache',
     },
   );
 
@@ -119,7 +119,7 @@ export const fetchScholarshipFoundation = async (id: number) => {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${accessToken}`,
       },
-      cache: 'no-store',
+      cache: 'no-cache',
     },
   );
 
@@ -141,7 +141,6 @@ export const fetchScholarshipFoundationSummary = async (content: string) => {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${accessToken}`,
       },
-      cache: 'no-store',
       body: JSON.stringify({
         title: '공고 요약',
         content,
@@ -167,7 +166,7 @@ export const fetchCommentList = async (scholarshipId: number) => {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${accessToken}`,
       },
-      cache: 'no-store',
+      cache: 'no-cache',
     },
   );
 
@@ -211,7 +210,6 @@ export const fetchLike = async (scholarshipId: number, isLike: boolean) => {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${accessToken}`,
       },
-      cache: 'no-store',
     },
   );
 
@@ -235,7 +233,6 @@ export const fetchSave = async (scholarshipId: number, isSave: boolean) => {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${accessToken}`,
       },
-      cache: 'no-store',
     },
   );
 

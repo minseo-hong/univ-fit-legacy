@@ -91,7 +91,7 @@ const MyScholarshipsListPage = async ({
                   />
                 </div>
                 <div className="flex flex-1 flex-col gap-1">
-                  <h3 className="text-md-300 text-gray-70">
+                  <h3 className="text-md-300 line-clamp-1 text-gray-70">
                     {scholarship.scholarShipName}
                   </h3>
                   <div className="text-md-200 text-gray-40">

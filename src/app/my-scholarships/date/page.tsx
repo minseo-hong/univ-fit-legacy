@@ -1,56 +1,24 @@
+import { fetchScholarshipsDate } from '@/api/my-scholarships';
 import Image from 'next/image';
 import Link from 'next/link';
 
-const MyScholarshipsDatePage = () => {
+const MyScholarshipsDatePage = async () => {
+  const date = new Date();
+
   const scholarshipList: {
-    id: number;
-    name: string;
-    organization: string;
-    startDate: string;
-    endDate: string;
-    imageSrc: string;
-  }[] = [
-    {
-      id: 1,
-      name: '장학금명',
-      organization: '재단명',
-      startDate: '2024-04-01',
-      endDate: '2024-04-23',
-      imageSrc: '/images/placeholders/placeholder-image.png',
-    },
-    {
-      id: 2,
-      name: '장학금명',
-      organization: '재단명',
-      startDate: '2024-04-01',
-      endDate: '2024-04-22',
-      imageSrc: '/images/placeholders/placeholder-image.png',
-    },
-    {
-      id: 3,
-      name: '장학금명',
-      organization: '재단명',
-      startDate: '2024-04-01',
-      endDate: '2024-04-22',
-      imageSrc: '/images/placeholders/placeholder-image.png',
-    },
-    {
-      id: 4,
-      name: '장학금명',
-      organization: '재단명',
-      startDate: '2024-04-01',
-      endDate: '2024-04-21',
-      imageSrc: '/images/placeholders/placeholder-image.png',
-    },
-    {
-      id: 5,
-      name: '장학금명',
-      organization: '재단명',
-      startDate: '2024-04-01',
-      endDate: '2024-04-20',
-      imageSrc: '/images/placeholders/placeholder-image.png',
-    },
-  ];
+    applyId: number;
+    endDocumentDate: string;
+    announcementImageUrl: string;
+    scholarShipName: string;
+    scholarShipFoundation: string;
+    applicationPeriod: string;
+  }[] = [];
+
+  for (let month = 1; month <= 12; month++) {
+    const res = await fetchScholarshipsDate(date.getFullYear(), month);
+
+    scholarshipList.push(...res.data.announcementCalandarDayList);
+  }
 
   const formatSectionDateString = (dateString: string) => {
     const date = new Date(dateString);
@@ -62,15 +30,10 @@ const MyScholarshipsDatePage = () => {
     return `${date.getFullYear()}-${(date.getMonth() + 1).toString().padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')}`;
   };
 
-  const formatItemDateString = (dateString: string) => {
-    const date = new Date(dateString);
-    return `${date.getFullYear()}.${(date.getMonth() + 1).toString().padStart(2, '0')}.${date.getDate().toString().padStart(2, '0')}`;
-  };
-
   const dateList = Array.from(
     new Set(
       scholarshipList.map((scholarship) =>
-        formatListDateString(scholarship.endDate),
+        formatListDateString(scholarship.endDocumentDate),
       ),
     ),
   ).sort();
@@ -86,30 +49,30 @@ const MyScholarshipsDatePage = () => {
             <ul key={date} className="mt-2 flex flex-col gap-4">
               {scholarshipList.map(
                 (scholarship) =>
-                  date === formatListDateString(scholarship.endDate) && (
-                    <li key={scholarship.id}>
+                  date ===
+                    formatListDateString(scholarship.endDocumentDate) && (
+                    <li key={scholarship.applyId}>
                       <Link
                         className="flex items-center gap-4 rounded-2xl border border-gray-10 bg-gray-00 p-4 pb-3"
-                        href={`/my-scholarships/${scholarship.id}`}
+                        href={`/my-scholarships/${scholarship.applyId}`}
                       >
                         <div className="overflow-hidden rounded-lg">
                           <Image
-                            src={scholarship.imageSrc}
-                            alt={scholarship.name}
+                            src={scholarship.announcementImageUrl}
+                            alt={scholarship.scholarShipName}
                             width={64}
                             height={64}
                           />
                         </div>
                         <div className="flex flex-col gap-1">
                           <h3 className="text-md-300 text-gray-70">
-                            {scholarship.name}
+                            {scholarship.scholarShipName}
                           </h3>
                           <div className="text-md-200 text-gray-40">
-                            {scholarship.organization}
+                            {scholarship.scholarShipFoundation}
                           </div>
                           <div className="caption-200 text-gray-30">
-                            {formatItemDateString(scholarship.startDate)} ~{' '}
-                            {formatItemDateString(scholarship.endDate)}
+                            {scholarship.applicationPeriod}
                           </div>
                         </div>
                       </Link>

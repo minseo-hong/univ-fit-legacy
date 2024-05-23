@@ -11,7 +11,7 @@ export const fetchMyApplyList = async (status: 'all' | 'pass' | 'fail') => {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${accessToken}`,
       },
-      cache: 'no-store',
+      cache: 'no-cache',
     },
   );
 
@@ -33,7 +33,51 @@ export const fetchFavoriteScholarships = async () => {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${accessToken}`,
       },
-      cache: 'no-store',
+      cache: 'no-cache',
+    },
+  );
+
+  if (!res.ok) {
+    throw new Error('Failed to fetch data');
+  }
+
+  return res.json();
+};
+
+export const fetchMyScholarship = async (applyId: number) => {
+  const accessToken = await getTokenCookie();
+
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_SERVER_API_URL}/apply-list/${applyId}`,
+    {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${accessToken}`,
+      },
+      cache: 'no-cache',
+    },
+  );
+
+  if (!res.ok) {
+    throw new Error('Failed to fetch data');
+  }
+
+  return res.json();
+};
+
+export const fetchScholarshipsDate = async (year: number, month: number) => {
+  const accessToken = await getTokenCookie();
+
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_SERVER_API_URL}/announcements/calandar/list/${year}/${month}`,
+    {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${accessToken}`,
+      },
+      cache: 'no-cache',
     },
   );
 
