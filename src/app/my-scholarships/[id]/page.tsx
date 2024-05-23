@@ -13,11 +13,13 @@ import MessageDotsIcon from '@/components/ui/icon/MessageDotsIcon';
 import PencilIcon from '@/components/ui/icon/PencilIcon';
 import Link from 'next/link';
 import { fetchMyScholarship } from '@/api/my-scholarship';
+import StatusCheck from '@/components/my-scholarships/StatusCheck';
 
 const MyScholarshipPage = async ({ params }: { params: { id: number } }) => {
   const res = await fetchMyScholarship(params.id);
   const myScholarship: {
     applyId: number;
+    announcementId: number;
     applyStatus: string;
     announcementImageUrl: string;
     scholarShipName: string;
@@ -58,7 +60,7 @@ const MyScholarshipPage = async ({ params }: { params: { id: number } }) => {
   ];
 
   return (
-    <main className="pb-16">
+    <main className="px-0 pb-16 md:px-4">
       <HeaderHide />
       <WhiteBackground />
       <BackButtonHeader
@@ -67,6 +69,7 @@ const MyScholarshipPage = async ({ params }: { params: { id: number } }) => {
           backUrl: '-1',
         }}
         fixed
+        className="px-4 md:px-0"
       />
       <div className="mx-auto max-w-screen-lg">
         <div className="grid grid-cols-1 md:grid-cols-2 md:gap-6">
@@ -80,14 +83,10 @@ const MyScholarshipPage = async ({ params }: { params: { id: number } }) => {
           <div className="flex flex-col justify-between">
             <div>
               <div className="flex items-center justify-between px-4 py-4 pb-0 md:px-0">
-                <div className="flex items-center gap-1 rounded-lg border border-gray-10 px-4 py-2 text-gray-40">
-                  <span className="text-lg-200">
-                    {myScholarship.applyStatus}
-                  </span>
-                  <span>
-                    <ChevronRightIcon />
-                  </span>
-                </div>
+                <StatusCheck
+                  applyId={params.id}
+                  initialStatus={myScholarship.applyStatus}
+                />
                 <div>
                   <span className="text-[1.5rem] text-primary">
                     <BookmarkFilledIcon />
@@ -110,7 +109,7 @@ const MyScholarshipPage = async ({ params }: { params: { id: number } }) => {
             </div>
             <div>
               <Link
-                href={`/scholarships/${params.id}`}
+                href={`/scholarships/${myScholarship.announcementId}`}
                 className="flex w-full items-center justify-center gap-1 border border-gray-05 py-4 text-gray-40"
               >
                 <span className="text-md-200">공고로 이동하기</span>

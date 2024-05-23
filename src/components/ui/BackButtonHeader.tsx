@@ -16,6 +16,7 @@ interface BackButtonProps {
   fixed?: boolean;
   padding?: boolean;
   relative?: 'lg' | 'md';
+  className?: string;
 }
 
 const BackButtonHeader = ({
@@ -25,9 +26,10 @@ const BackButtonHeader = ({
   fixed = false,
   padding = true,
   relative = 'lg',
+  className,
 }: BackButtonProps) => {
   return (
-    <Wrapper>
+    <Wrapper className={className}>
       <div
         className={clsx('flex w-full justify-center bg-gray-00', {
           'fixed z-10': fixed,

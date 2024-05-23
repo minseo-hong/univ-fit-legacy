@@ -36,8 +36,13 @@ const ScholarshipDetailPage = async ({
   console.log(scholarship);
 
   return (
-    <div className="pb-24">
-      <BackButtonHeader as="header" backButton={{ backUrl: '-1' }} fixed />
+    <div className="px-0 pb-24 md:px-0">
+      <BackButtonHeader
+        as="header"
+        backButton={{ backUrl: '-1' }}
+        fixed
+        className="px-2 md:px-4 lg:px-0"
+      />
       <main className="md:px-4">
         <div className="mx-auto flex max-w-screen-lg flex-col md:flex-row md:gap-6 lg:gap-8">
           <section className="flex-1">

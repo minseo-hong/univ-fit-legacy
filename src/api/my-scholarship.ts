@@ -87,3 +87,28 @@ export const fetchScholarshipsDate = async (year: number, month: number) => {
 
   return res.json();
 };
+
+export const changeMyScholarshipStatus = async (
+  applyId: number,
+  applyStatus: number,
+) => {
+  const accessToken = await getTokenCookie();
+
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_SERVER_API_URL}/apply-list/apply-status/${applyId}`,
+    {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${accessToken}`,
+      },
+      body: JSON.stringify({ applyStatus: applyStatus }),
+    },
+  );
+
+  if (!res.ok) {
+    throw new Error('Failed to fetch data');
+  }
+
+  return res.json();
+};

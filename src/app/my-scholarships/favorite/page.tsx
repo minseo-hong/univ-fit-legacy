@@ -28,7 +28,7 @@ const MyScholarshipsFavoritePage = async () => {
         {scholarshipList.map((scholarship) => (
           <li key={scholarship.scholarshipId}>
             <Link
-              href={`/my-scholarships/${scholarship.scholarshipId}`}
+              href={`/scholarships/${scholarship.scholarshipId}`}
               className="flex flex-col gap-3 rounded-2xl border border-gray-10 bg-gray-00 p-4 pb-3"
             >
               <div className="flex items-center justify-between">
