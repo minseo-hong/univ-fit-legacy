@@ -130,44 +130,32 @@ const Drawer = ({
                   </li>
                 ),
             )}
-            {/* {
-      label: '로그아웃',
-      iconSrc: '/icons/menu/logout-icon.svg',
-      href: '#',
-      color: 'danger',
-      topDivider: true,
-      hidden: !isLoggedIn,
-      screenOnly: 'MOBILE',
-      onClick: () => {
-        deleteTokenCookie();
-        setIsDrawerOpen(false);
-        window.location.href = '/';
-      },
-    }, */}
-            <li
-              onClick={() => {
-                deleteTokenCookie();
-                setIsDrawerOpen(false);
-                window.location.href = '/';
-              }}
-            >
-              <div className="my-2 border-t border-gray-10" />
-              <Link
-                href="#"
-                className="flex items-center gap-4 px-6 py-4 text-danger-40"
-                onClick={handleMenuClick}
+            {isLoggedIn && (
+              <li
+                onClick={() => {
+                  deleteTokenCookie();
+                  setIsDrawerOpen(false);
+                  window.location.href = '/';
+                }}
               >
-                <div>
-                  <Image
-                    src="/icons/menu/logout-icon.svg"
-                    alt="로그아웃"
-                    width={20}
-                    height={20}
-                  />
-                </div>
-                <span className="text-lg-200 flex-1">로그아웃</span>
-              </Link>
-            </li>
+                <div className="my-2 border-t border-gray-10" />
+                <Link
+                  href="#"
+                  className="flex items-center gap-4 px-6 py-4 text-danger-40"
+                  onClick={handleMenuClick}
+                >
+                  <div>
+                    <Image
+                      src="/icons/menu/logout-icon.svg"
+                      alt="로그아웃"
+                      width={20}
+                      height={20}
+                    />
+                  </div>
+                  <span className="text-lg-200 flex-1">로그아웃</span>
+                </Link>
+              </li>
+            )}
           </ul>
         </div>
       </div>
