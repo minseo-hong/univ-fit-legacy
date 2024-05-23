@@ -25,10 +25,11 @@ const QuestionBox = ({
   return (
     <div className="flex flex-col gap-3 rounded-2xl bg-gray-00 px-6 py-5">
       {input ? (
-        <input
-          type="text"
+        <textarea
           placeholder="질문을 입력하세요"
-          className="text-lg-200 text-gray-80 outline-none placeholder:text-gray-40"
+          value={question}
+          rows={3}
+          className="text-lg-200 resize-none text-gray-80 outline-none placeholder:text-gray-40"
         />
       ) : (
         <div className="text-lg-200 text-gray-80">{question}</div>

@@ -91,17 +91,15 @@ const MyScholarshipPage = ({ params }: { params: { id: number } }) => {
               </div>
             </div>
             <div>
-              <div className="flex w-full items-center justify-center gap-1 border border-gray-05 py-4 text-gray-40">
-                <Link
-                  href={`/scholarships/${params.id}`}
-                  className="text-md-200"
-                >
-                  공고로 이동하기
-                </Link>
+              <Link
+                href={`/scholarships/${params.id}`}
+                className="flex w-full items-center justify-center gap-1 border border-gray-05 py-4 text-gray-40"
+              >
+                <span className="text-md-200">공고로 이동하기</span>
                 <span>
                   <ChevronRightIcon />
                 </span>
-              </div>
+              </Link>
               <div className="px-4 py-6 md:px-0">
                 <Button variant="light-primary">
                   <div className="flex items-center gap-1">

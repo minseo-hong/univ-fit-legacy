@@ -20,10 +20,38 @@ const Home = async () => {
     howManyLikes: string;
   }[] = res.data.popularAnnouncementResponses;
 
+  const articleList: { title: string; imageSrc: string }[] = [
+    {
+      title: '건강보험료 자격득실확인서 발급 방법은 ?',
+      imageSrc: '/images/article/article1.jpeg',
+    },
+    {
+      title: '장학재단 소득분위 산정은 어떻게 이뤄질까?',
+      imageSrc: '/images/article/article2.jpeg',
+    },
+    {
+      title: '장학금 자기소개서 잘 쓰는 방법을 공개합니다!',
+      imageSrc: '/images/article/article3.jpeg',
+    },
+    {
+      title: '교내장학금, 기업장학금, 국가장학금 .. 이게 다 뭐지?',
+      imageSrc: '/images/article/article4.jpeg',
+    },
+    {
+      title: '유니브핏으로 영리하게 장학금 일정 관리하는 방법 ?!',
+      imageSrc: '/images/article/article5.jpeg',
+    },
+    {
+      title: '장학재단 소득분위 산정은 어떻게 이뤄질까?',
+      imageSrc: '/images/article/article6.jpeg',
+    },
+  ];
+
   return (
     <main>
       <section className="px-3 pb-6 pt-2">
-        <div
+        <Link
+          href="/scholarships/1"
           className="relative mx-auto flex w-full max-w-screen-lg justify-between overflow-hidden rounded-2xl bg-[#18181A] px-6 py-4 text-gray-00"
           style={{
             background: 'linear-gradient(93deg, #FAB928 0%, #F06E10 100%)',
@@ -43,7 +71,7 @@ const Home = async () => {
               height={56}
             />
           </div>
-        </div>
+        </Link>
       </section>
       <section className="bg-gray-05 p-4">
         <div className="mx-auto flex max-w-screen-lg flex-col gap-4">
@@ -71,7 +99,7 @@ const Home = async () => {
                       />
                     </div>
                     <div className="ml-3 flex flex-1 flex-col gap-1">
-                      <h2 className="text-md-300 text-gray-70">
+                      <h2 className="text-md-300 line-clamp-1 text-gray-70">
                         {scholarship.scholarShipName}
                       </h2>
                       <p className="text-md-200 text-gray-40">
@@ -108,8 +136,8 @@ const Home = async () => {
             </Link>
           </div>
           <ul className="mt-4 flex w-[calc(100vw-(100vw-100%)+1rem)] gap-4 overflow-x-scroll">
-            {Array.from({ length: 3 }).map((_, index) => (
-              <ArticleItem key={index} as="li" />
+            {articleList.map((article, index) => (
+              <ArticleItem key={index} {...article} />
             ))}
           </ul>
         </div>

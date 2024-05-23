@@ -20,7 +20,7 @@ const ArticlePage = () => {
           <header className="flex flex-col gap-6">
             <div className="relative aspect-video w-full overflow-hidden rounded-2xl">
               <Image
-                src="/images/placeholders/placeholder-image.png"
+                src="/images/article/article1.jpeg"
                 alt="아티클 임시 이미지"
                 fill
                 objectFit="cover"
