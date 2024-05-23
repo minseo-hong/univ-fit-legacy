@@ -1,5 +1,7 @@
 # 🎓 유니브핏
 
+**서비스 링크** : https://www.univ-fit.com
+
 <img width ="1920" alt="KakaoTalk_Photo_2024-05-01-02-03-21 002" src="https://github.com/KUSITMS-29th-TEAM-F/.github/assets/98576976/59000fe2-c87e-4281-ab03-0d1008623126">
 
 <img width ="1920" src="https://github.com/KUSITMS-29th-TEAM-F/.github/assets/98576976/5bf2321e-aab7-4ea7-a08f-028321e625d7">
