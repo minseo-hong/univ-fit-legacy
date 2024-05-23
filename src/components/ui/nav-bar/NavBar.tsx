@@ -53,20 +53,6 @@ const NavBar = () => {
       href: '/articles',
       color: 'default',
     },
-    {
-      label: '로그아웃',
-      iconSrc: '/icons/menu/logout-icon.svg',
-      href: '#',
-      color: 'danger',
-      topDivider: true,
-      hidden: !isLoggedIn,
-      screenOnly: 'MOBILE',
-      onClick: () => {
-        deleteTokenCookie();
-        setIsDrawerOpen(false);
-        window.location.href = '/';
-      },
-    },
   ];
 
   const handleAuthButtonClick = () => {
