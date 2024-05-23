@@ -2,7 +2,7 @@
 
 import { Fragment, useState } from 'react';
 
-import DialogHeader from '@/components/DialogHeader';
+import DialogHeader from '@/components/ui/DialogHeader';
 import SecondPrivacySection from '@/components/ui/privacy/SecondPrivacySection';
 import ThirdPrivacySection from '@/components/ui/privacy/ThirdPrivacySection';
 import { PrivacyInputValue, PrivacySectionProps } from '@/interfaces/privacy';

@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
-import NavBarHide from './ui/global-style/NavBarHide';
-import XIcon from './ui/icon/XIcon';
+import NavBarHide from './global-style/NavBarHide';
+import XIcon from './icon/XIcon';
 import { useRouter } from 'next/navigation';
 
 interface DialogHeaderProps {

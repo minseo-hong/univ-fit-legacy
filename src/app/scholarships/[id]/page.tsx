@@ -7,6 +7,7 @@ import ScholarshipTabSection from '@/components/scholarship/detail/section/Schol
 import BackButtonHeader from '@/components/ui/BackButtonHeader';
 import { fetchScholarship } from '@/api/scholarship';
 import ScholarshipBottomAction from '@/components/scholarship/detail/section/ScholarshipBottomAction';
+import Link from 'next/link';
 
 const ScholarshipDetailPage = async ({
   params,
@@ -29,6 +30,7 @@ const ScholarshipDetailPage = async ({
     detailContents: string;
     likes: number;
     memberIsLiked: boolean;
+    applyLink: string;
   } = res.data;
 
   console.log(scholarship);
@@ -90,7 +92,13 @@ const ScholarshipDetailPage = async ({
               </section>
             </div>
             <section className="flex flex-col gap-4 px-4 py-6 md:px-0 md:pb-0">
-              <Button>지원하기</Button>
+              <Link
+                href={scholarship.applyLink}
+                target="_blank"
+                className="title-sm-300 flex w-full items-center justify-center rounded-2xl bg-primary py-5 text-gray-00"
+              >
+                지원하기
+              </Link>
               <Button variant="light-primary">
                 <span className="text-lg-300 flex gap-1 text-gray-80">
                   <span className="text-[1.25rem]">

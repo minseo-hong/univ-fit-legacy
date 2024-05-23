@@ -6,7 +6,7 @@ import Dropdown from '@/components/ui/Dropdown';
 import FormControl from '@/components/ui/FormControl';
 import Input from '@/components/ui/Input';
 import TextArea from '@/components/ui/TextArea';
-import DialogHeader from '@/components/DialogHeader';
+import DialogHeader from '@/components/ui/DialogHeader';
 
 const DocumentNewPage = () => {
   const [selectedIndexGroup, setSelectedIndexGroup] = useState<{
